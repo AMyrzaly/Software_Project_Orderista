@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 
-public partial class customerLogin : System.Web.UI.Page
+public partial class RestaurantLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,11 +18,10 @@ public partial class customerLogin : System.Web.UI.Page
 
     protected void btnLog_Click(object sender, EventArgs e)
     {
-        //connection string to the database****DESKTOP-R6TVRP1(My computer server name); "student_login" is the database name****
-        using (SqlConnection sqlCon = new SqlConnection("Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=Orderista;Integrated Security=True;"))
+        using (SqlConnection sqlCon = new SqlConnection("Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=Orderista;Integrated Security=True"))
         {
             sqlCon.Open();
-            string query = "SELECT COUNT(1) FROM tbl_CustomerLogin WHERE username=@Username AND password=@Password";
+            string query = "SELECT COUNT(1) FROM Restaurants WHERE username=@Username AND password=@Password";
             SqlCommand SqlCmd = new SqlCommand(query, sqlCon);
             SqlCmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());//parameter values from the database
             SqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());//parameter values from the database
@@ -31,7 +29,7 @@ public partial class customerLogin : System.Web.UI.Page
             if (count == 1)
             {
                 Session["username"] = txtUserName.Text.Trim();
-                Response.Redirect("Dashboard.aspx");
+                Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
             }
             //if the user enters a wrong username
             else if (count != 1)
@@ -47,13 +45,8 @@ public partial class customerLogin : System.Web.UI.Page
             {
                 lblErrorMessage.Visible = true;
             }
-
         }
-    }
 
-    protected void btnRegister_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("CreateCustomerAccount.aspx");
     }
 
     protected void btnClear_Click(object sender, EventArgs e)

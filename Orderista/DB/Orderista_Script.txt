@@ -1,0 +1,237 @@
+CREATE DATABASE [Orderista]
+USE [Orderista]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Admins](
+	[Username] [varchar](255) NULL,
+	[Password] [varchar](255) NULL
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CreateAccountCustomer](
+	[Firstname] [nvarchar](50) NOT NULL,
+	[Lastname] [nvarchar](50) NOT NULL,
+	[CentennialEmail] [nvarchar](50) NOT NULL,
+	[Address] [nvarchar](150) NOT NULL,
+	[Phonenumber] [nvarchar](50) NOT NULL,
+	[Status] [nvarchar](50) NULL,
+	[Activationcode] [nvarchar](50) NULL,
+	[SecurityA] [nvarchar](50) NULL,
+ CONSTRAINT [PK_tbl_CustomerCreateAccount] PRIMARY KEY CLUSTERED 
+(
+	[CentennialEmail] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ForgotPassword](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CentennialEmail] [nvarchar](50) NULL,
+	[activationcode] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Menu_Images](
+	[Name] [varchar](50) NOT NULL,
+	[MenuItemName] [varchar](50) NOT NULL,
+	[RestaurantName] [varchar](50) NOT NULL,
+	[Image] [image] NOT NULL,
+	[IsEnabled] [bit] NOT NULL,
+ CONSTRAINT [PK_Menu_Images] PRIMARY KEY CLUSTERED 
+(
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Menu_Items](
+	[Name] [varchar](50) NOT NULL,
+	[RestaurantName] [varchar](50) NOT NULL,
+	[Price] [smallmoney] NOT NULL,
+	[InStock] [bit] NOT NULL,
+	[Visible] [bit] NOT NULL,
+ CONSTRAINT [PK_Menu_Items] PRIMARY KEY CLUSTERED 
+(
+	[Name] ASC,
+	[RestaurantName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orders](
+	[OrderID] [int] IDENTITY(1,1) NOT NULL,
+	[CentennialEmail] [nvarchar](50) NOT NULL,
+	[CreationTime] [datetime] NOT NULL,
+	[DelayTime] [int] NOT NULL,
+	[Status] [nvarchar](50) NOT NULL,
+	[Semitotal] [smallmoney] NOT NULL,
+	[Taxes] [smallmoney] NOT NULL,
+	[ServiceCharge] [smallmoney] NOT NULL,
+	[Total] AS [Semitotal] + [Taxes] + [ServiceCharge],
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[OrderID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order_Items](
+	[OrderID] [int] NOT NULL,
+	[MenuItemName] [varchar](50) NOT NULL,
+	[RestaurantName] [varchar](50) NOT NULL,
+	[Price] [smallmoney] NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[Subtotal]  AS ([Quantity]*[Price]),
+ CONSTRAINT [PK_Order_Items] PRIMARY KEY CLUSTERED 
+(
+	[MenuItemName] ASC,
+	[OrderID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Restaurants](
+	[Restaurant_Name] [varchar](50) NOT NULL,
+	[Username] [varchar](255) NULL,
+	[Password] [varchar](255) NULL,
+	[Email] [varchar](255) NULL,
+	[Contact] [varchar](255) NULL
+	 CONSTRAINT [PK_Restaurants] PRIMARY KEY CLUSTERED 
+(
+	[Restaurant_Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_CustomerLogin](
+	[Username] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_tbl_CustomerLogin] PRIMARY KEY CLUSTERED 
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[CreateAccountCustomer]  WITH CHECK ADD  CONSTRAINT [FK_customerLogin_customerAccount] FOREIGN KEY([CentennialEmail])
+REFERENCES [dbo].[tbl_CustomerLogin] ([Username])
+GO
+ALTER TABLE [dbo].[CreateAccountCustomer] CHECK CONSTRAINT [FK_customerLogin_customerAccount]
+GO
+ALTER TABLE [dbo].[Menu_Images]  WITH CHECK ADD  CONSTRAINT [FK_Menu_Images_Menu_Items] FOREIGN KEY([MenuItemName], [RestaurantName])
+REFERENCES [dbo].[Menu_Items] ([Name], [RestaurantName])
+GO
+ALTER TABLE [dbo].[Menu_Images] CHECK CONSTRAINT [FK_Menu_Images_Menu_Items]
+GO
+ALTER TABLE [dbo].[Menu_Items]  WITH CHECK ADD  CONSTRAINT [FK_Menu_Restaurants] FOREIGN KEY([RestaurantName])
+REFERENCES [dbo].[Restaurants] ([Restaurant_Name])
+GO
+ALTER TABLE [dbo].[Menu_Items] CHECK CONSTRAINT [FK_Menu_Restaurants]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_CustomerAccount] FOREIGN KEY([CentennialEmail])
+REFERENCES [dbo].[CreateAccountCustomer] ([CentennialEmail])
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_CustomerAccount]
+GO
+ALTER TABLE [dbo].[Order_Items]  WITH CHECK ADD  CONSTRAINT [FK_Order_Items_Menu_Items] FOREIGN KEY([MenuItemName], [RestaurantName])
+REFERENCES [dbo].[Menu_Items] ([Name], [RestaurantName])
+GO
+ALTER TABLE [dbo].[Order_Items] CHECK CONSTRAINT [FK_Order_Items_Menu_Items]
+GO
+ALTER TABLE [dbo].[Order_Items]  WITH CHECK ADD  CONSTRAINT [FK_Order_Items_Orders] FOREIGN KEY([OrderID])
+REFERENCES [dbo].[Orders] ([OrderID])
+GO
+ALTER TABLE [dbo].[Order_Items] CHECK CONSTRAINT [FK_Order_Items_Orders]
+GO
+ALTER TABLE [dbo].[Menu_Items]  WITH CHECK ADD  CONSTRAINT [CK_Menu_Items_Price_GTE_Zero] CHECK  (([Price]>=(0)))
+GO
+ALTER TABLE [dbo].[Menu_Items] CHECK CONSTRAINT [CK_Menu_Items_Price_GTE_Zero]
+GO
+ALTER TABLE [dbo].[Order_Items]  WITH CHECK ADD  CONSTRAINT [CK_Order_Items_Price_GTE_Zero] CHECK  (([Price]>=(0)))
+GO
+ALTER TABLE [dbo].[Order_Items] CHECK CONSTRAINT [CK_Order_Items_Price_GTE_Zero]
+GO
+ALTER TABLE [dbo].[Order_Items]  WITH CHECK ADD  CONSTRAINT [CK_Order_Items_Quantity_GT_Zero] CHECK  (([Quantity]>(0)))
+GO
+ALTER TABLE [dbo].[Order_Items] CHECK CONSTRAINT [CK_Order_Items_Quantity_GT_Zero]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Delay_GTE_20] CHECK  (([DelayTime]>=(20)))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Delay_GTE_20]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Delay_LTE_60] CHECK  (([DelayTime]<=(60)))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Delay_LTE_60]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Tax_GTE_Zero] CHECK  (([Taxes]>=(0)))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Tax_GTE_Zero]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Semitotal_GTE_Zero] CHECK  (([Semitotal]>=(0)))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Semitotal_GTE_Zero]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_ServiceCharge_GTE_Zero] CHECK  (([ServiceCharge]>=(0)))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_ServiceCharge_GTE_Zero]
+GO
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Status_Options] CHECK  (([Status]='Complete' OR [Status]='In Progress' OR [Status]='New'))
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Status_Options]
+GO
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Tim Hortons', 'Tims', 'timTIM1!', 'tims@bogusemail.com', '8886011616');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Main Cafeteria', 'Aramark', 'abcABC1!', 'aramark@bogusemail.com', '9376604708');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Epic Burger', 'EpicBurger', 'epicEPIC1!', 'epic@bogusemail.com', '3122433605');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Pizza Pizza', 'Pizza', 'pizzaPIZZA1!', 'pizza@bogusemail.com', '4169671010');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Subway', 'Subway', 'subSUB1!', 'subway@bogusemail.com', '8008884848');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Smokes Poutinerie', 'Smokes', 'gravyGRAVY1!', 'smokes@bogusemail.com', '9054279944');
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Bagel B.E.L.T.', 'Tim Hortons', 1.49, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Homestyle Oatmeal', 'Tim Hortons', 1.29, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Hash Brown', 'Tim Hortons', 1.09, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Chicken Caesar Sandwich Wrap', 'Tim Hortons', 1.69, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Hearty Potato Bacon Soup', 'Tim Hortons', 1.89, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Chili', 'Tim Hortons', 1.69, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('carrot muffin','Main Cafeteria', 2.60, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Canadian','Pizza Pizza', 3.70, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Hawaiian','Pizza Pizza', 3.90, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Meatball Sub','Subway', 4.30, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Classic Poutine','Smokes Poutinerie', 4.30, 1, 1);
+INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Epic Fries','Epic Burger', 2.70, 1, 1);
+
+INSERT INTO Admins (Username, Password) VALUES ('Sushmita','sush123');
+INSERT INTO Admins (Username, Password) VALUES ('Megha','megha123');
+INSERT INTO Admins (Username, Password) VALUES ('Abubakir','abuka123');

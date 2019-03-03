@@ -33,5 +33,5 @@
 <footer>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
     </asp:ContentPlaceHolder>
-     <p>&nbsp&copyOrderista - 2019</p>
+     <p>&nbsp&copy Orderista - 2019</p>
 </footer>
