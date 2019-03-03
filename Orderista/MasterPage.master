@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %> 
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Orderista</title>
+    <link href="MainStyleSheet.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>  
+    <div id="background">
+    <form id="form1" runat="server">
+        <div id="container">
+        <!--    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" Height="200px" Width="200px" Style="float: left; margin-right: 10px" /> -->
+            <asp:Image ID="banner" runat="server" ImageUrl="~/Images/Banner_tagline.png" Height="200px" Width="870px" />
+            <div class="topnav">
+                <a href="customerLogin.aspx">Home</a>
+                <a href="About.aspx">About</a>
+                <a href="ContactUs.aspx">Contact Us</a>
+            </div>
+            <br />
+            <div id="jumbotron">
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form></div>
+</body>
+</html>
+<footer>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+     <p>&nbsp&copyOrderista - 2019</p>
+</footer>
