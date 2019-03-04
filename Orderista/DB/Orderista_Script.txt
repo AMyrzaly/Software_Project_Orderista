@@ -18,7 +18,6 @@ CREATE TABLE [dbo].[CreateAccountCustomer](
 	[Firstname] [nvarchar](50) NOT NULL,
 	[Lastname] [nvarchar](50) NOT NULL,
 	[CentennialEmail] [nvarchar](50) NOT NULL,
-	[Address] [nvarchar](150) NOT NULL,
 	[Phonenumber] [nvarchar](50) NOT NULL,
 	[Status] [nvarchar](50) NULL,
 	[Activationcode] [nvarchar](50) NULL,
