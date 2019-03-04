@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
         <div id="container">
         <!--    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" Height="200px" Width="200px" Style="float: left; margin-right: 10px" /> -->
-            <asp:Image ID="banner" runat="server" ImageUrl="~/Images/Banner_tagline.png" Height="200px" Width="870px" />
+            <asp:Image ID="banner" runat="server" ImageUrl="~/Images/banner2.jpg" Height="330px" Width="1084px" />
             <div class="topnav">
                 <a href="customerLogin.aspx">Home</a>
                 <a href="About.aspx">About</a>
@@ -22,10 +22,6 @@
             </div>
             <br />
             <div id="jumbotron">
-
-
-
-
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>

@@ -59,6 +59,3 @@
     <a href="AdminLogin.aspx">Login as Admin</a>
     <a href="/Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
 </asp:Content>
-
-
-<!-- Testing --> 
