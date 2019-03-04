@@ -31,3 +31,5 @@
     <a href="/Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
 </asp:Content>
 
+<%-- Test --%>
+
