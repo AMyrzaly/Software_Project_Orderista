@@ -46,6 +46,9 @@
                 <td>
                     <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
                 </td> -->
+
+
+                
             </tr>
 
         </table>
@@ -57,3 +60,5 @@
     <a href="/Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
 </asp:Content>
 
+
+<!-- Testing --> 
