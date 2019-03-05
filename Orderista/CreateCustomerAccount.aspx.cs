@@ -32,14 +32,40 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
         cmd1.Parameters.AddWithValue("@Firstname", txtFName.Text);
         cmd1.Parameters.AddWithValue("@Lastname", txtLName.Text);
         cmd1.Parameters.AddWithValue("@CentennialEmail", txtEmail.Text);
-        cmd1.Parameters.AddWithValue("@Address", txtAddress.Text);
+      //  cmd1.Parameters.AddWithValue("@Address", txtAddress.Text);
         cmd1.Parameters.AddWithValue("@Phonenumber", txtPhone.Text);
         cmd1.Parameters.AddWithValue("@Status", "Unverified");
         cmd1.Parameters.AddWithValue("@Activationcode", activationCode);
         cmd1.Parameters.AddWithValue("@SecurityA", txtSecurityA.Text);
         cmd1.ExecuteNonQuery();
-        //sendCode(); use for email code
+        sendCode(); //use for email code
         Response.Redirect("EmailVerification.aspx?emailadd=" + txtEmail.Text);
 
     }
+
+    private void sendCode()
+    {
+        SmtpClient smtp = new SmtpClient();
+        smtp.Host = "smtp.gmail.com";
+        smtp.Port = 587;
+        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista2019");
+        smtp.EnableSsl = true;
+        MailMessage msg = new MailMessage();
+        msg.Subject = "Activation Code to Verify Email Address";
+        msg.Body = "Dear " + txtFName.Text + ", Your Activation Code is " + activationCode + "\n\n\nThanks and Regards\nSwift Serve Team";
+        string toAddress = txtEmail.Text;
+        msg.To.Add(toAddress);
+        string fromAddress = "Orderista <orderista.services@gmail.com>";
+        msg.From = new MailAddress(fromAddress);
+        try
+        {
+            smtp.Send(msg);
+        }
+        catch
+        {
+            throw;
+        }
+    }
+
+
 }
