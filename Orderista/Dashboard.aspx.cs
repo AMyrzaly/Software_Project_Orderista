@@ -13,7 +13,7 @@ public partial class Dashboard : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=Orderista;Integrated Security=True";
+        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
         con.Open();
         if (Session["username"] == null)
             Response.Redirect("customerLogin.aspx");

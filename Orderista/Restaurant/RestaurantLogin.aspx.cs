@@ -18,7 +18,7 @@ public partial class RestaurantLogin : System.Web.UI.Page
 
     protected void btnLog_Click(object sender, EventArgs e)
     {
-        using (SqlConnection sqlCon = new SqlConnection("Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=Orderista;Integrated Security=True"))
+        using (SqlConnection sqlCon = new SqlConnection("Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True"))
         {
             sqlCon.Open();
             string query = "SELECT COUNT(1) FROM Restaurants WHERE username=@Username AND password=@Password";

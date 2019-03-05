@@ -20,7 +20,7 @@ public partial class EmailVerification : System.Web.UI.Page
 
     protected void btnVerifyCode_Click(object sender, EventArgs e)
     {
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
+        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
         SqlCommand cmd = new SqlCommand();
         cmd.CommandText = myquery;
@@ -54,7 +54,7 @@ public partial class EmailVerification : System.Web.UI.Page
 
     private void changeStaus()
     {
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
+        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
         String updateData = "Update CreateAccountCustomer set Status='Verified' where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
         con.Open();
         SqlCommand cmd = new SqlCommand();
@@ -67,7 +67,7 @@ public partial class EmailVerification : System.Web.UI.Page
 
     protected void btnVerifySecurityAnswer_Click(object sender, EventArgs e)
     {
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
+        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
         SqlCommand cmd = new SqlCommand();
         cmd.CommandText = myquery;

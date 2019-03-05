@@ -16,7 +16,7 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
+        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
         con.Open();
     }
 
@@ -28,7 +28,7 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@Username", txtEmail.Text);
         cmd.Parameters.AddWithValue("@Password", txtPwd.Text);
         cmd.ExecuteNonQuery();
-        SqlCommand cmd1 = new SqlCommand("insert into CreateAccountCustomer" + "(Firstname,Lastname,CentennialEmail,Address,Phonenumber,Status,Activationcode,SecurityA)values(@Firstname,@Lastname,@CentennialEmail,@Address,@Phonenumber,@Status,@Activationcode,@SecurityA)", con);
+        SqlCommand cmd1 = new SqlCommand("insert into CreateAccountCustomer" + "(Firstname,Lastname,CentennialEmail,Phonenumber,Status,Activationcode,SecurityA)values(@Firstname,@Lastname,@CentennialEmail,@Phonenumber,@Status,@Activationcode,@SecurityA)", con);
         cmd1.Parameters.AddWithValue("@Firstname", txtFName.Text);
         cmd1.Parameters.AddWithValue("@Lastname", txtLName.Text);
         cmd1.Parameters.AddWithValue("@CentennialEmail", txtEmail.Text);
@@ -48,7 +48,7 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "smtp.gmail.com";
         smtp.Port = 587;
-        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista2019");
+        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");
         smtp.EnableSsl = true;
         MailMessage msg = new MailMessage();
         msg.Subject = "Activation Code to Verify Email Address";
