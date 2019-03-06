@@ -51,8 +51,8 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
         smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");
         smtp.EnableSsl = true;
         MailMessage msg = new MailMessage();
-        msg.Subject = "Activation Code to Verify Email Address";
-        msg.Body = "Dear " + txtFName.Text + ", Your Activation Code is " + activationCode + "\n\n\nThanks and Regards\nSwift Serve Team";
+        msg.Subject = "Orderista Email Verification Code";
+        msg.Body = "Dear " + txtFName.Text + ", \n\n\nYour Activation Code is " + activationCode + "\n\n\nThanks and Regards,\nOrderista Team";
         string toAddress = txtEmail.Text;
         msg.To.Add(toAddress);
         string fromAddress = "Orderista <orderista.services@gmail.com>";
