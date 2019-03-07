@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div class="inputText">
-        <h2 style="text-align:center"> Hungy? Log in and place your order right now! </h2>
+        <h2 style="text-align:center"> Hungry? Log in and place your order right now! </h2>
         <h3> </h3>
     </div>
 
