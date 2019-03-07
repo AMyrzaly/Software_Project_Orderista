@@ -27,7 +27,7 @@ public partial class AdminLogin : System.Web.UI.Page
         Session["UserAdmin"] = username;
 
         ///Change the connectionString to apply different servers
-        string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
+        string connString = "Server=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
         conn = new SqlConnection(connString);
 
         comm = new SqlCommand("SELECT * FROM Admins where Username = @user and Password = @pass ;");

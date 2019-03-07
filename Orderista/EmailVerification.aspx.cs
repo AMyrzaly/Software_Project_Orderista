@@ -20,7 +20,7 @@ public partial class EmailVerification : System.Web.UI.Page
 
     protected void btnVerifyCode_Click(object sender, EventArgs e)
     {
-        con.ConnectionString = "Data Source=LAPTOP-I8AD7C8G\\MSSQLSERVER2017 ;Initial Catalog=Orderista;Integrated Security=True";
+        con.ConnectionString = "Data Source=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
         SqlCommand cmd = new SqlCommand();
         cmd.CommandText = myquery;

@@ -6,7 +6,7 @@
         <div>
             &nbsp;<%--Dummy page for sample redirecting--%><asp:Label ID="lblUserDetails" runat="server"></asp:Label>
             <br />
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+            <asp:Button class="backclrBtn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         </div>
  </asp:Content>
 
