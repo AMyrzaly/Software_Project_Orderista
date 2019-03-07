@@ -5,8 +5,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <asp:Label class="inputText" ID="lblTitle" runat="server" Text="Admin Login"></asp:Label>
-    </br> 
+    <div class="inputText">
+        <h3 style="text-align:center"> Log in as Admin </h3>
+    </div>
 
     <div>
         <table style="margin:auto">
