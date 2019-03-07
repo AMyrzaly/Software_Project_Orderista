@@ -25,10 +25,12 @@
             <tr>
                 <td>
                      </br> 
-                    <asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" /></td>
+                    <asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /> 
+                    </td>
                 <td>
                     </br> 
-                    <asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" />  
+                    <asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
+                     
                      <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
                 </td>
                  <td> 

@@ -20,8 +20,10 @@
                  <tr>
                     <td></td>
                      
-                    <td></br><asp:Button  class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/> 
-                        <asp:Button class="actionBtn" ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click"/></td>
+                    <td></br>
+                        <asp:Button class="actionBtn" ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click"/>
+                        <asp:Button  class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/> 
+                        </td>
                     <td></td>
                 </tr>
  
@@ -31,29 +33,7 @@
                 </tr>
             </table>
         </div>
-
-
-    <div>
-        <table style="margin:auto">
-                <tr>
-                        
-
-
-                </tr>
-        </table>
-   </div>
-
-
-
-
-    
-    
-
     </asp:Content>
-
-
-                      
-
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
     <a href="../customerLogin.aspx">Login as a Customer</a>
