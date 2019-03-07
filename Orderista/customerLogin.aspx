@@ -5,26 +5,34 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
-        <table style="margin: auto; border: 5px solid white">
+
+        <table style="margin: auto">
             <tr>
                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label></td>
+                    <asp:Label ID="Label1" runat="server" Text="Username &nbsp&nbsp&nbsp&nbsp&nbsp"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtUserName" runat="server"></asp:TextBox>
                  </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox> 
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" /></td>
+                     </br> 
+                    <asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" /></td>
                 <td>
-                    <asp:Button ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /></td>
+                    </br> 
+                    <asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" />  
+                     <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
+                </td>
+                 <td> 
+           
             </tr>
             <tr>
                 <td></td>
@@ -34,13 +42,7 @@
                     <asp:Label ID="lblUsernameMessage" runat="server" Text="Incorrect Username" ForeColor="Red"></asp:Label></td>
                 <td>
                     <asp:Label ID="lblPasswordMessage" runat="server" Text="Incorrect Password" ForeColor="Red"></asp:Label></td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lbl3" runat="server" Text="Not an existing user"></asp:Label></td>
-                <td>
-                    <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
-            </tr>
+                </tr>
             <tr>
                 <!--
                 <td>

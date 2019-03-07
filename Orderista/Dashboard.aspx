@@ -4,8 +4,7 @@
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div>
-            <%--Dummy page for sample redirecting--%>
-            <asp:Label ID="lblUserDetails" runat="server"></asp:Label>
+            &nbsp;<%--Dummy page for sample redirecting--%><asp:Label ID="lblUserDetails" runat="server"></asp:Label>
             <br />
             <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         </div>
