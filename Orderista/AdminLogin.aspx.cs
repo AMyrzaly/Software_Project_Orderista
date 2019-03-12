@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 public partial class AdminLogin : System.Web.UI.Page
 {
@@ -16,7 +17,7 @@ public partial class AdminLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
 
-        SqlConnection conn;
+       // SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapter;
         DataSet ds = new DataSet();
@@ -27,8 +28,10 @@ public partial class AdminLogin : System.Web.UI.Page
         Session["UserAdmin"] = username;
 
         ///Change the connectionString to apply different servers
-        string connString = "Server=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
-        conn = new SqlConnection(connString);
+        //string connString = "Server=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
+        //conn = new SqlConnection(connString);
+
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
 
         comm = new SqlCommand("SELECT * FROM Admins where Username = @user and Password = @pass ;");
         comm.Parameters.AddWithValue("@user", username);

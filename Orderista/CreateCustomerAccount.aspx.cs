@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
@@ -16,7 +17,9 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        con.ConnectionString = "Data Source=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
+        // con.ConnectionString = "Data Source=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True";
+         con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+
         con.Open();
     }
 

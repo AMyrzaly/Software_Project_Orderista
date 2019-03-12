@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 public partial class customerLogin : System.Web.UI.Page
 {
@@ -20,7 +21,7 @@ public partial class customerLogin : System.Web.UI.Page
     protected void btnLog_Click(object sender, EventArgs e)
     {
         //connection string to the database****DESKTOP-R6TVRP1(My computer server name); "student_login" is the database name****
-        using (SqlConnection sqlCon = new SqlConnection("Data Source=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True;"))
+        using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString))
         {
             sqlCon.Open();
             string query = "SELECT COUNT(1) FROM tbl_CustomerLogin WHERE username=@Username AND password=@Password";
@@ -70,3 +71,4 @@ public partial class customerLogin : System.Web.UI.Page
         }
     }
 }
+

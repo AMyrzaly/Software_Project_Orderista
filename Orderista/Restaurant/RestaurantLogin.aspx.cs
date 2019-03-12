@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,7 @@ public partial class RestaurantLogin : System.Web.UI.Page
 
     protected void btnLog_Click(object sender, EventArgs e)
     {
-        using (SqlConnection sqlCon = new SqlConnection("Data Source=DESKTOP-MCNBK1I\\SQLEXPRESS ;Initial Catalog=Orderista;Integrated Security=True"))
+        using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString))
         {
             sqlCon.Open();
             string query = "SELECT COUNT(1) FROM Restaurants WHERE username=@Username AND password=@Password";
@@ -63,3 +64,4 @@ public partial class RestaurantLogin : System.Web.UI.Page
         }
     }
 }
+
