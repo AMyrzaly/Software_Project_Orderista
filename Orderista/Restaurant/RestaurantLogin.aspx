@@ -4,6 +4,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <h3 style="text-align:center"> Restaurant Login page </h3>
+
    <div>
              <table style="margin:auto">
                 <tr>
