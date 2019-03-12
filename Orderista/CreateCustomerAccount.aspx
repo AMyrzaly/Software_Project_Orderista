@@ -101,7 +101,7 @@
                             <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
                                 ControlToValidate="txtPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text=" Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character"
+                                Text="Password must minimum 8 characters, UpperCase Alphabet and LowerCase Alphabet, Number and Special Character"
                                 ErrorMessage="RegularExpressionValidator" />
 
                 </td>
@@ -114,7 +114,7 @@
                             <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
                                 ControlToValidate="txtConfirmPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text=" Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character"
+                                Text=" Password has to match, please try again!"
                                 ErrorMessage="RegularExpressionValidator" />
 
                 </td>
