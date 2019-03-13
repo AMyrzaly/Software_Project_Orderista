@@ -55,7 +55,7 @@ public partial class AdminLogin : System.Web.UI.Page
             }
             else
             {
-                TestLabel.Text = "Admin Not Found";
+                TestLabel.Text = "Username or Password is incorrect";
             }
 
 
