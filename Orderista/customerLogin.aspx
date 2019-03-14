@@ -42,6 +42,16 @@
     </div>
 
     <br />
+    <div style="display: flex; justify-content: space-between; margin: 20px 0;">
+        <div style="display: flex; flex-direction: column; justify-content: center">
+            <p>Delivery to your door during 45 minutes.</p>
+            <p>Fresh and tasty food for a great price</p>
+            <p>Fantastic service and unforgetable types of dishes</p>
+        </div>
+        <div>
+            <asp:Image ID="cheif_image" runat="server" Height="400" Width="568" ImageUrl="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/01/09/15/michelin-chef.jpg?w968h681" />
+        </div>
+    </div>
     <div>
         <table style="margin: auto">
             <tr>
