@@ -1,5 +1,5 @@
 ﻿html {
-    height: 100% !important;
+    min-height: 100% !important;
 }
 
 body {
@@ -22,17 +22,13 @@ body {
     font-variant: normal;
     text-transform: none;
     margin: 0;
-    height: inherit;
+    height: 100vh !important;
     display: flex;
     flex-direction: column;
     height: inherit;
     justify-content: space-between;
 
 
-}
-
-div#background {
-    background: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/B1eYNZGrripnnry82/videoblocks-table-at-restaurant-blurred-background_rxthbuitx_thumbnail-full01.png');
 }
 
 #container {

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html style="height: 100%">
+<html>
 <head runat="server">
     <title>Orderista</title>
     <link href="MainStyleSheet.css" rel="stylesheet" />
@@ -27,10 +27,10 @@
             </div>
         </div>
     </form></div>
-</body>
-</htm>
-<footer>
+    <footer>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-    </asp:ContentPlaceHolder>
-     <p>&nbsp&copy Orderista - 2019</p>
-</footer>
+       </asp:ContentPlaceHolder>
+       <p>&nbsp&copy Orderista - 2019</p>
+    </footer>
+</body>
+</html>
