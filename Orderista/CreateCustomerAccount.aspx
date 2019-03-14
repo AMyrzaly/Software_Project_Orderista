@@ -93,27 +93,27 @@
         <!-- <table> -->
           <!--  <tr> -->
                 <!-- <td> -->
-         <div style="display: flex">
-         <div>
+         <div style="display: flex; justify-content: center">
+         <div style="flex-basis: 40%; margin: 20px;">
                     <span style="display: block">Password</span>
                     <!-- Password -->
-                    <asp:TextBox class="inputText" ID="txtPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator  ID="ReqFldValPassword" runat="server"
                                 ErrorMessage="Required Field"
                                 ControlToValidate="txtPwd" /><br />
                             <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
                                 ControlToValidate="txtPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text="Password must minimum 8 characters, UpperCase Alphabet and LowerCase Alphabet, Number and Special Character"
+                                Text="Password must be minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
                                 ErrorMessage="RegularExpressionValidator" />
          </div>
-         <div>
+         <div style="flex-basis: 40%; margin: 20px;">
 
                <!-- </td> -->
                 <!-- <td>-->
                    <span style="display: block">Confirm password</span>
                     <!-- Confirm Password -->
-                    <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
                                 ErrorMessage="Required Field"
                                 ControlToValidate="txtConfirmPwd" /><br />
@@ -130,7 +130,7 @@
               <!--  </tr>  -->
                <!-- <tr> -->
                    <!-- <td> -->
-         <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+         <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 30px;">
                          <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
                          <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
          </div>
