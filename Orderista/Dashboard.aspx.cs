@@ -23,8 +23,8 @@ public partial class Dashboard : System.Web.UI.Page
 
         //displays the user id email
         lblUserDetails.Text = "Hello " + Session["username"];
-        //Response.Redirect("/Orders/OrdersPage.aspx");
-        //Response.Redirect("OrdersPage.aspx");
+        Response.Redirect("/Orders/OrdersPage.aspx");
+        
     }
 
     protected void btnLogout_Click(object sender, EventArgs e)
