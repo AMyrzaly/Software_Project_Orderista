@@ -20,7 +20,7 @@ body {
     font-variant: normal;
     text-transform: none;
     margin: 0;
-    height: 100vh !important;
+    min-height: 100vh !important;
     background: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/B1eYNZGrripnnry82/videoblocks-table-at-restaurant-blurred-background_rxthbuitx_thumbnail-full01.png');
     display: flex;
     flex-direction: column;
