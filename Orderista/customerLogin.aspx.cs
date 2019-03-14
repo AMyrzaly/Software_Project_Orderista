@@ -12,6 +12,7 @@ public partial class customerLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session.Clear();
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         lblErrorMessage.Visible = false;
         lblUsernameMessage.Visible = false;
