@@ -34,7 +34,7 @@ public partial class CountdownWindow : System.Web.UI.Page
 
             string total = Request.QueryString["price"].ToString();
 
-           // Response.Redirect("BuyNow.aspx?price=" + total);
+            // Response.Redirect("BuyNow.aspx?price=" + total);
         }
     }
 
@@ -58,6 +58,6 @@ public partial class CountdownWindow : System.Web.UI.Page
     {
         string total = Request.QueryString["price"].ToString();
 
-       // Response.Redirect("BuyNow.aspx?price=" + total);
+        // Response.Redirect("BuyNow.aspx?price=" + total);
     }
 }
