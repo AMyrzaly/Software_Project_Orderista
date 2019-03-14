@@ -104,6 +104,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Order_Items](
 	[OrderID] [int] NOT NULL,
+	[CentennialEmail] [nvarchar](50) NOT NULL,
 	[MenuItemName] [varchar](50) NOT NULL,
 	[RestaurantName] [varchar](50) NOT NULL,
 	[Price] [smallmoney] NOT NULL,
