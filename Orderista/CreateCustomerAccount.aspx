@@ -90,9 +90,12 @@
      <br />
 
      <div>
-        <table>
-            <tr>
-                <td>Password
+        <!-- <table> -->
+          <!--  <tr> -->
+                <!-- <td> -->
+         <div style="display: flex">
+         <div>
+                    <span style="display: block">Password</span>
                     <!-- Password -->
                     <asp:TextBox class="inputText" ID="txtPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator  ID="ReqFldValPassword" runat="server"
@@ -103,9 +106,12 @@
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
                                 Text="Password must minimum 8 characters, UpperCase Alphabet and LowerCase Alphabet, Number and Special Character"
                                 ErrorMessage="RegularExpressionValidator" />
+         </div>
+         <div>
 
-                </td>
-                <td> Confirm password
+               <!-- </td> -->
+                <!-- <td>-->
+                   Confirm password
                     <!-- Confirm Password -->
                     <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
@@ -117,19 +123,21 @@
                                 Text=" Password has to match, please try again!"
                                 ErrorMessage="RegularExpressionValidator" />
 
-                </td>
-               
-                </tr>
-               <tr>
-                   <td>
+              <!--  </td>  -->
+              
+         </div>
+     </div>
+              <!--  </tr>  -->
+               <!-- <tr> -->
+                   <!-- <td> -->
                        <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="CompareValidator" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
                          <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
          
-                   </td>
-               </tr>
+                   <!-- </td> -->
+               <!-- </tr> -->
 
-            </table>
-     </div>
+            <!-- </table> -->
+    </div>
 
              
                    
