@@ -47,7 +47,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
     // common - replicate this for both pages when splitting placing orders from order history
     private string GetConnectionString()
     {
-        return System.Configuration.ConfigurationManager.ConnectionStrings["swiftServeDB"].ConnectionString;
+        return System.Configuration.ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString;
     }
 
     // placing orders
