@@ -100,7 +100,7 @@
                     <asp:TextBox class="inputText" ID="txtPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator  ID="ReqFldValPassword" runat="server"
                                 ErrorMessage="Required Field"
-                                ControlToValidate="txtPwd" />
+                                ControlToValidate="txtPwd" /><br />
                             <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
                                 ControlToValidate="txtPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
@@ -111,12 +111,12 @@
 
                <!-- </td> -->
                 <!-- <td>-->
-                   Confirm password
+                   <span style="display: block">Confirm password</span>
                     <!-- Confirm Password -->
                     <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" Width="300px" TextMode="Password"></asp:TextBox>
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
                                 ErrorMessage="Required Field"
-                                ControlToValidate="txtConfirmPwd" />
+                                ControlToValidate="txtConfirmPwd" /><br />
                             <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
                                 ControlToValidate="txtConfirmPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
@@ -130,8 +130,10 @@
               <!--  </tr>  -->
                <!-- <tr> -->
                    <!-- <td> -->
-                       <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="CompareValidator" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
+         <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                         <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
                          <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
+         </div>
          
                    <!-- </td> -->
                <!-- </tr> -->
