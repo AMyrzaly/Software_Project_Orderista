@@ -17,7 +17,10 @@ public partial class Dashboard : System.Web.UI.Page
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
         con.Open();
         if (Session["username"] == null)
+        {
             Response.Redirect("customerLogin.aspx");
+        }
+
         //displays the user id email
         lblUserDetails.Text = "Hello " + Session["username"];
         //Response.Redirect("/Orders/OrdersPage.aspx");

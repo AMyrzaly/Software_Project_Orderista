@@ -12,6 +12,7 @@ public partial class customerLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session.Clear();
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         lblErrorMessage.Visible = false;
         lblUsernameMessage.Visible = false;
@@ -25,14 +26,25 @@ public partial class customerLogin : System.Web.UI.Page
         {
             sqlCon.Open();
             string query = "SELECT COUNT(1) FROM tbl_CustomerLogin WHERE username=@Username AND password=@Password";
+            string query1 = "SELECT Status FROM CreateAccountCustomer WHERE CentennialEmail=@CentennialEmail";
             SqlCommand SqlCmd = new SqlCommand(query, sqlCon);
+            SqlCommand SqlCmd1 = new SqlCommand(query1, sqlCon);
+            SqlCmd1.Parameters.AddWithValue("@CentennialEmail", txtUserName.Text.Trim());
             SqlCmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());//parameter values from the database
             SqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());//parameter values from the database
+            string status = Convert.ToString(SqlCmd1.ExecuteScalar());
             int count = Convert.ToInt32(SqlCmd.ExecuteScalar());
             if (count == 1)
             {
-                Session["username"] = txtUserName.Text.Trim();
-                Response.Redirect("Dashboard.aspx");
+                if (status != "Unverified")
+                {
+                    Session["username"] = txtUserName.Text.Trim();
+                    Response.Redirect("Dashboard.aspx");
+                }
+                else
+                {
+                    Response.Redirect("EmailVerification.aspx?emailadd=" + txtUserName.Text);
+                }
             }
             //if the user enters a wrong username
             else if (count != 1)
