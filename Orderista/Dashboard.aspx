@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <div>
+        <div style="position: relative">
             &nbsp;<%--Dummy page for sample redirecting--%><asp:Label ID="lblUserDetails" runat="server"></asp:Label>
             <br />
-            <asp:Button class="backclrBtn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+            <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         </div>
  </asp:Content>
 

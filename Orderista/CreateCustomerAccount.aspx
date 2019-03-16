@@ -117,11 +117,11 @@
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
                                 ErrorMessage="Required Field"
                                 ControlToValidate="txtConfirmPwd" /><br />
-                            <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
+                         <!--   <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
                                 ControlToValidate="txtConfirmPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
                                 Text=" Password has to match, please try again!"
-                                ErrorMessage="RegularExpressionValidator" />
+                                ErrorMessage="RegularExpressionValidator" /> -->
 
               <!--  </td>  -->
               

@@ -22,9 +22,8 @@
             </tr>
 
             <tr>
-                <td><br/><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /></td>
-                <td><br/><asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
-                         <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
+                <td><br /><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /></td>
+                <td><br /><asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
             </tr>
 
             <tr>
@@ -44,7 +43,7 @@
     <br />
     <div style="display: flex; justify-content: space-between; margin: 20px 0;">
         <div style="display: flex; flex-direction: column; justify-content: center">
-            <p>Delivery to your door during 45 minutes.</p>
+            <p>Everything is prepared during 45 minutes.</p>
             <p>Fresh and tasty food for a great price</p>
             <p>Fantastic service and unforgetable types of dishes</p>
         </div>

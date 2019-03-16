@@ -45,6 +45,14 @@ body {
     background-color: #eeeeee;
 }
 
+input.inputText {
+    width: 300px;
+}
+
+select.inputText {
+    width: 304px;
+}
+
 .topnav {
     background-color: #463953;
     overflow: hidden;
@@ -72,7 +80,7 @@ body {
 footer {
     background-color: #463953;
     overflow: hidden;
-    width: 1080px;
+    width: 1060px;
     margin-left: auto;
     margin-right: auto;
     color: #f2f2f2;
@@ -178,7 +186,12 @@ footer {
 
 
 
-
+.logout_btn {
+    padding: 0 10px !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 .backclrBtn {
     -moz-box-shadow: 0px 1px 0px 0px #ababab;

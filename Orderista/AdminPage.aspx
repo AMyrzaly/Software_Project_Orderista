@@ -6,9 +6,10 @@
     <div class="inputText">
         <h3>Admin Page </h3>
     </div>
-
-    <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
-    <asp:Button class="backclrBtn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    <div style="position: relative">
+        <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
+        <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">

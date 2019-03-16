@@ -5,11 +5,10 @@
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    
         <!-- experimental new database-populated radio buttons -->
-    <div>
-        <asp:Button class="backclrBtn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+    <div style="position: relative">
+     <div>
+        <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
-     
-
         <div>
             Restaurant Selection:
             <br />
@@ -155,7 +154,7 @@
                 </Columns>
             </asp:GridView>
         </div>
-
+        </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
