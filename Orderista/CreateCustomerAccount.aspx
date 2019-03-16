@@ -97,7 +97,7 @@
          <div style="flex-basis: 40%; margin: 20px;">
                     <span style="display: block">Password</span>
                     <!-- Password -->
-                    <asp:TextBox class="inputText" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox><br />
                        <asp:RequiredFieldValidator  ID="ReqFldValPassword" runat="server"
                                 ErrorMessage="Required Field"
                                 ControlToValidate="txtPwd" /><br />
@@ -113,15 +113,15 @@
                 <!-- <td>-->
                    <span style="display: block">Confirm password</span>
                     <!-- Confirm Password -->
-                    <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox><br />
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
                                 ErrorMessage="Required Field"
                                 ControlToValidate="txtConfirmPwd" /><br />
-                         <!--   <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
+                           <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
                                 ControlToValidate="txtConfirmPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text=" Password has to match, please try again!"
-                                ErrorMessage="RegularExpressionValidator" /> -->
+                                Text="Password must be minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
+                                ErrorMessage="RegularExpressionValidator" />
 
               <!--  </td>  -->
               
@@ -131,7 +131,7 @@
                <!-- <tr> -->
                    <!-- <td> -->
          <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 30px;">
-                         <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
+                         <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" EnableClientScript="true" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
                          <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
          </div>
          
