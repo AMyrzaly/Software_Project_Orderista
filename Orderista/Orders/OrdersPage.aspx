@@ -10,22 +10,19 @@
         <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
         <div>
-            Restaurant Selection:
+            <h4 style="margin: 0">Restaurant Selection</h4>
             <br />
-            <asp:RadioButtonList ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
-        </div>
-
-        <br />
-        <br />
-        <div>
+            <div class="restaraunt_preferences" style="display: flex; justify-content:space-around; align-items: center">
+             <asp:RadioButtonList ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
+                 <div>
             Menu: <br />
             <!-- when/if we add menu images, they'll go in here somewhere -->
             <asp:GridView id="MenuGridView" runat="server"
                       AutoGenerateColumns="false"
                       ShowFooter="true">
             <Columns>
-                <asp:BoundField DataField="RestaurantName"
-                      HeaderText="Restaurant" ReadOnly="true"/>
+                <%-- <asp:BoundField DataField="RestaurantName"
+                      HeaderText="Restaurant" ReadOnly="true"/> --%>
                 <asp:BoundField DataField="Name"
                       HeaderText="Food" ReadOnly="true"/>
                 <asp:BoundField DataField="Price"
@@ -76,12 +73,16 @@
             </Columns>
             </asp:GridView>
         </div>
+            </div>
+        </div>
         <br />
      <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
       <asp:Timer ID="TimerTime" runat="server" Interval="1000" OnTick="TimerTime_Tick">
         </asp:Timer>
+
+        <h4 style="margin: 0">Current time</h4>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
         <asp:Label ID="lblDateToday" runat="server"></asp:Label>
@@ -90,7 +91,7 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="TimerTime" EventName="Tick" />
             </Triggers>
-        </asp:UpdatePanel>
+        </asp:UpdatePanel><br />
        
         Ready to pick up in the next&nbsp;
         <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack ="true">
@@ -113,7 +114,7 @@
         <br />
         <br />
         <div>
-            Order History
+            <h4 style="margin: 0">Order History</h4>
             <br />
             <br />
             <asp:GridView id="OrderGridView" runat="server"
@@ -142,7 +143,7 @@
 
             </asp:GridView>
             <br />
-            <u>Selected Order:</u>
+            <h4 style="margin: 0">Selected Order</h4>
             <br />
             <!-- change of plans, I said DetailsView a lot, but it looks like this needed to be a GridView b/c it has more than one entry -->
             <asp:GridView ID="OrderItemDetailsView" runat="server" AutoGenerateRows="false">
