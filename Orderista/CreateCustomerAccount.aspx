@@ -89,7 +89,7 @@
      <hr />
      <br />
 
-     <div>
+     <div class="password_fields">
         <!-- <table> -->
           <!--  <tr> -->
                 <!-- <td> -->
