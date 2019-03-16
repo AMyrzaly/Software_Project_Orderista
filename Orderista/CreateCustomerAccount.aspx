@@ -93,34 +93,37 @@
         <!-- <table> -->
           <!--  <tr> -->
                 <!-- <td> -->
-         <div style="display: flex; justify-content: center">
+         <div style="display: flex; flex-direction: column;">
          <div style="flex-basis: 40%; margin: 20px;">
-                    <span style="display: block">Password</span>
+                    <span style="display: block">Password
                     <!-- Password -->
-                    <asp:TextBox class="inputText" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox><br />
-                       <asp:RequiredFieldValidator  ID="ReqFldValPassword" runat="server"
-                                ErrorMessage="Required Field"
-                                ControlToValidate="txtPwd" /><br />
+                        <asp:RequiredFieldValidator  ID="RequiredFieldValidator1" runat="server"
+                            ErrorMessage="- Required Field"
+                            ControlToValidate="txtPwd" />
+                    </span>
+                    <asp:TextBox class="inputText_password" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
                                 ControlToValidate="txtPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text="Password must be minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
+                                Text="Minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
                                 ErrorMessage="RegularExpressionValidator" />
          </div>
          <div style="flex-basis: 40%; margin: 20px;">
 
                <!-- </td> -->
                 <!-- <td>-->
-                   <span style="display: block">Confirm password</span>
-                    <!-- Confirm Password -->
-                    <asp:TextBox class="inputText" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox><br />
+                   <span style="display: block">
+                       Confirm password
                        <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
-                                ErrorMessage="Required Field"
-                                ControlToValidate="txtConfirmPwd" /><br />
+                                ErrorMessage="- Required Field"
+                                ControlToValidate="txtConfirmPwd" />
+                   </span>
+                    <!-- Confirm Password -->
+                    <asp:TextBox class="inputText_password" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox>
                            <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
                                 ControlToValidate="txtConfirmPwd"
                                 ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text="Password must be minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
+                                Text="Minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
                                 ErrorMessage="RegularExpressionValidator" />
 
               <!--  </td>  -->

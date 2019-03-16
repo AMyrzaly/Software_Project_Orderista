@@ -15,10 +15,13 @@
         <div id="container">
         <!--    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" Height="200px" Width="200px" Style="float: left; margin-right: 10px" /> -->
             <asp:Image ID="banner" runat="server" ImageUrl="~/Images/banner2.jpg" Height="330px" Width="1084px" />
-            <div class="topnav">
+            <div class="topnav" style="display: flex; ">
                 <a href="../customerLogin.aspx">Home</a>
                 <a href="../About.aspx">About</a>
                 <a href="../ContactUs.aspx">Contact Us</a>
+                <div style="flex-grow: 1">
+                  <a style="float: right">Log Out</a>
+                </div>
             </div>
             <br />
             <div id="jumbotron">

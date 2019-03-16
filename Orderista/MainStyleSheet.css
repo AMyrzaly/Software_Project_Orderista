@@ -45,12 +45,26 @@ body {
     background-color: #eeeeee;
 }
 
-input.inputText {
-    width: 300px;
+input.inputText_password {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 21px;
+    letter-spacing: -0.6px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    width: 250px;
 }
 
 select.inputText {
     width: 304px;
+}
+
+#ContentPlaceHolder1_RegExPassword, #ContentPlaceHolder1_RegExCPassword {
+    font-size: 18px !important;
 }
 
 .topnav {
