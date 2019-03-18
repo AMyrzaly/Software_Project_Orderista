@@ -201,6 +201,21 @@ footer {
 
 
 .logout_btn {
+    -moz-box-shadow: 0px 1px 0px 0px #ababab;
+    -webkit-box-shadow: 0px 1px 0px 0px #ababab;
+    box-shadow: 0px 1px 0px 0px #ababab;
+    background-color: #a3a3a3;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 1px solid #878787;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #a6a6a6;
     padding: 0 10px !important;
     position: absolute;
     top: 0;

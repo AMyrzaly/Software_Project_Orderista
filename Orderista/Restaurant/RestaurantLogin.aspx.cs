@@ -33,16 +33,15 @@ public partial class RestaurantLogin : System.Web.UI.Page
                 Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
             }
             //if the user enters a wrong username
-            else if (count != 1)
+            else if (String.IsNullOrEmpty(txtUserName.Text))
             {
                 lblUsernameMessage.Visible = true;
             }
-            else if (count != 1)
+            else if (String.IsNullOrEmpty(txtPassword.Text))
             {
-                //Session["password"] = txtPassword.Text.Trim();
                 lblPasswordMessage.Visible = true;
             }
-            else
+            else if (count != 1)
             {
                 lblErrorMessage.Visible = true;
             }

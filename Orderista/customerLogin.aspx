@@ -20,18 +20,10 @@
                 <td><asp:Label ID="Label2" runat="server" Text="Password"></asp:Label></td>
                 <td><asp:TextBox class="inputText" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox></td>
             </tr>
-
             <tr>
                 <td><br /><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /></td>
                 <td><br /><asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
             </tr>
-
-            <tr>
-                <td><asp:Label ID="lblErrorMessage" runat="server" Text="Incorrect Username/Password" ForeColor="Red"></asp:Label></td>
-                <td><asp:Label ID="lblUsernameMessage" runat="server" Text="Incorrect Username" ForeColor="Red"></asp:Label></td>
-                <td><asp:Label ID="lblPasswordMessage" runat="server" Text="Incorrect Password" ForeColor="Red"></asp:Label></td>
-                </tr>
-            <tr>
                 <!--
                 <td>
                     <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
@@ -39,6 +31,11 @@
             </tr>
         </table>
     </div>
+    <center>
+        <asp:Label ID="lblErrorMessage" runat="server" Text="Incorrect Username/Password" ForeColor="Red"></asp:Label>
+        <asp:Label ID="lblPasswordMessage" runat="server" Text="Password field cannot be empty" ForeColor="Red"></asp:Label>
+        <asp:Label ID="lblUsernameMessage" runat="server" Text="Username field cannot be empty" ForeColor="Red"></asp:Label>
+    </center>
 
     <br />
     <div style="display: flex; justify-content: space-between; margin: 20px 0;">

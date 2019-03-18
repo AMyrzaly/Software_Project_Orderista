@@ -5,7 +5,7 @@
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    <div style="position: relative">
       <div>
-        <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+        <asp:Button class="logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
 
      <asp:Label ID="Label1" runat="server" Text="Please confirm your order:"></asp:Label> 

@@ -19,9 +19,9 @@
                 <a href="../customerLogin.aspx">Home</a>
                 <a href="../About.aspx">About</a>
                 <a href="../ContactUs.aspx">Contact Us</a>
-                <div style="flex-grow: 1">
+                <!--<div style="flex-grow: 1">
                   <a style="float: right">Log Out</a>
-                </div>
+                </div>-->
             </div>
             <br />
             <div id="jumbotron">

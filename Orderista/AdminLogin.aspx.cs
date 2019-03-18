@@ -13,6 +13,9 @@ public partial class AdminLogin : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+        lblErrorMessage.Visible = false;
+        lblUsernameMessage.Visible = false;
+        lblPasswordMessage.Visible = false;
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
@@ -53,9 +56,17 @@ public partial class AdminLogin : System.Web.UI.Page
                 TestLabel.Text = "Login Successfully";
                 Response.Redirect("AdminPage.aspx");
             }
+            else if (String.IsNullOrEmpty(txtUsername.Text))
+            {
+                lblUsernameMessage.Visible = true;
+            }
+            else if (String.IsNullOrEmpty(txtPassword.Text))
+            {
+                lblPasswordMessage.Visible = true;
+            }
             else
             {
-                TestLabel.Text = "Username or Password is incorrect";
+                lblErrorMessage.Visible = true;
             }
 
 

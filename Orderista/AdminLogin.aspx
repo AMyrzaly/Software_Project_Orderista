@@ -32,9 +32,14 @@
         </table>
     </div>
 
+    <center>
+        <asp:Label ID="lblErrorMessage" runat="server" Text="Incorrect Username/Password" ForeColor="Red"></asp:Label>
+        <asp:Label ID="lblPasswordMessage" runat="server" Text="Password field cannot be empty" ForeColor="Red"></asp:Label>
+        <asp:Label ID="lblUsernameMessage" runat="server" Text="Username field cannot be empty" ForeColor="Red"></asp:Label>
+        <br />
+        <asp:Label ID="TestLabel" runat="server" Text="" ForeColor=""></asp:Label>
+    </center>
 
-        <%--For Testing--%>
-        <asp:Label ID="TestLabel" runat="server" Text=""></asp:Label>
     
 </asp:Content>
 

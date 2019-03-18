@@ -8,7 +8,7 @@
     </div>
     <div style="position: relative">
         <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
-        <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+        <asp:Button class="logout_btn" ID="btnLogout" Runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
 </asp:Content>
 

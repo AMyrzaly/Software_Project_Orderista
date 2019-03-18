@@ -21,7 +21,9 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     {
         //Clears the page
         Session.Abandon();
+        Session.Clear();
         //returns to login page
+        Response.Cookies.Clear();
         Response.Redirect("RestaurantLogin.aspx");
 
     }

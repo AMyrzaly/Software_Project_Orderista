@@ -19,8 +19,10 @@ public partial class AdminPage : System.Web.UI.Page
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
+        //Clears the page
         Session.Abandon();
         Session.Clear();
+        //returns to login page
         Response.Cookies.Clear();
         Response.Redirect("AdminLogin.aspx");
     }

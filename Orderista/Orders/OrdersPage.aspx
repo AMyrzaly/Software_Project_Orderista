@@ -7,7 +7,7 @@
         <!-- experimental new database-populated radio buttons -->
     <div style="position: relative">
      <div>
-        <asp:Button class="backclrBtn logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+        <asp:Button class="logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
         <div>
             <h4 style="margin: 0">Restaurant Selection</h4>
