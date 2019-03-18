@@ -110,6 +110,10 @@
       Your order will be ready at
         <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label><br />
 &nbsp;<asp:Button ID="PlaceOrder" CssClass="actionBtn" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
+        <center>
+        <asp:Label ID="lblErrorMessage" runat="server" Text="No menu items selected in order.  Please select quantities to order from the drop-down lists." ForeColor="Red"></asp:Label>
+        </center>
+        
         <br />
         <br />
         <br />
