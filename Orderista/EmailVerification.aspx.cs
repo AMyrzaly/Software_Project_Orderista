@@ -19,7 +19,20 @@ public partial class EmailVerification : System.Web.UI.Page
         HyperLink1.Visible = false;
     }
 
-    protected void btnVerifyCode_Click(object sender, EventArgs e)
+    private void changeStaus()
+    {
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+        String updateData = "Update CreateAccountCustomer set Status='Verified' where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = updateData;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+
+    }
+
+
+    protected void btnVerifySecurityAnswerAndEmail_Click(object sender, EventArgs e)
     {
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
@@ -34,71 +47,36 @@ public partial class EmailVerification : System.Web.UI.Page
         if (ds.Tables[0].Rows.Count > 0)
         {
             String activationCode;
-            activationCode = ds.Tables[0].Rows[0]["Activationcode"].ToString();
-
-            if (activationCode == txtVerificationCode.Text)
-            {
-                changeStaus();
-                Label3.Text = "Your Email has been verified successfully";
-                Label3.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                Label3.Text = "You have entered an invalid code, Kindly check your Mail Inbox";
-                Label3.ForeColor = System.Drawing.Color.Red;
-            }
-
-        }
-
-        con.Close();
-    }
-
-    private void changeStaus()
-    {
-        con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
-        String updateData = "Update CreateAccountCustomer set Status='Verified' where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
-        con.Open();
-        SqlCommand cmd = new SqlCommand();
-        cmd.CommandText = updateData;
-        cmd.Connection = con;
-        cmd.ExecuteNonQuery();
-
-    }
-
-
-    protected void btnVerifySecurityAnswer_Click(object sender, EventArgs e)
-    {
-        con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
-        String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
-        SqlCommand cmd = new SqlCommand();
-        cmd.CommandText = myquery;
-        cmd.Connection = con;
-        SqlDataAdapter da = new SqlDataAdapter();
-        da.SelectCommand = cmd;
-
-        DataSet ds = new DataSet();
-        da.Fill(ds);
-        if (ds.Tables[0].Rows.Count > 0)
-        {
             String securityA;
             securityA = ds.Tables[0].Rows[0]["SecurityA"].ToString();
+            activationCode = ds.Tables[0].Rows[0]["Activationcode"].ToString();
 
-            if (securityA == txtSecurityA.Text)
+            if (securityA == txtSecurityA.Text && activationCode == txtVerificationCode.Text)
             {
 
-                Label3.Text = "Your Security Answer has been verified successfully";
+                Label3.Text = "Your Security Answer and Email have been verified successfully";
                 Label3.ForeColor = System.Drawing.Color.Green;
                 HyperLink1.Visible = true;
 
             }
             else
             {
-                Label3.Text = "You have entered Wrong Answer or have selected Wrong Question, Kindly check and try again";
-                Label3.ForeColor = System.Drawing.Color.Red;
+                if (activationCode != txtVerificationCode.Text)
+                {
+                    Label3.Text = "You have entered an invalid code, Kindly check your Mail Inbox";
+                    Label3.ForeColor = System.Drawing.Color.Red;
+                } 
+                else
+                {
+                    Label3.Text = "You have entered Wrong Answer or have selected Wrong Question, Kindly check and try again";
+                    Label3.ForeColor = System.Drawing.Color.Red;
+                }
+                
             }
 
         }
 
         con.Close();
+
     }
 }

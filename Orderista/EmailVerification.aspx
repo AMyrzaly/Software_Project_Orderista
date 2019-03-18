@@ -35,9 +35,8 @@
                 <td><asp:TextBox ID="txtSecurityA" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
-                
-                <td><asp:Button class="actionBtn" ID="btnVerifyCode" runat="server" Text="Verify Email" OnClick="btnVerifyCode_Click" /></td>
-                <td><asp:Button class="actionBtn" ID="btnVerifySecurityAnswer" runat="server" Text="Verify Security Answer" OnClick="btnVerifySecurityAnswer_Click"  /></td>
+                <td></td>
+                <td><asp:Button class="actionBtn" ID="btnVerifySecurityAnswerAndEmail" runat="server" Text="Verify Security Answer and Email" OnClick="btnVerifySecurityAnswerAndEmail_Click"  /></td>
             </tr>
 
             <tr>
