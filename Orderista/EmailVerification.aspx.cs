@@ -32,7 +32,7 @@ public partial class EmailVerification : System.Web.UI.Page
     }
 
 
-    protected void btnVerifySecurityAnswerAndEmail_Click(object sender, EventArgs e)
+    protected void btnVerifyCode_Click(object sender, EventArgs e)
     {
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
@@ -48,12 +48,12 @@ public partial class EmailVerification : System.Web.UI.Page
         {
             String activationCode;
             String securityA;
-            securityA = ds.Tables[0].Rows[0]["SecurityA"].ToString();
             activationCode = ds.Tables[0].Rows[0]["Activationcode"].ToString();
+            securityA = ds.Tables[0].Rows[0]["SecurityA"].ToString();
 
-            if (securityA == txtSecurityA.Text && activationCode == txtVerificationCode.Text)
+            if (activationCode == txtVerificationCode.Text && securityA == txtSecurityA.Text)
             {
-
+                changeStaus();
                 Label3.Text = "Your Security Answer and Email have been verified successfully";
                 Label3.ForeColor = System.Drawing.Color.Green;
                 HyperLink1.Visible = true;
