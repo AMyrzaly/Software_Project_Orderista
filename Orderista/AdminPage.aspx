@@ -9,6 +9,19 @@
     <div style="position: relative">
         <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
         <asp:Button class="logout_btn" ID="btnLogout" Runat="server" Text="Logout" OnClick="btnLogout_Click" />
+        <asp:RadioButtonList ID="AdminOrdersRestaurants" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
+            <asp:ListItem Selected="True" Value="Restaurants">Restaurants</asp:ListItem>
+            <asp:ListItem Value="Orders">Orders</asp:ListItem>
+        </asp:RadioButtonList>
+        <asp:Label ID="TableName" runat="server" Text=""></asp:Label>
+
+       <%-- Data Table--%>
+        <asp:GridView ID="RestaurantGrid" runat="server">
+        </asp:GridView>
+
+        <asp:Button ID="AddRestaurant" runat="server" Text="Add Restaurant" OnClick="AddRestaurant_Click" />
+        <asp:Button ID="DeleteRestaurant" runat="server" Text="Remove Restaurant" OnClick="DeleteRestaurant_Click" />
+
     </div>
 </asp:Content>
 

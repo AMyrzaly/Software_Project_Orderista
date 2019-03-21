@@ -6,9 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 public partial class AdminPage : System.Web.UI.Page
 {
+    SqlConnection conn;
+    SqlCommand comm;
+    SqlDataReader reader;
+    DataSet ds = new DataSet();
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -16,6 +21,37 @@ public partial class AdminPage : System.Web.UI.Page
         string useradmin = Session["UserAdmin"].ToString();
 
         UserAdmin.Text = "Welcome, " + useradmin;
+
+        string gridViewTable;
+        conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+        if (AdminOrdersRestaurants.SelectedIndex == 0)
+        {
+            gridViewTable = "RESTAURANTS";
+            AddRestaurant.Visible = true;
+        }
+        else
+        {
+            gridViewTable = "ORDERS";
+            AddRestaurant.Visible = false;
+        }
+        comm = new SqlCommand("SELECT * FROM " + gridViewTable, conn);
+        try
+        {
+            conn.Open();
+            reader = comm.ExecuteReader();
+            RestaurantGrid.DataSource = reader;
+            RestaurantGrid.DataBind();
+            TableName.Text = AdminOrdersRestaurants.SelectedItem.Text;
+        }
+        catch
+        {
+            // TableName.Text = "YOU fcked up";
+            Response.Write("Connection Failed: Check Connexion String");
+        }
+        finally
+        {
+            conn.Close();
+        }
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
@@ -25,5 +61,15 @@ public partial class AdminPage : System.Web.UI.Page
         //returns to login page
         Response.Cookies.Clear();
         Response.Redirect("AdminLogin.aspx");
+    }
+
+    protected void AddRestaurant_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AddRestaurant.aspx");
+    }
+
+    protected void DeleteRestaurant_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DeleteRestaurant.aspx");
     }
 }
