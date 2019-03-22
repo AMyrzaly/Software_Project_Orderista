@@ -8,18 +8,19 @@
       <asp:Button class="backclrBtn" ID="logOutBtn" runat="server" Text="LogOut" OnClick="logOutBtn_Click" />
         <br />
       <br />
+
       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" OnRowCommand="GridView1_RowCommand">
           <Columns>
             <asp:TemplateField>
      <ItemTemplate>
         <asp:LinkButton ID="lbAccept" CommandArgument='<%# Eval("OrderID") %>' CommandName="AcceptRow" ForeColor="#8C4510" runat="server">Accept</asp:LinkButton>
         <asp:LinkButton ID="lbDecline" CommandArgument='<%# Eval("OrderID") %>' CommandName="DeclineRow" ForeColor="#8C4510" runat="server" CausesValidation="false">Decline</asp:LinkButton>
-    </ItemTemplate>
-    <EditItemTemplate>
+      </ItemTemplate>
+      <EditItemTemplate>
         <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("OrderID") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">Update</asp:LinkButton>
         <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("OrderID") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">Cancel</asp:LinkButton>
       </EditItemTemplate>
-</asp:TemplateField>
+        </asp:TemplateField>
               <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
                   <EditItemTemplate>
                       <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
@@ -47,13 +48,13 @@
               <asp:TemplateField HeaderText="Status" SortExpression="Status">
                   <EditItemTemplate>
                          <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>'>
-                    <asp:ListItem>Select Status</asp:ListItem>
+                    <asp:ListItem>New</asp:ListItem>
                     <asp:ListItem>InProgress</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfvEditStatus" runat="server" 
                     ErrorMessage="Status is a required field" Text="*"
                     ControlToValidate="DDLStatus" ForeColor="Red" 
-                    InitialValue="Select Status">
+                    InitialValue="New">
                 </asp:RequiredFieldValidator>
                   </EditItemTemplate>
                   <ItemTemplate>

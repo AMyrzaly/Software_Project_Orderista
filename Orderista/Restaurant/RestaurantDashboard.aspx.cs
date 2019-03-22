@@ -13,6 +13,7 @@ using System.Web.UI.WebControls;
 public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
 {
     string restaurant;
+    string email;
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -21,7 +22,28 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         connection.Open();
         SqlCommand cmd = new SqlCommand("select Restaurant_Name from Restaurants Where Username = @username", connection);
         cmd.Parameters.AddWithValue("@username", Session["username"]);
-        restaurant = cmd.ToString();
+        try
+        {
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                restaurant = reader[0].ToString();
+            }
+            reader.Close();
+        }
+        catch (Exception ex)
+        {
+            
+            string msg = "Fetch Error: ";
+            msg += ex.Message;
+            throw new Exception(msg);
+            }   
+        finally
+        {
+            connection.Close();
+        }
+    
+
         if (!IsPostBack)
         {
             BindMenuGridView();
@@ -83,9 +105,36 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         }
         else if (e.CommandName == "DeclineRow")
         {
-            string email = ((TextBox)GridView1.FooterRow.FindControl("txtEmail")).Text;
-            sendCodeDecline(email); 
+            int orderId = Convert.ToInt32(e.CommandArgument);
+
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("select CentennialEmail from Orders Where OrderID = @orderId", connection);
+            cmd.Parameters.AddWithValue("@orderId", orderId);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    email = reader[0].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                string msg = "Fetch Error: ";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            sendCodeDecline(email);
             BindMenuGridView();
+
         }
         else if (e.CommandName == "CancelUpdate")
         {
@@ -102,14 +151,16 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
             //Update Code
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("update Orders SET Status = @status Where OrderID = @orderId", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID = @orderId", connection);
             cmd.Parameters.AddWithValue("@status", status);
             cmd.Parameters.AddWithValue("@orderId", orderId);
+
+            string email = ((TextBox)GridView1.Rows[rowIndex].FindControl("txtEmail")).Text;
+            sendCodeProgress(email);
+
             GridView1.EditIndex = -1;
             BindMenuGridView();
-            string email = ((TextBox)GridView1.FooterRow.FindControl("txtEmail")).Text;
-            sendCodeProgress(email);
-        }
+                 }
     }
 
     private void sendCodeDecline(string email)
@@ -159,4 +210,5 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
             throw;
         }
     }
+
 }

@@ -93,7 +93,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
         try
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT Orders.OrderID, Min(RestaurantName) AS RestaurantName, MIN(CreationTime) AS CreationTime, "
+            SqlCommand cmd = new SqlCommand("SELECT Orders.OrderID, Min(Order_Items.RestaurantName) AS RestaurantName, MIN(CreationTime) AS CreationTime, "
                 + "MIN(Semitotal) AS Subtotal, Min(Taxes) AS Tax, MIN(ServiceCharge) AS ServiceFee, MIN(Total) AS Total, MIN(Orders.Status) AS Status "
                 + "FROM Orders, Order_Items WHERE Orders.CentennialEmail = @username "
                 + "AND Orders.OrderID = Order_Items.OrderID GROUP BY Orders.OrderID");
