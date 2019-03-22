@@ -8,7 +8,7 @@
         <br />
       <br />
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" OnRowCommand="GridView1_RowCommand">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" >
           <Columns>
               <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
                   <EditItemTemplate>
@@ -53,8 +53,7 @@
           </Columns>
       </asp:GridView>
       <br />
-      <asp:Button ID="btnCompleted" runat="server" Text="Click here to check Completed Orders" OnClick="btnCompleted_Click" />
-      <br />
+   
         <br />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
