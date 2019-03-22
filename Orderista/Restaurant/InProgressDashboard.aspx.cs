@@ -155,4 +155,9 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         }
     }
 
+
+    protected void btnCompleted_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Restaurant/CompletedDashboard.aspx");
+    }
 }
