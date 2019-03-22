@@ -263,13 +263,13 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
 
     }
 
-    protected void btnLogout_Click(object sender, EventArgs e)
+
+
+    protected void btnLogout_Click1(object sender, EventArgs e)
     {
         //Clears the page
         Session.Abandon();
         //returns to login page
         Response.Redirect("/customerLogin.aspx");
     }
-
-   
 }

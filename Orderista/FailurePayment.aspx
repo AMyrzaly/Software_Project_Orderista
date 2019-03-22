@@ -10,6 +10,9 @@
             Your Transaction ID is :
             <asp:Label ID="Label1" runat="server"></asp:Label>
         </div>
+     <div>
+         <asp:Button ID="btnLogout" runat="server" Text="Logout" />
+     </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">

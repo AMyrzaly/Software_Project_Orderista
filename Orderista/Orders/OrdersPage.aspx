@@ -4,6 +4,9 @@
     </asp:Content>
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    
+     <div>
+         <asp:Button ID="btnLogout" runat="server" Text="Logout" />
+     </div>
         <!-- experimental new database-populated radio buttons -->
         <div>
             Restaurant Selection:
