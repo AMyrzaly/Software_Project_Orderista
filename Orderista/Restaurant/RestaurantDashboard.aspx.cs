@@ -151,9 +151,10 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
             //Update Code
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID = @orderId", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID=@orderId", connection);
             cmd.Parameters.AddWithValue("@status", status);
             cmd.Parameters.AddWithValue("@orderId", orderId);
+            cmd.ExecuteNonQuery();
 
             string email = ((TextBox)GridView1.Rows[rowIndex].FindControl("txtEmail")).Text;
             sendCodeProgress(email);

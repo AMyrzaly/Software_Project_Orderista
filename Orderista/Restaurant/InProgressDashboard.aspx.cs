@@ -58,7 +58,7 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         {
             connection.Open();
             SqlCommand cmd = new SqlCommand("SELECT OrderID,CentennialEmail,DelayTime,Status FROM Orders WHERE Status = @status AND  RestaurantName = @restaurant");
-            cmd.Parameters.AddWithValue("@status", "New");
+            cmd.Parameters.AddWithValue("@status", "InProgress");
             cmd.Parameters.AddWithValue("@restaurant", restaurant);
             cmd.Connection = connection;
             SqlDataAdapter sqlData = new SqlDataAdapter(cmd);
@@ -121,16 +121,17 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
             SqlCommand cmd = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID = @orderId", connection);
             cmd.Parameters.AddWithValue("@status", status);
             cmd.Parameters.AddWithValue("@orderId", orderId);
+            cmd.ExecuteNonQuery();
 
             string email = ((TextBox)GridView1.Rows[rowIndex].FindControl("txtEmail")).Text;
-            sendCodeProgress(email);
+            sendCodeCompleted(email);
 
             GridView1.EditIndex = -1;
             BindMenuGridView();
         }
     }
 
-    private void sendCodeProgress(string email)
+    private void sendCodeCompleted(string email)
     {
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "smtp.gmail.com";
