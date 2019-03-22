@@ -242,7 +242,7 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
     // get our database connection string from Web.config
     private string GetConnectionString()
     {
-        return System.Configuration.ConfigurationManager.ConnectionStrings["swiftServeDB"].ConnectionString;
+        return System.Configuration.ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString;
     }
 
     // calculate how much we charge for use of our service
@@ -256,7 +256,6 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
     // return to menu page
     protected void OnCancelButtonClicked(Object sender, EventArgs e)
     {
-      
         Response.Redirect("/Orders/OrdersPage.aspx");
     }
 
@@ -312,8 +311,8 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
                 string qty = row.Cells[2].Text;
 
                 // insert item in table
-                cmd = new SqlCommand("INSERT INTO Order_Items (MenuItemName, RestaurantName, OrderID, CentennialEmail, Price, Quantity) VALUES ("
-                    + " @food, @restaurant, @orderId,@username,  @price, @qty )");
+                cmd = new SqlCommand("INSERT INTO Order_Items (MenuItemName, RestaurantName, OrderID,CentennialEmail, Price, Quantity) VALUES ("
+                    + " @food, @restaurant, @orderId,@username, @price, @qty )");
                 cmd.Parameters.AddWithValue("@food", food);
                 cmd.Parameters.AddWithValue("@restaurant", restaurant);
                 cmd.Parameters.AddWithValue("@orderId", orderId);

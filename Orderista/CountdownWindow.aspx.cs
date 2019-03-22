@@ -11,7 +11,6 @@ public partial class CountdownWindow : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        btnProceed.Enabled = false;
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         if (!IsPostBack)
         {
@@ -34,7 +33,7 @@ public partial class CountdownWindow : System.Web.UI.Page
 
             string total = Request.QueryString["price"].ToString();
 
-            // Response.Redirect("BuyNow.aspx?price=" + total);
+             Response.Redirect("BuyNow.aspx?price=" + total);
         }
     }
 
@@ -58,6 +57,6 @@ public partial class CountdownWindow : System.Web.UI.Page
     {
         string total = Request.QueryString["price"].ToString();
 
-        // Response.Redirect("BuyNow.aspx?price=" + total);
+         Response.Redirect("BuyNow.aspx?price=" + total);
     }
 }

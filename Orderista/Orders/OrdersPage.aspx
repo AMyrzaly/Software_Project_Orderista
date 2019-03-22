@@ -5,24 +5,23 @@
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    
         <!-- experimental new database-populated radio buttons -->
-    <div style="position: relative">
-     <div>
-        <asp:Button class="logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
-    </div>
         <div>
-            <h4 style="margin: 0">Restaurant Selection</h4>
+            Restaurant Selection:
             <br />
-            <div class="restaraunt_preferences" style="display: flex; justify-content:space-around; align-items: center">
-             <asp:RadioButtonList ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
-                 <div>
+            <asp:RadioButtonList ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
+        </div>
+
+        <br />
+        <br />
+        <div>
             Menu: <br />
             <!-- when/if we add menu images, they'll go in here somewhere -->
             <asp:GridView id="MenuGridView" runat="server"
                       AutoGenerateColumns="false"
                       ShowFooter="true">
             <Columns>
-                <%-- <asp:BoundField DataField="RestaurantName"
-                      HeaderText="Restaurant" ReadOnly="true"/> --%>
+                <asp:BoundField DataField="RestaurantName"
+                      HeaderText="Restaurant" ReadOnly="true"/>
                 <asp:BoundField DataField="Name"
                       HeaderText="Food" ReadOnly="true"/>
                 <asp:BoundField DataField="Price"
@@ -41,7 +40,7 @@
                            <asp:ListItem Text="8" Value="8"></asp:ListItem>
                            <asp:ListItem Text="9" Value="9"></asp:ListItem>
                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                          <%-- <asp:ListItem Text="11" Value="11"></asp:ListItem>
+                        <%--   <asp:ListItem Text="11" Value="11"></asp:ListItem>
                            <asp:ListItem Text="12" Value="12"></asp:ListItem>
                            <asp:ListItem Text="13" Value="13"></asp:ListItem>
                            <asp:ListItem Text="14" Value="14"></asp:ListItem>
@@ -73,16 +72,12 @@
             </Columns>
             </asp:GridView>
         </div>
-            </div>
-        </div>
         <br />
      <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
       <asp:Timer ID="TimerTime" runat="server" Interval="1000" OnTick="TimerTime_Tick">
         </asp:Timer>
-
-        <h4 style="margin: 0">Current time</h4>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
         <asp:Label ID="lblDateToday" runat="server"></asp:Label>
@@ -91,7 +86,7 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="TimerTime" EventName="Tick" />
             </Triggers>
-        </asp:UpdatePanel><br />
+        </asp:UpdatePanel>
        
         Ready to pick up in the next&nbsp;
         <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack ="true">
@@ -109,16 +104,12 @@
 
       Your order will be ready at
         <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label><br />
-&nbsp;<asp:Button ID="PlaceOrder" CssClass="actionBtn" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
-        <center>
-        <asp:Label ID="lblErrorMessage" runat="server" Text="No menu items selected in order.  Please select quantities to order from the drop-down lists." ForeColor="Red"></asp:Label>
-        </center>
-        
+&nbsp;<asp:Button ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
         <br />
         <br />
         <br />
         <div>
-            <h4 style="margin: 0">Order History</h4>
+            Order History
             <br />
             <br />
             <asp:GridView id="OrderGridView" runat="server"
@@ -147,7 +138,7 @@
 
             </asp:GridView>
             <br />
-            <h4 style="margin: 0">Selected Order</h4>
+            <u>Selected Order:</u>
             <br />
             <!-- change of plans, I said DetailsView a lot, but it looks like this needed to be a GridView b/c it has more than one entry -->
             <asp:GridView ID="OrderItemDetailsView" runat="server" AutoGenerateRows="false">
@@ -159,7 +150,7 @@
                 </Columns>
             </asp:GridView>
         </div>
-        </div>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">

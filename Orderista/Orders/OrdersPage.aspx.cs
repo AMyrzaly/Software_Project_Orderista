@@ -14,8 +14,6 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            // This is an error message for checking if user have selected anu items from the list
-            lblErrorMessage.Visible = false;
             // placing orders
             // bind the list of restaurants to RBL_Restaurant
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
@@ -46,7 +44,6 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
         }
     }
 
-    // common - replicate this for both pages when splitting placing orders from order history
     private string GetConnectionString()
     {
         return System.Configuration.ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString;
@@ -248,7 +245,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
         {
             // TODO hey front-end people, do we want an error message if there's nothing in the order, or just do nothing?
             // TODO add empty text area thingy to put error message in
-            lblErrorMessage.Visible = true;
+            string err = "No menu items selected in order.  Please select quantities to order from the drop-down lists.";
         }
     } // OnOrderButtonClicked
 
@@ -273,4 +270,6 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
         //returns to login page
         Response.Redirect("/customerLogin.aspx");
     }
+
+   
 }

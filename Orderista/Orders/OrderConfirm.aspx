@@ -3,16 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     </asp:Content>
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   <div style="position: relative">
-      <div>
-        <asp:Button class="logout_btn" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
-    </div>
 
-     <asp:Label ID="Label1" runat="server" Text="Please confirm your order:"></asp:Label> 
-     <div>
-
-     </div>
-        <div>
+     <asp:Label ID="Label1" runat="server" Text="Please confirm your order:"></asp:Label>
+        
             <asp:GridView id="OrderSummaryGridView" runat="server"
                       AutoGenerateColumns="false"
                       ShowFooter="false">
@@ -41,12 +34,10 @@
                     <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" HeaderStyle-Font-Bold="true" />
                 </Columns>
             </asp:GridView>
-        </div>
         <p>
-            <asp:Button ID="Btn_Cancel" CssClass="actionBtn" runat="server" OnClientClick="OnCancelButtonClicked" Text="Cancel" OnClick="OnCancelButtonClicked" />
-            <asp:Button ID="Btn_Confirm" CssClass="actionBtn" runat="server" OnClientClick="OnConfirmButtonClicked" Text="Confirm Order" OnClick="OnConfirmButtonClicked" />
+            <asp:Button ID="Btn_Cancel" runat="server" OnClientClick="OnCancelButtonClicked" Text="Cancel" OnClick="OnCancelButtonClicked" />
+            <asp:Button ID="Btn_Confirm" runat="server" OnClientClick="OnConfirmButtonClicked" Text="Confirm Order" OnClick="OnConfirmButtonClicked" />
         </p>
-       </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
