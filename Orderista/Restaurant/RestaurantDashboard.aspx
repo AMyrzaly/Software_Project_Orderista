@@ -64,6 +64,7 @@
           </Columns>
       </asp:GridView>
       <br />
+      <asp:Button ID="btnInProgress" runat="server" Text="Click to check In Progress Orders" OnClick="btnInProgress_Click" />
       <br />
         <br />
 </asp:Content>
