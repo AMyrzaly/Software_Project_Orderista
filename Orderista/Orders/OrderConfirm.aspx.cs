@@ -278,9 +278,10 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
         connection.Open();
 
         // insert order first
-        SqlCommand cmd = new SqlCommand("INSERT INTO Orders (CentennialEmail, CreationTime, DelayTime, Status, SemiTotal, Taxes, ServiceCharge) VALUES ("
-            + " @username, @time, @delay, 'New', @semitotal, @taxes, @serviceCharge )");
+        SqlCommand cmd = new SqlCommand("INSERT INTO Orders (CentennialEmail,RestaurantName, CreationTime, DelayTime, Status, SemiTotal, Taxes, ServiceCharge) VALUES ("
+            + " @username,@restaurant, @time, @delay, 'New', @semitotal, @taxes, @serviceCharge )");
         cmd.Parameters.AddWithValue("@username", Session["username"]);
+        cmd.Parameters.AddWithValue("@restaurant", restaurant);
         cmd.Parameters.AddWithValue("@time", now);
         cmd.Parameters.AddWithValue("@delay", delay);
         cmd.Parameters.AddWithValue("@semitotal", semitotal);
