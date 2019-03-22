@@ -9,6 +9,16 @@ public partial class SuccessPayment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+        Label1.Text = Request.Form["txnid"];
 
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        //Clears the page
+        Session.Abandon();
+        //returns to login page
+        Response.Redirect("/customerLogin.aspx");
     }
 }

@@ -14,8 +14,8 @@
             Note your Transaction ID:
             <asp:Label ID="Label1" runat="server"></asp:Label>
         </div>
-    <div>
-        <asp:Button ID="btnLogout" runat="server" Text="Logout" />
+    <div class="auto-style1">
+        <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
     </div>
 </asp:Content>
 
