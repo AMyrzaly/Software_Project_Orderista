@@ -5,7 +5,7 @@
  <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
    
      <div>
-         <asp:Button ID="btnLogout" runat="server" Text="Logout" />
+         <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click1" />
      </div>
         <!-- experimental new database-populated radio buttons -->
         <div>
