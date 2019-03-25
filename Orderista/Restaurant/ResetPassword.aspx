@@ -30,6 +30,7 @@
                 </tr>
             </table>
             <center>
+                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Passwords do not match" ForeColor="Red"></asp:CompareValidator>
                      <asp:Label ID="lblPasswordMessage" runat="server" Text="Password field cannot be empty" ForeColor="Red"></asp:Label> <br />
                  <asp:Label ID="lblPasswordMatch" runat="server" Text="Passwords do not match" ForeColor="Red"></asp:Label>  <br />
                   <asp:Label ID="lblSuccess" runat="server"  ForeColor="Green"></asp:Label>

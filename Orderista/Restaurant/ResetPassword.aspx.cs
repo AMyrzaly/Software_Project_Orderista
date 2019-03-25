@@ -13,29 +13,51 @@ public partial class Restaurant_ResetPassword : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        lblUserDetails.Text = "Hello " + Session["username"];
+        lblUserDetails.Text = "Hello " + Request.QueryString["usernameRestaurant"];
         lblPasswordMessage.Visible = false;
         lblPasswordMatch.Visible = false;
 
 
     }
 
-    protected void btnReset_Click(object sender, EventArgs e)
+    private void changeStaus()
     {
-        using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString))
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString))
         {
-            sqlCon.Open();
-            String updateData = "Update Restaurants set Password=@password  AND PasswordReset=@pwdreset where Username='" + Request.QueryString["usernameRestaurant"] + "'";
-            SqlCommand cmd = new SqlCommand(updateData, sqlCon);
-            cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-            cmd.Parameters.AddWithValue("@pwdreset", "Yes");
+            String updateData = "Update Restaurants set PasswordReset='Yes' where Username='" + Request.QueryString["usernameRestaurant"] + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = updateData;
+            cmd.Connection = con;
             cmd.ExecuteNonQuery();
-
-
-
         }
+
     }
 
+
+    protected void btnReset_Click(object sender, EventArgs e)
+    {
+        if (String.IsNullOrEmpty(txtPassword.Text))
+        {
+            lblPasswordMessage.Visible = true;
+            lblPasswordMessage.Text = "Password field cannot be empty";
+        }
+        else
+        {
+            using (SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString))
+            {
+                sqlCon.Open();
+                changeStaus();
+                String updateData = "Update Restaurants set Password=@password where Username='" + Request.QueryString["usernameRestaurant"] + "'";
+                SqlCommand cmd = new SqlCommand(updateData, sqlCon);
+                cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                cmd.ExecuteNonQuery();
+            }
+            lblSuccess.Text = "Your password has been reset successfully";
+
+            Response.Redirect("/Restaurant/RestaurantLogin.aspx");
+        }
+    }
     protected void btnClear_Click(object sender, EventArgs e)
     {
         ClearInputs(Page.Controls);
