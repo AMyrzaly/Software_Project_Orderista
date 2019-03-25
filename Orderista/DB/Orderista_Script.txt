@@ -210,8 +210,6 @@ ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_ServiceCharge_
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_ServiceCharge_GTE_Zero]
 GO
-ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_Status_Options] CHECK  (([Status]='Complete' OR [Status]='In Progress' OR [Status]='New'))
-GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Status_Options]
 GO
 INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Tim Hortons', 'Tims', 'timTIM1!', 'tims@bogusemail.com', '8886011616');
