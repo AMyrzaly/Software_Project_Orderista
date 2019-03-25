@@ -23,14 +23,29 @@ public partial class RestaurantLogin : System.Web.UI.Page
         {
             sqlCon.Open();
             string query = "SELECT COUNT(1) FROM Restaurants WHERE username=@Username AND password=@Password";
+            string query1 = "SELECT PasswordReset FROM Restaurants WHERE Username=@username";
+
             SqlCommand SqlCmd = new SqlCommand(query, sqlCon);
+            SqlCommand SqlCmd1 = new SqlCommand(query1, sqlCon);
+
+            SqlCmd1.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
             SqlCmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());//parameter values from the database
             SqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());//parameter values from the database
+
+            string passwordReset = Convert.ToString(SqlCmd1.ExecuteScalar());
             int count = Convert.ToInt32(SqlCmd.ExecuteScalar());
+
             if (count == 1)
             {
-                Session["username"] = txtUserName.Text.Trim();
-                Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
+                if (passwordReset != "No")
+                {
+                    Session["username"] = txtUserName.Text.Trim();
+                    Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
+                }
+                else
+                {
+                    Response.Redirect("/Restaurant/ResetPassword.aspx?username=" + txtUserName.Text);
+                }
             }
             //if the user enters a wrong username
             else if (String.IsNullOrEmpty(txtUserName.Text))

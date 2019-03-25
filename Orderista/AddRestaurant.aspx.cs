@@ -24,14 +24,14 @@ public partial class AddRestaurant : System.Web.UI.Page
         ///Change the connectionString to apply different servers
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
         //conn = new SqlConnection(connString);
-        comm = new SqlCommand("INSERT INTO Restaurants VALUES (@ResName,@ResUsername,@ResPassword,@ResEmail,@ResContact)", conn);
+        comm = new SqlCommand("INSERT INTO Restaurants VALUES (@ResName,@ResUsername,@ResPassword,@ResEmail,@ResContact,@ResetPwd)", conn);
         //    comm.Parameters.AddWithValue("@ResName",(string)txtRestaurantName.Text);
         comm.Parameters.AddWithValue("@ResName", txtRestaurantName.Text);
         comm.Parameters.AddWithValue("@ResUsername", txtRestaurantUsername.Text);
         comm.Parameters.AddWithValue("@ResPassword", txtRestaurantPassword.Text);
         comm.Parameters.AddWithValue("@ResEmail", txtRestaurantEmail.Text);
         comm.Parameters.AddWithValue("@ResContact", txtRestaurantContact.Text);
-
+        comm.Parameters.AddWithValue("@ResetPwd", "No");
         try
         {
             conn.Open();

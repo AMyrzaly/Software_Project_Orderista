@@ -128,7 +128,8 @@ CREATE TABLE [dbo].[Restaurants](
 	[Username] [varchar](255) NULL,
 	[Password] [varchar](255) NULL,
 	[Email] [varchar](255) NULL,
-	[Contact] [varchar](255) NULL
+	[Contact] [varchar](255) NULL,
+	[PasswordReset] [varchar] (255) NULL
 	 CONSTRAINT [PK_Restaurants] PRIMARY KEY CLUSTERED 
 (
 	[Restaurant_Name] ASC
@@ -210,14 +211,13 @@ ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [CK_Orders_ServiceCharge_
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_ServiceCharge_GTE_Zero]
 GO
-ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [CK_Orders_Status_Options]
-GO
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Tim Hortons', 'Tims', 'timTIM1!', 'tims@bogusemail.com', '8886011616');
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Main Cafeteria', 'Aramark', 'abcABC1!', 'aramark@bogusemail.com', '9376604708');
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Epic Burger', 'EpicBurger', 'epicEPIC1!', 'epic@bogusemail.com', '3122433605');
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Pizza Pizza', 'Pizza', 'pizzaPIZZA1!', 'pizza@bogusemail.com', '4169671010');
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Subway', 'Subway', 'subSUB1!', 'subway@bogusemail.com', '8008884848');
-INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact) VALUES ('Smokes Poutinerie', 'Smokes', 'gravyGRAVY1!', 'smokes@bogusemail.com', '9054279944');
+
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Tim Hortons', 'Tims', 'timTIM1!', 'tims@bogusemail.com', '8886011616','Yes');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Main Cafeteria', 'Aramark', 'abcABC1!', 'aramark@bogusemail.com', '9376604708','Yes');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Epic Burger', 'EpicBurger', 'epicEPIC1!', 'epic@bogusemail.com', '3122433605','Yes');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Pizza Pizza', 'Pizza', 'pizzaPIZZA1!', 'pizza@bogusemail.com', '4169671010','Yes');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Subway', 'Subway', 'subSUB1!', 'subway@bogusemail.com', '8008884848','Yes');
+INSERT INTO Restaurants (Restaurant_Name, Username, Password, Email, Contact,PasswordReset) VALUES ('Smokes Poutinerie', 'Smokes', 'gravyGRAVY1!', 'smokes@bogusemail.com', '9054279944','Yes');
 INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Bagel B.E.L.T.', 'Tim Hortons', 1.49, 1, 1);
 INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Homestyle Oatmeal', 'Tim Hortons', 1.29, 1, 1);
 INSERT INTO Menu_Items (Name, RestaurantName, Price, InStock, Visible) VALUES ('Hash Brown', 'Tim Hortons', 1.09, 1, 1);
