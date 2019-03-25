@@ -44,7 +44,7 @@ public partial class RestaurantLogin : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("/Restaurant/ResetPassword.aspx?username=" + txtUserName.Text);
+                    Response.Redirect("/Restaurant/ResetPassword.aspx?usernameRestaurant=" + txtUserName.Text);
                 }
             }
             //if the user enters a wrong username
