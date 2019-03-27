@@ -46,7 +46,7 @@
               </asp:TemplateField>
               <asp:TemplateField HeaderText="Status" SortExpression="Status">
                   <EditItemTemplate>
-                         <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>'>
+                         <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>' >
                     <asp:ListItem>InProgress</asp:ListItem>
                     <asp:ListItem>Completed</asp:ListItem>
                 </asp:DropDownList>

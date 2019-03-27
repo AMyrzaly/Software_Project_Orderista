@@ -13,6 +13,7 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
 {
     string restaurant;
     string email;
+    int orderId;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -44,10 +45,8 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         }
 
 
-        if (!IsPostBack)
-        {
             BindMenuGridView();
-        }
+        
     }
 
     private void BindMenuGridView()
@@ -112,23 +111,71 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         {
             int rowIndex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
 
-            int orderId = Convert.ToInt32(e.CommandArgument);
+             orderId = Convert.ToInt32(e.CommandArgument);
             string status = ((DropDownList)GridView1.Rows[rowIndex].FindControl("DDLStatus")).SelectedValue;
 
             //Update Code
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID = @orderId", connection);
-            cmd.Parameters.AddWithValue("@status", status);
-            cmd.Parameters.AddWithValue("@orderId", orderId);
-            cmd.ExecuteNonQuery();
+            SqlCommand cmd1 = new SqlCommand("UPDATE Orders SET Status = @status WHERE OrderID = @orderId", connection);
+            cmd1.Parameters.AddWithValue("@status", status);
+            cmd1.Parameters.AddWithValue("@orderId", orderId);
+            try
+            {
+                connection.Open();
+                cmd1.ExecuteNonQuery();
 
-            string email = ((TextBox)GridView1.Rows[rowIndex].FindControl("txtEmail")).Text;
-            sendCodeCompleted(email);
+            }
+            catch(Exception ex)
+            {
 
+                string msg = "Fetch Error: ";
+                msg += ex.Message;
+                throw new Exception(msg);
+            }
+            finally
+            {
+                connection.Close();
+            }
             GridView1.EditIndex = -1;
             BindMenuGridView();
+           
         }
+
+        ChangeStatusEmail(orderId);
+    }
+
+    private void ChangeStatusEmail(int orderId)
+    {
+
+
+        //Send Update Status
+
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+        SqlCommand cmd = new SqlCommand("select CentennialEmail from Orders Where OrderID = @orderId", connection);
+        cmd.Parameters.AddWithValue("@orderId", orderId);
+        try
+        {
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                email = reader[0].ToString();
+            }
+            reader.Close();
+            //  sendCodeCompleted(email);
+        }
+        catch (Exception ex)
+        {
+
+            string msg = "Fetch Error: ";
+            msg += ex.Message;
+            throw new Exception(msg);
+        }
+        finally
+        {
+            connection.Close();
+        }
+
     }
 
     private void sendCodeCompleted(string email)

@@ -26,7 +26,7 @@
                       <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("OrderID") %>'></asp:Label>
+                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("OrderID") %>' ></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
               <asp:TemplateField HeaderText="CentennialEmail" SortExpression="CentennialEmail">
@@ -47,9 +47,11 @@
               </asp:TemplateField>
               <asp:TemplateField HeaderText="Status" SortExpression="Status">
                   <EditItemTemplate>
-                         <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>'>
+                         <asp:DropDownList ID="DDLStatus"  runat="server"  SelectedValue='<%# Bind("Status") %>' >
                     <asp:ListItem>New</asp:ListItem>
                     <asp:ListItem>InProgress</asp:ListItem>
+                    <asp:ListItem>Completed</asp:ListItem>
+            
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfvEditStatus" runat="server" 
                     ErrorMessage="Status is a required field" Text="*"
