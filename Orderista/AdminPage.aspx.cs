@@ -27,31 +27,54 @@ public partial class AdminPage : System.Web.UI.Page
         if (AdminOrdersRestaurants.SelectedIndex == 0)
         {
             gridViewTable = "RESTAURANTS";
+
+            comm = new SqlCommand("SELECT * FROM " + gridViewTable, conn);
+            try
+            {
+                conn.Open();
+                reader = comm.ExecuteReader();
+                RestaurantGrid.DataSource = reader;
+                RestaurantGrid.DataBind();
+                TableName.Text = AdminOrdersRestaurants.SelectedItem.Text;
+            }
+            catch
+            {
+                // TableName.Text = "YOU fcked up";
+                Response.Write("Connection Failed: Check Connexion String");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             AddRestaurant.Visible = true;
         }
         else
         {
             gridViewTable = "ORDERS";
+
+            comm = new SqlCommand("SELECT OrderID,CentennialEmail,RestaurantName,DelayTime,Status,Total FROM " + gridViewTable, conn);
+            try
+            {
+                conn.Open();
+                reader = comm.ExecuteReader();
+                RestaurantGrid.DataSource = reader;
+                RestaurantGrid.DataBind();
+                TableName.Text = AdminOrdersRestaurants.SelectedItem.Text;
+            }
+            catch
+            {
+                // TableName.Text = "YOU fcked up";
+                Response.Write("Connection Failed: Check Connexion String");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             AddRestaurant.Visible = false;
         }
-        comm = new SqlCommand("SELECT * FROM " + gridViewTable, conn);
-        try
-        {
-            conn.Open();
-            reader = comm.ExecuteReader();
-            RestaurantGrid.DataSource = reader;
-            RestaurantGrid.DataBind();
-            TableName.Text = AdminOrdersRestaurants.SelectedItem.Text;
-        }
-        catch
-        {
-            // TableName.Text = "YOU fcked up";
-            Response.Write("Connection Failed: Check Connexion String");
-        }
-        finally
-        {
-            conn.Close();
-        }
+     
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
@@ -72,4 +95,6 @@ public partial class AdminPage : System.Web.UI.Page
     {
         Response.Redirect("DeleteRestaurant.aspx");
     }
+
+  
 }
