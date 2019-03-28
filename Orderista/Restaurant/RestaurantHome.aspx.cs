@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Restaurant_CompletedDashboard : System.Web.UI.Page
+public partial class Restaurant_RestaurantHome : System.Web.UI.Page
 {
-    string restaurant;
-    string email;
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         lblUserDetails.Text = "Hello " + Session["username"];
-       
+
     }
-    
+
     protected void logOutBtn_Click(object sender, EventArgs e)
     {
         //Clears the page
@@ -28,11 +23,20 @@ public partial class Restaurant_CompletedDashboard : System.Web.UI.Page
         Response.Cookies.Clear();
         Response.Redirect("RestaurantLogin.aspx");
 
-
     }
 
-    protected void btnHome_Click(object sender, EventArgs e)
+    protected void btnNew_Click(object sender, EventArgs e)
     {
-        Response.Redirect("/Restaurant/RestaurantHome.aspx");
+        Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
+    }
+
+    protected void btnInProgress_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Restaurant/InProgressDashboard.aspx");
+    }
+
+    protected void btnCompleted_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Restaurant/CompletedDashboard.aspx");
     }
 }

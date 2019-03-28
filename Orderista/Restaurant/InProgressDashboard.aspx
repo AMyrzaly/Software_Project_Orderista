@@ -71,9 +71,8 @@
           </UpdateParameters>
       </asp:SqlDataSource>
       <br />
-      <asp:Label ID="lblEmpty" runat="server"></asp:Label>
-      <br />
-      <asp:Button ID="btnCompleted" runat="server" Text="Click here to check Completed Orders" OnClick="btnCompleted_Click" />
+    <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+    <br />
       <br />
         <br />
 </asp:Content>

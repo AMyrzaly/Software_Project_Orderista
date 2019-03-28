@@ -98,4 +98,9 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
             }
         }
     }
+
+    protected void btnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Restaurant/RestaurantHome.aspx");
+    }
 }

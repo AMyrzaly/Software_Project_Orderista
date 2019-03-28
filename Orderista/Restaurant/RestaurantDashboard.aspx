@@ -79,7 +79,16 @@
       <br />
       <asp:Label ID="lblEmpty" runat="server" ></asp:Label>
       <br />
-      <asp:Button ID="btnInProgress" runat="server" Text="Click to check In Progress Orders" OnClick="btnInProgress_Click" />
+    <table>
+        <tr>
+            <td>
+                   <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+   
+            </td>
+           
+        </tr>
+       
+    </table>
       <br />
         <br />
 </asp:Content>

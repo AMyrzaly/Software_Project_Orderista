@@ -40,7 +40,7 @@ public partial class RestaurantLogin : System.Web.UI.Page
                 if (passwordReset != "No")
                 {
                     Session["username"] = txtUserName.Text.Trim();
-                    Response.Redirect("/Restaurant/RestaurantDashboard.aspx");
+                    Response.Redirect("/Restaurant/RestaurantHome.aspx");
                 }
                 else
                 {

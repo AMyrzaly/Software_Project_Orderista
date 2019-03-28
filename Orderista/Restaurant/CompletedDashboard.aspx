@@ -24,6 +24,9 @@
             </SelectParameters>
       </asp:SqlDataSource>
    
+        <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+      <br />
+   
         <br />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
