@@ -4,12 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="inputText">
-        <h3>Admin Page </h3>
+        <h3>Admin Dashboard </h3>
     </div>
     <div style="position: relative">
         <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
         <asp:Button class="logout_btn" ID="btnLogout" Runat="server" Text="Logout" OnClick="btnLogout_Click" />
-        <asp:RadioButtonList ID="AdminOrdersRestaurants" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
+        <asp:RadioButtonList ID="AdminOrdersRestaurants" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" Width="325px">
             <asp:ListItem Selected="True" Value="Restaurants">Restaurants</asp:ListItem>
             <asp:ListItem Value="Orders">Orders</asp:ListItem>
         </asp:RadioButtonList>
