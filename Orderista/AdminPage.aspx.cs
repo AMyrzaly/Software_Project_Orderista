@@ -48,6 +48,7 @@ public partial class AdminPage : System.Web.UI.Page
             }
 
             AddRestaurant.Visible = true;
+            DeleteRestaurant.Visible = true;
         }
         else
         {

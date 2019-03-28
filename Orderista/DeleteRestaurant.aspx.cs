@@ -19,12 +19,13 @@ public partial class DeleteRestaurant : System.Web.UI.Page
         string useradmin = Session["UserAdmin"].ToString();
 
         UserAdmin.Text = "Welcome, " + useradmin;
-        BindGrid();
+
+            BindGrid();
     }
-    protected void DeleteRetaurnt(object sender, GridViewDeleteEventArgs e)
+    protected void DelRestaurant(object sender, GridViewDeleteEventArgs e)
     {
         //string userName = GridDeleteRestaurnt.Columns[2].
-        GridViewRow row = (GridViewRow)GridDeleteRestaurnt.Rows[e.RowIndex];
+        GridViewRow row = (GridViewRow)GridDeleteRestaurant.Rows[e.RowIndex];
         adapter = new SqlDataAdapter(comm);
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
         //conn = new SqlConnection(connString);
@@ -57,14 +58,14 @@ public partial class DeleteRestaurant : System.Web.UI.Page
         //Change connSTRING!!!
         //=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True;
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
-        //conn = new SqlConnection(connString);
-        comm = new SqlCommand("SELECT * FROM RESTAURANTS", conn);
+        //conn = new SqlConnection(connString); Select Restaurant_Name,Username, Password,Email, Contact from Restaurants
+        comm = new SqlCommand("Select Restaurant_Name,Username, Password,Email, Contact from Restaurants", conn);
         try
         {
             conn.Open();
             reader = comm.ExecuteReader();
-            GridDeleteRestaurnt.DataSource = reader;
-            GridDeleteRestaurnt.DataBind();
+            GridDeleteRestaurant.DataSource = reader;
+            GridDeleteRestaurant.DataBind();
         }
         catch
         {

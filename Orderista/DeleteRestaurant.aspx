@@ -7,7 +7,7 @@
  
         <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
         <h2>Remove Restaurant Page</h2>
-        <asp:GridView ID="GridDeleteRestaurnt" runat="server" OnRowDeleting="DeleteRetaurnt">
+        <asp:GridView ID="GridDeleteRestaurant" runat="server" OnRowDeleting="DelRestaurant" Height="229px" Width="507px">
             <Columns>
                 <asp:CommandField ButtonType="Button" DeleteText="Delete Restaurant" ShowDeleteButton="True" />
             </Columns>
