@@ -190,7 +190,7 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     //}
 
 
-    private void ChangeStatusProgressEmail(int orderId)
+    private void ChangeStatusDeclineEmail(int orderId)
     {
         
         //Send Update Status
@@ -207,7 +207,7 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
                 email = reader[0].ToString();
             }
             reader.Close();
-            // sendCodeProgress(email);
+            // sendCodeDecline(email);
         }
         catch (Exception ex)
         {
@@ -284,31 +284,32 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         int index = GridView1.EditIndex;
         GridViewRow row = GridView1.Rows[index];
 
+
+        string status = ((DropDownList)GridView1.Rows[index].FindControl("DDLStatus")).SelectedValue;
+
         TextBox email = (TextBox)row.FindControl("txtEmail");
-     
-     
+
+        if (status == "InProgress")
+            {
+            sendCodeProgress(email.Text);
+        }
+       else if (status == "Decline")
+        {
+            sendCodeDecline(email.Text);
+        }
+
+
+
+
 
         // Get the controls that contain the updated values. In this
         // example, the updated values are contained in the TextBox 
         // controls declared in the edit item templates of each TemplateField 
         // column fields in the GridView control.
 
-        sendCodeProgress(email.Text);
+
     }
 
-    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-        int index = GridView1.EditIndex;
-        GridViewRow row = GridView1.Rows[index];
-
-        // Get the controls that contain the updated values. In this
-        // example, the updated values are contained in the TextBox 
-        // controls declared in the edit item templates of each TemplateField 
-        // column fields in the GridView control.
-        TextBox email = (TextBox)row.FindControl("txtEmail");
-
-        sendCodeDecline(email.Text);
-    }
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
@@ -331,4 +332,5 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         }
 
     }
+
 }

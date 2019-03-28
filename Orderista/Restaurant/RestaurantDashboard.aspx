@@ -9,9 +9,10 @@
         <br />
       <br />
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting" OnRowDataBound="GridView1_RowDataBound">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1" OnRowUpdating="GridView1_RowUpdating"  OnRowDataBound="GridView1_RowDataBound" >
           <Columns>
-              <asp:CommandField DeleteText="Decline" EditText="Accept" ShowDeleteButton="True" ShowEditButton="True" />
+              <asp:CommandField  EditText="Accept/Decline" ShowEditButton="True" />
+
               <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
                   <EditItemTemplate>
                       <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
@@ -42,6 +43,7 @@
                     SelectedValue='<%# Bind("Status") %>'>
                     <asp:ListItem>New</asp:ListItem>
                     <asp:ListItem>InProgress</asp:ListItem>
+                     <asp:ListItem>Decline</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfvEditGender" runat="server" 
                     ErrorMessage="Status is a required field" Text="*"
