@@ -8,18 +8,14 @@
          <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click1" />
      </div>
         <!-- experimental new database-populated radio buttons -->
-        <div>
-            Restaurant Selection:
-            <br />
-            <asp:RadioButtonList ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
+        <div style="text-align: center">
+            <h3 style="font-weight: bold">Restaurant Selection</h3>
+            <asp:RadioButtonList CssClass="restaurant_selection" ID="RBL_Restaurant" runat="server" OnSelectedIndexChanged="RestaurantButton_SelectedIndexChanged" AutoPostBack="True"></asp:RadioButtonList>
         </div>
-
-        <br />
-        <br />
-        <div>
-            Menu: <br />
+        <div style="text-align: center; margin-top: 20px;">
+            <h3 style="font-weight: bold">Menu</h3>
             <!-- when/if we add menu images, they'll go in here somewhere -->
-            <asp:GridView id="MenuGridView" runat="server"
+            <asp:GridView CssClass="table table-bordered" id="MenuGridView" runat="server"
                       AutoGenerateColumns="false"
                       ShowFooter="true">
             <Columns>
@@ -76,21 +72,24 @@
             </asp:GridView>
         </div>
         <br />
-     <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-      <asp:Timer ID="TimerTime" runat="server" Interval="1000" OnTick="TimerTime_Tick">
+     <div style="display: flex; justify-content: space-around">
+        <asp:Timer ID="TimerTime" runat="server" Interval="1000" OnTick="TimerTime_Tick">
         </asp:Timer>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-        <asp:Label ID="lblDateToday" runat="server"></asp:Label>
+            <label>Current time:</label>
+
+            <asp:Label ID="lblDateToday" runat="server"></asp:Label>
                 <asp:Label ID="lblTime" runat="server"></asp:Label>
-            </ContentTemplate>
+        </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="TimerTime" EventName="Tick" />
             </Triggers>
         </asp:UpdatePanel>
        
+        <div>
         Ready to pick up in the next&nbsp;
         <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack ="true">
             <asp:ListItem Text="20:00" Value="20" Selected="True"></asp:ListItem>
@@ -105,12 +104,11 @@
         </asp:DropDownList>
         &nbsp;minutes.<br />
 
-      Your order will be ready at
-        <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label><br />
-&nbsp;<asp:Button ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
-        <br />
-        <br />
-        <br />
+        Your order will be ready at <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label>
+        </div>
+    </div>
+     <asp:Button CssClass="order_button mx-auto btn btn-dark" ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
+
         <div>
             Order History
             <br />

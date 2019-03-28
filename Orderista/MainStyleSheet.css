@@ -75,6 +75,26 @@ select.inputText {
     margin-right: 15px;
 }
 
+.restaurant_selection {
+    display: flex;
+}
+.restaurant_selection tbody {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.restaurant_selection tbody td label {
+    margin-left: 5px !important;
+}
+.order_button {
+    margin: 20px auto;
+    display: block;
+}
+
+#ContentPlaceHolder1_UpdatePanel1 {
+    display: inline-block;
+}
+
 .field_boxes span,
 #ContentPlaceHolder1_RegExPassword,
 #ContentPlaceHolder1_RegExCPassword,
