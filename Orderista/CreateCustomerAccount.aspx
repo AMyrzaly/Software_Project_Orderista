@@ -7,20 +7,21 @@
 
 
      <div>
-        <table style="margin: auto">
-            <tr>
-                <td> 
-                    First Name <br />
-                    Last Name <br />
-                    Centennial Email <br />
-                    Phone Number<br />
-                    Enter Security Question <br />
-                    Enter Security Answer <br />
+            <div style="display: flex; justify-content: space-between; ">
+                <div class="labels" style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 10px"> 
+                    <span>First Name</span>
+                    <span>Last Name</span>
+                    <span>Centennial Email</span>
+                    <span>Phone Number</span>
+                    <span>Enter Security Question</span>
+                    <span>Enter Security Answer</span>
+                    <span>Password</span>
+                    <span>Confirm Password</span>
+                </div>
 
-                </td>
-
-                <td>
+                <div class="fields" style="display: flex; flex-direction: column; justify-content: space-between; flex: 1">
                     <!-- First Name TextBox -->
+                    <div class="field_boxes" style="display: flex">
                     <asp:TextBox class="inputText" ID="txtFName" runat="server" Width="300px"/>
                                <asp:RequiredFieldValidator ID="ReqFldValFName" runat="server"
                                         ErrorMessage="Required Field"
@@ -29,9 +30,11 @@
                                         ControlToValidate="txtFName"
                                         ValidationExpression="^[a-zA-Z'.\s]{1,50}"
                                         Text=" Enter a valid name"
-                                        ErrorMessage="RegularExpressionValidator" /><br />
+                                        ErrorMessage="RegularExpressionValidator" />
+                   </div>
 
                     <!-- Last Name TextBox -->
+                    <div class="field_boxes" style="display: flex">
                     <asp:TextBox class="inputText" ID="txtLName" runat="server" Width="300px"></asp:TextBox>
                               <asp:RequiredFieldValidator ID="ReqFldValLName" runat="server"
                                         ErrorMessage="Required Field"
@@ -40,9 +43,11 @@
                                         ControlToValidate="txtLName"
                                         ValidationExpression="^[a-zA-Z'.\s]{1,50}"
                                         Text=" Enter a valid name"
-                                        ErrorMessage="RegularExpressionValidator" /><br />
+                                        ErrorMessage="RegularExpressionValidator" />
+                    </div>
 
                     <!-- Centennial Email -->
+                    <div class="field_boxes" style="display: flex">
                     <asp:TextBox class="inputText" ID="txtEmail" runat="server" Width="300px"></asp:TextBox>
                                      <asp:RequiredFieldValidator ID="ReqFldValEmail" runat="server"
                                                 ErrorMessage="Required Field"
@@ -52,97 +57,71 @@
                                                 ValidationExpression="\w+([-+.]\w+)*@(my.centennialcollege.ca)"
                                                 Text=" Enter a valid Ecentennial email"
                                                 ErrorMessage="RegularExpressionValidator" />
-                                      <%-- RegEx to be changed on the later iteration for myCentennial Email --%> <br />
+                                      <%-- RegEx to be changed on the later iteration for myCentennial Email --%>
+                    </div>
 
                     <!-- Phone Number -->
+                    <div class="field_boxes" style="display: flex">
                     <asp:TextBox class="inputText" ID="txtPhone" runat="server" Width="300px"></asp:TextBox>
-                                 <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
-                                            ErrorMessage="Required Field"
-                                            ControlToValidate="txtPhone" />
-                                 <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
-                                            ControlToValidate="txtPhone"
-                                            ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
-                                            Text=" Enter a valid Phone Number"
-                                            ErrorMessage="RegularExpressionValidator" /> <br />
+                        <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
+                                ErrorMessage="Required Field"
+                                ControlToValidate="txtPhone" />
+                        <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
+                                ControlToValidate="txtPhone"
+                                ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                                Text=" Enter a valid Phone Number"
+                                ErrorMessage="RegularExpressionValidator" />
+                    </div>
 
 
                     <!-- Security Question -->
-                    <asp:DropDownList  class="inputText" ID="DropDownList1" runat="server">
+                    <div class="field_boxes" style="display: flex">
+                    <asp:DropDownList  class="inputText" ID="DropDownList1" runat="server" Width="300px">
                         <asp:ListItem>My Mother&#39;s Maiden Name?</asp:ListItem>
                         <asp:ListItem>My first pet name?</asp:ListItem>
                         <asp:ListItem>My School Name?</asp:ListItem>
                         <asp:ListItem>My Best Friend&#39;s Name?</asp:ListItem>
                         <asp:ListItem>My Favourite Restaurant?</asp:ListItem>
-                    </asp:DropDownList> <br />
-
+                    </asp:DropDownList>
+                    </div>
 
                     <!-- Security Answer -->
+                    <div class="field_boxes" style="display: flex">
                     <asp:TextBox class="inputText" ID="txtSecurityA" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSecurityA" ErrorMessage="Required Field"></asp:RequiredFieldValidator>  <br />
-
-                </td>
-            </tr>
-        </table>
-     </div>
-
-     <br />
-     <hr />
-     <br />
-
-     <div class="password_fields">
-        <!-- <table> -->
-          <!--  <tr> -->
-                <!-- <td> -->
-         <div style="display: flex; flex-direction: column;">
-         <div style="flex-basis: 40%; margin: 20px;">
-                    <span style="display: block">Password
-                    <!-- Password -->
-                        <asp:RequiredFieldValidator  ID="RequiredFieldValidator1" runat="server"
-                            ErrorMessage="- Required Field"
-                            ControlToValidate="txtPwd" />
-                    </span>
-                    <asp:TextBox class="inputText_password" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
-                                ControlToValidate="txtPwd"
-                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text="Minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
-                                ErrorMessage="RegularExpressionValidator" />
-         </div>
-         <div style="flex-basis: 40%; margin: 20px;">
-
-               <!-- </td> -->
-                <!-- <td>-->
-                   <span style="display: block">
-                       Confirm password
-                       <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
-                                ErrorMessage="- Required Field"
-                                ControlToValidate="txtConfirmPwd" />
-                   </span>
-                    <!-- Confirm Password -->
-                    <asp:TextBox class="inputText_password" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox>
-                           <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
-                                ControlToValidate="txtConfirmPwd"
-                                ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                                Text="Minimum 8 characters, Upper/Lower Case Alphabet, Number and Special Character"
-                                ErrorMessage="RegularExpressionValidator" />
-
-              <!--  </td>  -->
-              
-         </div>
-     </div>
-              <!--  </tr>  -->
-               <!-- <tr> -->
-                   <!-- <td> -->
-         <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 30px;">
-                         <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" EnableClientScript="true" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
-                         <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
-         </div>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSecurityA" ErrorMessage="Required Field"></asp:RequiredFieldValidator>
+                    </div>
          
-                   <!-- </td> -->
-               <!-- </tr> -->
-
-            <!-- </table> -->
-    </div>
+        <div class="field_boxes">
+                <!-- Password -->
+            <asp:TextBox class="inputText_password" ID="txtPwd" runat="server" TextMode="Password"></asp:TextBox>
+                   <asp:RequiredFieldValidator  ID="RequiredFieldValidator1" runat="server"
+                         ErrorMessage="- Required Field"
+                        ControlToValidate="txtPwd" />
+        </div>
+        <div class="field_boxes">
+            <!-- Confirm Password -->
+            <asp:TextBox class="inputText_password" ID="txtConfirmPwd" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
+                        ErrorMessage="- Required Field"
+                        ControlToValidate="txtConfirmPwd" /> 
+        </div>
+         </div>
+     </div>
+         <asp:RegularExpressionValidator ID="RegExPassword" runat="server"
+                        ControlToValidate="txtPwd"
+                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+                        Text="Password - Minimum 8 characters, Upper/Lower Case Alphabet, Number/Special Character"
+                        ErrorMessage="RegularExpressionValidator" /><br />
+                <asp:RegularExpressionValidator ID="RegExCPassword" runat="server"
+                        ControlToValidate="txtConfirmPwd"
+                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+                        Text="Confirm Password - Minimum 8 characters, Upper/Lower Case Alphabet, Number/Special Character"
+                        ErrorMessage="RegularExpressionValidator" />
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 30px;">
+                        <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" EnableClientScript="true" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
+                        <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
+        </div>
+ </div>
 
              
                    
