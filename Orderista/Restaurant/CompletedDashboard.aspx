@@ -8,51 +8,21 @@
         <br />
       <br />
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" >
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1" >
           <Columns>
-              <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
-                  <EditItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("OrderID") %>'></asp:Label>
-                  </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="CentennialEmail" SortExpression="CentennialEmail">
-                  <EditItemTemplate>
-                      <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("CentennialEmail") %>'></asp:TextBox>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                      <asp:Label ID="Label2" runat="server" Text='<%# Bind("CentennialEmail") %>'></asp:Label>
-                  </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="DelayTime" SortExpression="DelayTime">
-                  <EditItemTemplate>
-                      <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("DelayTime") %>'></asp:TextBox>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("DelayTime") %>'></asp:Label>
-                  </ItemTemplate>
-              </asp:TemplateField>
-              <asp:TemplateField HeaderText="Status" SortExpression="Status">
-                  <EditItemTemplate>
-                         <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>'>
-                    <asp:ListItem>InProgress</asp:ListItem>
-                    <asp:ListItem>Completed</asp:ListItem>
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvEditStatus" runat="server" 
-                    ErrorMessage="Status is a required field" Text="*"
-                    ControlToValidate="DDLStatus" ForeColor="Red" 
-                    InitialValue="InProgress">
-                </asp:RequiredFieldValidator>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                      <asp:Label ID="Label4" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
-                  </ItemTemplate>
-              </asp:TemplateField>
+              <asp:BoundField DataField="OrderID" HeaderText="OrderID" InsertVisible="False" ReadOnly="True" SortExpression="OrderID" />
+              <asp:BoundField DataField="CentennialEmail" HeaderText="CentennialEmail" SortExpression="CentennialEmail" />
+              <asp:BoundField DataField="DelayTime" HeaderText="DelayTime" SortExpression="DelayTime" />
+              <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
           </Columns>
       </asp:GridView>
       <br />
+   
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderistaConnection %>" SelectCommand="SELECT [OrderID], [CentennialEmail], [DelayTime], [Status] FROM [Orders] WHERE ([Status] = @Status)">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="Completed" Name="Status" Type="String" />
+            </SelectParameters>
+      </asp:SqlDataSource>
    
         <br />
 </asp:Content>
