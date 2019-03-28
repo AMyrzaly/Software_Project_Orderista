@@ -57,7 +57,6 @@
                                                 ValidationExpression="\w+([-+.]\w+)*@(my.centennialcollege.ca)"
                                                 Text=" Enter a valid Ecentennial email"
                                                 ErrorMessage="RegularExpressionValidator" />
-                                      <%-- RegEx to be changed on the later iteration for myCentennial Email --%>
                     </div>
 
                     <!-- Phone Number -->

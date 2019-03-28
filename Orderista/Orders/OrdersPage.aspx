@@ -137,7 +137,7 @@
 
             </asp:GridView>
             <br />
-            <u>Selected Order:</u>
+            <!--<u>Selected Order:</u> -->
             <br />
             <!-- change of plans, I said DetailsView a lot, but it looks like this needed to be a GridView b/c it has more than one entry -->
             <asp:GridView ID="OrderItemDetailsView" runat="server" AutoGenerateRows="false">
