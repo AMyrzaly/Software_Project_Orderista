@@ -9,24 +9,15 @@
         <br />
       <br />
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" OnRowCommand="GridView1_RowCommand">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting" OnRowDataBound="GridView1_RowDataBound">
           <Columns>
-            <asp:TemplateField>
-     <ItemTemplate>
-        <asp:LinkButton ID="lbAccept" CommandArgument='<%# Eval("OrderID") %>' CommandName="AcceptRow" ForeColor="#8C4510" runat="server">Accept</asp:LinkButton>
-        <asp:LinkButton ID="lbDecline" CommandArgument='<%# Eval("OrderID") %>' CommandName="DeclineRow" ForeColor="#8C4510" runat="server" CausesValidation="false">Decline</asp:LinkButton>
-      </ItemTemplate>
-      <EditItemTemplate>
-        <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("OrderID") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">Update</asp:LinkButton>
-        <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("OrderID") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">Cancel</asp:LinkButton>
-      </EditItemTemplate>
-        </asp:TemplateField>
+              <asp:CommandField DeleteText="Decline" EditText="Accept" ShowDeleteButton="True" ShowEditButton="True" />
               <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
                   <EditItemTemplate>
                       <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("OrderID") %>' ></asp:Label>
+                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("OrderID") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
               <asp:TemplateField HeaderText="CentennialEmail" SortExpression="CentennialEmail">
@@ -39,32 +30,52 @@
               </asp:TemplateField>
               <asp:TemplateField HeaderText="DelayTime" SortExpression="DelayTime">
                   <EditItemTemplate>
-                      <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("DelayTime") %>'></asp:TextBox>
+                      <asp:TextBox ID="txtDelayTime" runat="server" Text='<%# Bind("DelayTime") %>'></asp:TextBox>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("DelayTime") %>'></asp:Label>
+                      <asp:Label ID="Label4" runat="server" Text='<%# Bind("DelayTime") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
               <asp:TemplateField HeaderText="Status" SortExpression="Status">
                   <EditItemTemplate>
-                         <asp:DropDownList ID="DDLStatus"  runat="server"  SelectedValue='<%# Bind("Status") %>' >
+                     <asp:DropDownList ID="DDlStatus" runat="server" 
+                    SelectedValue='<%# Bind("Status") %>'>
                     <asp:ListItem>New</asp:ListItem>
                     <asp:ListItem>InProgress</asp:ListItem>
-                    <asp:ListItem>Completed</asp:ListItem>
-            
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvEditStatus" runat="server" 
+                <asp:RequiredFieldValidator ID="rfvEditGender" runat="server" 
                     ErrorMessage="Status is a required field" Text="*"
-                    ControlToValidate="DDLStatus" ForeColor="Red" 
+                    ControlToValidate="DDlStatus" ForeColor="Red" 
                     InitialValue="New">
                 </asp:RequiredFieldValidator>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label4" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
           </Columns>
       </asp:GridView>
+      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderistaConnection %>" DeleteCommand="DELETE FROM [Orders] WHERE [OrderID] = @OrderID" InsertCommand="INSERT INTO [Orders] ([CentennialEmail], [DelayTime], [Status]) VALUES (@CentennialEmail, @DelayTime, @Status)" SelectCommand="SELECT [OrderID], [CentennialEmail], [DelayTime], [Status] FROM [Orders] WHERE ([Status] = @Status)" UpdateCommand="UPDATE [Orders] SET [CentennialEmail] = @CentennialEmail, [DelayTime] = @DelayTime, [Status] = @Status WHERE [OrderID] = @OrderID">
+          <DeleteParameters>
+              <asp:Parameter Name="OrderID" Type="Int32" />
+          </DeleteParameters>
+          <InsertParameters>
+              <asp:Parameter Name="CentennialEmail" Type="String" />
+              <asp:Parameter Name="DelayTime" Type="Int32" />
+              <asp:Parameter Name="Status" Type="String" />
+          </InsertParameters>
+          <SelectParameters>
+              <asp:Parameter DefaultValue="New" Name="Status" Type="String" />
+          </SelectParameters>
+          <UpdateParameters>
+              <asp:Parameter Name="CentennialEmail" Type="String" />
+              <asp:Parameter Name="DelayTime" Type="Int32" />
+              <asp:Parameter Name="Status" Type="String" />
+              <asp:Parameter Name="OrderID" Type="Int32" />
+          </UpdateParameters>
+      </asp:SqlDataSource>
+      <br />
+      <asp:Label ID="lblEmpty" runat="server" ></asp:Label>
       <br />
       <asp:Button ID="btnInProgress" runat="server" Text="Click to check In Progress Orders" OnClick="btnInProgress_Click" />
       <br />

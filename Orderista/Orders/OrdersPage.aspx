@@ -114,9 +114,8 @@
             <br />
             <br />
             <asp:GridView id="OrderGridView" runat="server"
-                      AutoGenerateColumns="false"
-                      AutoGenerateRows="false"
-                      ShowFooter="false">
+                      AutoGenerateColumns="False"
+                      AutoGenerateRows="false">
             <Columns>
                 <asp:BoundField DataField="OrderID"
                       HeaderText="Order ID" ReadOnly="true"/>
@@ -134,7 +133,6 @@
                       HeaderText="Total Cost"/>
                 <asp:BoundField DataField="Status"
                       HeaderText="Status"/>
-                <asp:ButtonField Text="Select" CommandName="Select" />
             </Columns>
 
             </asp:GridView>

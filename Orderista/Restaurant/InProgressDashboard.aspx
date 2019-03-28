@@ -9,59 +9,69 @@
         <br />
       <br />
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" OnRowCommand="GridView1_RowCommand">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID"  DataSourceID="SqlDataSource1" OnRowUpdating="GridView1_RowUpdating" OnRowDataBound="GridView1_RowDataBound">
           <Columns>
-            <asp:TemplateField>
-     <ItemTemplate>
-        <asp:LinkButton ID="lbComplete" CommandArgument='<%# Eval("OrderID") %>' CommandName="CompleteRow" ForeColor="#8C4510" runat="server">Change Status to Complete</asp:LinkButton>
-      </ItemTemplate>
-      <EditItemTemplate>
-        <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("OrderID") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">Update</asp:LinkButton>
-        <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("OrderID") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">Cancel</asp:LinkButton>
-      </EditItemTemplate>
-        </asp:TemplateField>
-              <asp:TemplateField HeaderText="OrderID" InsertVisible="False" SortExpression="OrderID">
-                  <EditItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>'></asp:Label>
-                  </EditItemTemplate>
-                  <ItemTemplate>
-                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("OrderID") %>'></asp:Label>
-                  </ItemTemplate>
-              </asp:TemplateField>
+              <asp:CommandField EditText="Change Status to Completed" ShowEditButton="True" />
+              <asp:BoundField DataField="OrderID" HeaderText="OrderID" InsertVisible="False" ReadOnly="True" SortExpression="OrderID" />
               <asp:TemplateField HeaderText="CentennialEmail" SortExpression="CentennialEmail">
                   <EditItemTemplate>
                       <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("CentennialEmail") %>'></asp:TextBox>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label2" runat="server" Text='<%# Bind("CentennialEmail") %>'></asp:Label>
+                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("CentennialEmail") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
               <asp:TemplateField HeaderText="DelayTime" SortExpression="DelayTime">
                   <EditItemTemplate>
-                      <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("DelayTime") %>'></asp:TextBox>
+                      <asp:TextBox ID="txtDelayTime" runat="server" Text='<%# Bind("DelayTime") %>'></asp:TextBox>
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("DelayTime") %>'></asp:Label>
+                      <asp:Label ID="Label2" runat="server" Text='<%# Bind("DelayTime") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
               <asp:TemplateField HeaderText="Status" SortExpression="Status">
                   <EditItemTemplate>
-                         <asp:DropDownList ID="DDLStatus" runat="server"  SelectedValue='<%# Bind("Status") %>' >
+                
+                         <asp:DropDownList ID="DDlStatus" runat="server" 
+                    SelectedValue='<%# Bind("Status") %>'>
                     <asp:ListItem>InProgress</asp:ListItem>
                     <asp:ListItem>Completed</asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvEditStatus" runat="server" 
+                <asp:RequiredFieldValidator ID="rfvEditGender" runat="server" 
                     ErrorMessage="Status is a required field" Text="*"
-                    ControlToValidate="DDLStatus" ForeColor="Red" 
+                    ControlToValidate="DDlStatus" ForeColor="Red" 
                     InitialValue="InProgress">
                 </asp:RequiredFieldValidator>
+                  
                   </EditItemTemplate>
                   <ItemTemplate>
-                      <asp:Label ID="Label4" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
+                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
                   </ItemTemplate>
               </asp:TemplateField>
           </Columns>
       </asp:GridView>
+      <br />
+      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderistaConnection %>" DeleteCommand="DELETE FROM [Orders] WHERE [OrderID] = @OrderID" InsertCommand="INSERT INTO [Orders] ([CentennialEmail], [DelayTime], [Status]) VALUES (@CentennialEmail, @DelayTime, @Status)" SelectCommand="SELECT [OrderID], [CentennialEmail], [DelayTime], [Status] FROM [Orders] WHERE ([Status] = @Status)" UpdateCommand="UPDATE [Orders] SET [CentennialEmail] = @CentennialEmail, [DelayTime] = @DelayTime, [Status] = @Status WHERE [OrderID] = @OrderID">
+          <DeleteParameters>
+              <asp:Parameter Name="OrderID" Type="Int32" />
+          </DeleteParameters>
+          <InsertParameters>
+              <asp:Parameter Name="CentennialEmail" Type="String" />
+              <asp:Parameter Name="DelayTime" Type="Int32" />
+              <asp:Parameter Name="Status" Type="String" />
+          </InsertParameters>
+          <SelectParameters>
+              <asp:Parameter DefaultValue="InProgress" Name="Status" Type="String" />
+          </SelectParameters>
+          <UpdateParameters>
+              <asp:Parameter Name="CentennialEmail" Type="String" />
+              <asp:Parameter Name="DelayTime" Type="Int32" />
+              <asp:Parameter Name="Status" Type="String" />
+              <asp:Parameter Name="OrderID" Type="Int32" />
+          </UpdateParameters>
+      </asp:SqlDataSource>
+      <br />
+      <asp:Label ID="lblEmpty" runat="server"></asp:Label>
       <br />
       <asp:Button ID="btnCompleted" runat="server" Text="Click here to check Completed Orders" OnClick="btnCompleted_Click" />
       <br />
