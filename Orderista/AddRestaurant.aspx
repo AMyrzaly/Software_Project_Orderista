@@ -8,7 +8,6 @@
         <br />
         <h2>Add a New Restaurant</h2>
         <br />
-
         <table style="margin: auto; border: 5px solid white">
             <tr>
                 <td>
@@ -94,6 +93,7 @@
                 <td>
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" /></td>
             </tr>
+            </table>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
