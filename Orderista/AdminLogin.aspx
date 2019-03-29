@@ -26,8 +26,7 @@
                     <tr>
                         <td><%--  Buttons--%>
                             </br><asp:Button class="actionBtn"  ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" /> &nbsp
-                            <asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" />  </td>
-  
+                            <asp:Button class="backclrBtn" ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" />  </td>  
                     </tr>
         </table>
     </div>
