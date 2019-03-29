@@ -28,48 +28,18 @@
                     <td class="auto-style4"><strong>Your Name</strong></td>
                     <td class="auto-style3">
                         <asp:TextBox ID="txtName" runat="server" Height="33px" Width="333px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ReqFldValFName" runat="server"
-                                        ErrorMessage="Required Field"
-                                        ControlToValidate="txtFName"
-                                        ForeColor="red"/>
-                               <asp:RegularExpressionValidator ID="RegExFName" runat="server"
-                                        ControlToValidate="txtFName"
-                                        ValidationExpression="^[a-zA-Z'.\s]{1,50}"
-                                        Text=" Enter a valid name"
-                                        ErrorMessage="RegularExpressionValidator"
-                                        ForeColor="red"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style4"><strong>Email</strong></td>
                     <td class="auto-style3">
                         <asp:TextBox ID="txtEmail" runat="server" Height="24px" Width="333px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ReqFldValEmail" runat="server"
-                                                ErrorMessage="Required Field"
-                                                ControlToValidate="txtEmail"
-                                                ForeColor="red"/>
-                                     <asp:RegularExpressionValidator ID="RegExEmail" runat="server"
-                                                ControlToValidate="txtEmail"
-                                                ValidationExpression="\w+([-+.]\w+)*@(my.centennialcollege.ca)"
-                                                Text=" Enter a valid Ecentennial email"
-                                                ErrorMessage="RegularExpressionValidator"
-                                                ForeColor="red"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style5"><strong>Mobile Number</strong></td>
                     <td class="auto-style3">
                         <asp:TextBox ID="txtmobile" runat="server" Height="25px" Width="330px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
-                                ErrorMessage="Required Field"
-                                ControlToValidate="txtPhone"
-                                ForeColor="red"/>
-                        <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
-                                ControlToValidate="txtPhone"
-                                ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
-                                Text=" Enter a valid Phone Number"
-                                ErrorMessage="RegularExpressionValidator"
-                                ForeColor="red"/>
                     </td>
                 </tr>
                 <tr>
