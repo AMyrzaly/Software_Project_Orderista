@@ -89,7 +89,7 @@
             </Triggers>
         </asp:UpdatePanel>
        
-        <div>
+        <div id="ReadyTime">
         Ready to pick up in the next&nbsp;
         <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack ="true">
             <asp:ListItem Text="20:00" Value="20" Selected="True"></asp:ListItem>
@@ -108,6 +108,7 @@
         </div>
     </div>
      <asp:Button CssClass="order_button mx-auto btn btn-dark" ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
+     <asp:Label ID="lblMsg" runat="server" ></asp:Label>
 
         <div>
             Order History

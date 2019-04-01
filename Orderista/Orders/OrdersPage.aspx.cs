@@ -12,36 +12,58 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        TimeSpan start = TimeSpan.Parse("06:00"); // 6 AM
+        TimeSpan end = TimeSpan.Parse("21:00");   // 9 PM
+        TimeSpan now = DateTime.Now.TimeOfDay;
+
+        if (start <= end)
         {
-            // placing orders
-            // bind the list of restaurants to RBL_Restaurant
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("select DISTINCT Restaurant_Name from Restaurants", connection);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            connection.Close();
-            RBL_Restaurant.DataSource = ds;
-            RBL_Restaurant.DataTextField = "Restaurant_Name";
-
-            RBL_Restaurant.DataBind();
-
-            // placing orders
-            // set default restaurant selection on first load
-            string default_restaurant = "";
-            // default_restaurant = "Main Cafeteria"; // default with original radio buttons
-            // determine default using the new radio button list
-            if (RBL_Restaurant.Items.Count > 0)
+            // start and stop times are in the same day
+            if (now >= start && now <= end)
             {
-                RBL_Restaurant.SelectedIndex = 0;
-                default_restaurant = RBL_Restaurant.SelectedValue;
-            }
 
-            BindOrderGridView(); // order history
-            BindMenuGridView(default_restaurant); // placing orders
+                if (!IsPostBack)
+                {
+                    // placing orders
+                    // bind the list of restaurants to RBL_Restaurant
+                    SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("select DISTINCT Restaurant_Name from Restaurants", connection);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    connection.Close();
+                    RBL_Restaurant.DataSource = ds;
+                    RBL_Restaurant.DataTextField = "Restaurant_Name";
+
+                    RBL_Restaurant.DataBind();
+
+                    // placing orders
+                    // set default restaurant selection on first load
+                    string default_restaurant = "";
+                    // default_restaurant = "Main Cafeteria"; // default with original radio buttons
+                    // determine default using the new radio button list
+                    if (RBL_Restaurant.Items.Count > 0)
+                    {
+                        RBL_Restaurant.SelectedIndex = 0;
+                        default_restaurant = RBL_Restaurant.SelectedValue;
+                    }
+
+                    BindOrderGridView(); // order history
+                    BindMenuGridView(default_restaurant); // placing orders
+                }
+            }
+            else
+            {
+                // current time is between start and stop
+                lblMsg.Text = "Sorry !!!! You can order only during the restaurant open timings between 6 AM and 9 PM ";
+                lblMsg.ForeColor = System.Drawing.Color.Red;
+                DelayDropDownList.Enabled = false;
+                PlaceOrder.Enabled = false;
+            }
         }
+       
+        
     }
 
     private string GetConnectionString()
