@@ -30,7 +30,7 @@ public partial class DeleteRestaurant : System.Web.UI.Page
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
         //conn = new SqlConnection(connString);
         // comm.Parameters.AddWithValue("@res", row.Cells[2].Text);
-        string sql = "Delete From RESTAURANTS Where Username = '" + row.Cells[2].Text + "'";
+        string sql = "Delete From RESTAURANTS Where Username = '" + row.Cells[1].Text + "'";
 
         comm = new SqlCommand(sql, conn);
 
@@ -42,6 +42,7 @@ public partial class DeleteRestaurant : System.Web.UI.Page
             BindGrid();
 
             Response.Write("Restaurant deleted");
+            Page_Load(sender, e);
         }
         catch (Exception ex)
         {
@@ -59,7 +60,9 @@ public partial class DeleteRestaurant : System.Web.UI.Page
         //=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True;
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
         //conn = new SqlConnection(connString); Select Restaurant_Name,Username, Password,Email, Contact from Restaurants
-        comm = new SqlCommand("Select Restaurant_Name,Username, Password,Email, Contact from Restaurants", conn);
+      //  comm = new SqlCommand("Select Restaurant_Name,Username, Password,Email, Contact from Restaurants", conn);
+        comm = new SqlCommand("Select * from Restaurants", conn);
+
         try
         {
             conn.Open();
