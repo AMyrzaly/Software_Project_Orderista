@@ -91,8 +91,9 @@
        
         <div id="ReadyTime">
         Ready to pick up in the next&nbsp;
-        <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack ="true">
-            <asp:ListItem Text="20:00" Value="20" Selected="True"></asp:ListItem>
+        <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Text="Select" Value="0" ></asp:ListItem>
+            <asp:ListItem Text="20:00" Value="20" ></asp:ListItem>
             <asp:ListItem Text="25:00" Value="25"></asp:ListItem>
             <asp:ListItem Text="30:00" Value="30"></asp:ListItem>
             <asp:ListItem Text="35:00" Value="35"></asp:ListItem>
@@ -102,7 +103,7 @@
             <asp:ListItem Text="55:00" Value="55"></asp:ListItem>
             <asp:ListItem Text="60:00" Value="60"></asp:ListItem>
         </asp:DropDownList>
-        &nbsp;minutes.<br />
+       &nbsp;minutes.<br />
 
         Your order will be ready at <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label>
         </div>
