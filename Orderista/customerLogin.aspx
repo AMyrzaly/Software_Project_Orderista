@@ -8,6 +8,14 @@
         .auto-style2 {
             text-align: center;
         }
+        .auto-style3 {
+            text-align: center;
+            width: 310px;
+        }
+        .auto-style4 {
+            text-align: left;
+            width: 310px;
+        }
     </style>
 </asp:Content>
 
@@ -29,16 +37,19 @@
                 <td class="auto-style1"><asp:TextBox class="inputText" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox></td>
             </tr>
             <tr>
-                <td class="auto-style2" colspan="2"><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /><br /></td>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style2">Not an Existing User? </td>
-                <td class="auto-style2"> <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
+                <td class="text-left"><asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/ForgotPasswordPage.aspx">Forgot Password?</asp:HyperLink>
+                    </td>
+                <td class="auto-style4">
+                    <asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" />
+                    </td>
             </tr>
             <tr>
-                <td class="auto-style2" colspan="2">
-                    <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/ForgotPasswordPage.aspx">Forgot Password?</asp:HyperLink>
-                    &nbsp; </td>
+                <td class="auto-style2">Not an Existing User?&nbsp </td>
+                <td class="auto-style4"> <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
             </tr>
                 </table>
     </div>

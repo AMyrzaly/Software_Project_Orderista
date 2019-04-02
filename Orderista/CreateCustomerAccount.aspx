@@ -55,7 +55,7 @@
                                      <asp:RegularExpressionValidator ID="RegExEmail" runat="server"
                                                 ControlToValidate="txtEmail"
                                                 ValidationExpression="\w+([-+.]\w+)*@(my.centennialcollege.ca)"
-                                                Text=" Enter a valid Ecentennial email"
+                                                Text=" Enter a valid Centennial email address"
                                                 ErrorMessage="RegularExpressionValidator" />
                     </div>
 
