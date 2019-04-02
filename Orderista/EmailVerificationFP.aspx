@@ -42,7 +42,7 @@
             <tr>
                 <td><asp:Label ID="Label3" runat="server" ForeColor="green"></asp:Label></td>
                 <td>
-                    <asp:Button ID="btnPwdReset" runat="server" OnClick="txtPwdReset_Click" Text="Click here Reset Password" />
+                    <asp:Button ID="btnPwdReset" runat="server" OnClick="txtPwdReset_Click" Text="Reset Password" />
                     <br /></td>
             </tr>
         </table>

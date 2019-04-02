@@ -14,6 +14,7 @@ public partial class ResetPassword : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+        HyperLink1.Visible = false;
         con.Open();
     }
 
@@ -24,6 +25,7 @@ public partial class ResetPassword : System.Web.UI.Page
         DataSet ds = new DataSet();
         da.Fill(ds);
         lblSucess.Text = "Password Reset Successfully";
+        HyperLink1.Visible = true;
 
     }
 }
