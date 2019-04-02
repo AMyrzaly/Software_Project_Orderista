@@ -66,7 +66,7 @@ GO
 CREATE TABLE [dbo].[Menu_Items](
 	[Name] [varchar](50) NOT NULL,
 	[RestaurantName] [varchar](50) NOT NULL,
-	[Price] [smallmoney] NOT NULL,
+	[Price] [decimal] (8,2) NOT NULL,
 	[InStock] [bit] NOT NULL,
 	[Visible] [bit] NOT NULL,
  CONSTRAINT [PK_Menu_Items] PRIMARY KEY CLUSTERED 
