@@ -29,17 +29,27 @@
                     <td class="auto-style3">
                         <asp:TextBox ID="txtName" runat="server" Height="33px" Width="333px"></asp:TextBox>
                     </td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rvName" runat="server" ErrorMessage="Name is Required" ControlToValidate="txtName" Text="* Name is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style4"><strong>Email</strong></td>
                     <td class="auto-style3">
                         <asp:TextBox ID="txtEmail" runat="server" Height="24px" Width="333px"></asp:TextBox>
                     </td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rvEmail" runat="server" ErrorMessage="Email is Required" ControlToValidate="txtEmail" Text="* Email is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style5"><strong>Mobile Number</strong></td>
                     <td class="auto-style3">
                         <asp:TextBox ID="txtmobile" runat="server" Height="25px" Width="330px"></asp:TextBox>
+                    </td>
+                    <td>
+                                 <asp:RequiredFieldValidator ID="rvMobile" runat="server" ErrorMessage="Mobile Number is Required" ControlToValidate="txtmobile" Text="* Mobile Number is Required" ForeColor="Red"></asp:RequiredFieldValidator>
+              
                     </td>
                 </tr>
                 <tr>
