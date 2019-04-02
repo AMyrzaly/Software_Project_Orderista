@@ -29,13 +29,21 @@
                 <td class="auto-style1"><asp:TextBox class="inputText" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox></td>
             </tr>
             <tr>
-                <td class="auto-style2"><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /><br /></td>
-                <td class="auto-style2">New User? <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
+                <td class="auto-style2" colspan="2"><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /><br /></td>
             </tr>
                 <!--
                 <td>
                     <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
                 </td> -->
+            <tr>
+                <td class="auto-style2">Not an Existing User? </td>
+                <td class="auto-style2"> <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
+            </tr>
+            <tr>
+                <td class="auto-style2" colspan="2">
+                    <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
+                    &nbsp; </td>
+            </tr>
                 </table>
     </div>
     <center>
