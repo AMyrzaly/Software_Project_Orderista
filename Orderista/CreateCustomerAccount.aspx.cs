@@ -25,25 +25,36 @@ public partial class CreateCustomerAccount : System.Web.UI.Page
 
     protected void btnCreateCustomerAccount_Click(object sender, EventArgs e)
     {
-        Random random = new Random();
-        activationCode = random.Next(1001, 9999).ToString();
-        SqlCommand cmd = new SqlCommand("insert into tbl_CustomerLogin" + "(Username,Password)values(@Username,@Password)", con);
-        cmd.Parameters.AddWithValue("@Username", txtEmail.Text);
-        cmd.Parameters.AddWithValue("@Password", txtPwd.Text);
-        cmd.ExecuteNonQuery();
-        SqlCommand cmd1 = new SqlCommand("insert into CreateAccountCustomer" + "(Firstname,Lastname,CentennialEmail,Phonenumber,Status,Activationcode,SecurityA)values(@Firstname,@Lastname,@CentennialEmail,@Phonenumber,@Status,@Activationcode,@SecurityA)", con);
-        cmd1.Parameters.AddWithValue("@Firstname", txtFName.Text);
-        cmd1.Parameters.AddWithValue("@Lastname", txtLName.Text);
-        cmd1.Parameters.AddWithValue("@CentennialEmail", txtEmail.Text);
-      //  cmd1.Parameters.AddWithValue("@Address", txtAddress.Text);
-        cmd1.Parameters.AddWithValue("@Phonenumber", txtPhone.Text);
-        cmd1.Parameters.AddWithValue("@Status", "Unverified");
-        cmd1.Parameters.AddWithValue("@Activationcode", activationCode);
-        cmd1.Parameters.AddWithValue("@SecurityA", txtSecurityA.Text);
-        cmd1.ExecuteNonQuery();
-        sendCode(); //use for email code
-        Response.Redirect("EmailVerification.aspx?emailadd=" + txtEmail.Text);
-
+        try
+        {
+            Random random = new Random();
+            activationCode = random.Next(1001, 9999).ToString();
+            SqlCommand cmd = new SqlCommand("insert into tbl_CustomerLogin" + "(Username,Password)values(@Username,@Password)", con);
+            cmd.Parameters.AddWithValue("@Username", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@Password", txtPwd.Text);
+            cmd.ExecuteNonQuery();
+            SqlCommand cmd1 = new SqlCommand("insert into CreateAccountCustomer" + "(Firstname,Lastname,CentennialEmail,Phonenumber,Status,Activationcode,SecurityA)values(@Firstname,@Lastname,@CentennialEmail,@Phonenumber,@Status,@Activationcode,@SecurityA)", con);
+            cmd1.Parameters.AddWithValue("@Firstname", txtFName.Text);
+            cmd1.Parameters.AddWithValue("@Lastname", txtLName.Text);
+            cmd1.Parameters.AddWithValue("@CentennialEmail", txtEmail.Text);
+            //  cmd1.Parameters.AddWithValue("@Address", txtAddress.Text);
+            cmd1.Parameters.AddWithValue("@Phonenumber", txtPhone.Text);
+            cmd1.Parameters.AddWithValue("@Status", "Unverified");
+            cmd1.Parameters.AddWithValue("@Activationcode", activationCode);
+            cmd1.Parameters.AddWithValue("@SecurityA", txtSecurityA.Text);
+            cmd1.ExecuteNonQuery();
+            sendCode(); //use for email code
+            Response.Redirect("EmailVerification.aspx?emailadd=" + txtEmail.Text);
+        }
+        catch(System.Data.SqlClient.SqlException)
+        {
+            lblError.Text = "User with the email id already exists";
+            lblError.ForeColor = System.Drawing.Color.Red;
+            //string msg = "User with the email id already exists";
+            //msg += ex.Message;
+            //throw new Exception(msg);
+           
+        }
     }
 
     private void sendCode()

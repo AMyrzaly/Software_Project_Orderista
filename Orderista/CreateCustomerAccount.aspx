@@ -116,6 +116,9 @@
                         ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
                         Text="Confirm Password - Minimum 8 characters, Upper/Lower Case Alphabet, Number/Special Character"
                         ErrorMessage="RegularExpressionValidator" />
+         <div>
+             <asp:Label ID="lblError" runat="server" ></asp:Label>
+         </div>
     <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 30px;">
                         <asp:CompareValidator ID="CompareValidator" runat="server" ErrorMessage="Passwords do not match" EnableClientScript="true" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd"></asp:CompareValidator>
                         <asp:Button class="actionBtn" ID="btnCreateCustomerAccount" runat="server" Text="Create Account" OnClick="btnCreateCustomerAccount_Click" />
