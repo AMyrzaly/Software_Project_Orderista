@@ -14,7 +14,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        Label2.Text = "Your Email is" + Request.QueryString["emailadd"].ToString() + ", Kindly check your Mail Inbox for ACtivation Code ";
+        Label2.Text = "Your Email is " + Request.QueryString["emailadd"].ToString() + ", Please check your Mail Inbox for an Activation Code ";
         btnPwdReset.Visible = false;
 
     }
@@ -43,7 +43,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
             }
             else
             {
-                Label3.Text = "You have entered invalid Code, Kindly check your Mail Inbox";
+                Label3.Text = "You have entered an invalid Code, Please check your Mail Inbox";
                 Label3.ForeColor = System.Drawing.Color.Red;
             }
 

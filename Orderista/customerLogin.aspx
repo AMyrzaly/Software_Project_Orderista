@@ -31,17 +31,13 @@
             <tr>
                 <td class="auto-style2" colspan="2"><asp:Button class="actionBtn"  ID="btnLog" runat="server" Text="Login" OnClick="btnLog_Click" /><br /></td>
             </tr>
-                <!--
-                <td>
-                    <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
-                </td> -->
             <tr>
                 <td class="auto-style2">Not an Existing User? </td>
                 <td class="auto-style2"> <asp:Button class="actionBtn" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" /></td>
             </tr>
             <tr>
                 <td class="auto-style2" colspan="2">
-                    <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/EmailVerification.aspx">Forgot Password?</asp:HyperLink>
+                    <asp:HyperLink ID="hyperLinkForgotPassword" runat="server" NavigateUrl="~/ForgotPasswordPage.aspx">Forgot Password?</asp:HyperLink>
                     &nbsp; </td>
             </tr>
                 </table>

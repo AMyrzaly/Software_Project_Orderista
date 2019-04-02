@@ -12,7 +12,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        TimeSpan start = TimeSpan.Parse("06:00"); // 6 AM
+        TimeSpan start = TimeSpan.Parse("08:00"); // 8 AM
         TimeSpan end = TimeSpan.Parse("21:00");   // 9 PM
         TimeSpan now = DateTime.Now.TimeOfDay;
 
@@ -56,7 +56,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
             else
             {
                 // current time is between start and stop
-                lblMsg.Text = "Sorry !!!! You can order only during the restaurant open timings between 6 AM and 9 PM ";
+                lblMsg.Text = "Sorry !!!! Orders can only be placed during restaurant business hours between 8:00 AM and 9:00 PM";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
                 DelayDropDownList.Enabled = false;
                 PlaceOrder.Enabled = false;
@@ -270,7 +270,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
                 }          
                 else
                 {
-                    lblMsg.Text = "No time selected. Kindly select the time the order needs to be ready at";
+                    lblMsg.Text = "No time selected. Please select a time to pickup your order.";
                     lblMsg.ForeColor = System.Drawing.Color.Red;
 
                 }

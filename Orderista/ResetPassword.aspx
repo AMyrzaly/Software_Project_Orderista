@@ -16,8 +16,8 @@
             <tr>
                 <td>Confirm Password</td>
                 <td>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" Width="228px"></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPwd" ControlToValidate="txtPwd" ErrorMessage="Passwords Do not Match"></asp:CompareValidator>
+                    <asp:TextBox ID="txtConfirmPwd" runat="server" TextMode="Password" Width="228px"></asp:TextBox>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPwd" ControlToValidate="txtConfirmPwd" ErrorMessage="Passwords Do not Match"></asp:CompareValidator>
                     <asp:RequiredFieldValidator ID="ReqFldValCPassword" runat="server"
                         ErrorMessage="- Required Field"
                         ControlToValidate="txtConfirmPwd" />
