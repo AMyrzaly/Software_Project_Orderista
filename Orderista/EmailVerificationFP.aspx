@@ -32,8 +32,11 @@
             </tr>
             <tr>
                 
-                <td><asp:Button ID="btnVerifyCode" runat="server" Text="Verify Email" OnClick="btnVerifyCode_Click" /></td>
-                <td><asp:Button ID="btnVerifySecurityAnswer" runat="server" Text="Verify Security Answer" OnClick="btnVerifySecurityAnswer_Click"  /></td>
+                <td><asp:Button ID="btnVerifyCode" runat="server" Text="Verify Code" OnClick="btnVerifyCode_Click" />
+                    <td><asp:Button ID="btnVerifySecurityAnswer" runat="server" Text="Verify Security Question" OnClick="btnVerifySecurityAnswer_Click"  /></td>
+
+                </td>
+                </td>
             </tr>
 
             <tr>

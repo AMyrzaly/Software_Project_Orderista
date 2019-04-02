@@ -63,12 +63,12 @@ public partial class EmailVerification : System.Web.UI.Page
             {
                 if (activationCode != txtVerificationCode.Text)
                 {
-                    Label3.Text = "You have entered an invalid code, Kindly check your Mail Inbox";
+                    Label3.Text = "Invalid activation code.";
                     Label3.ForeColor = System.Drawing.Color.Red;
                 } 
                 else
                 {
-                    Label3.Text = "You have entered Wrong Answer or have selected Wrong Question, Kindly check and try again";
+                    Label3.Text = "Incorrect Security Question";
                     Label3.ForeColor = System.Drawing.Color.Red;
                 }
                 

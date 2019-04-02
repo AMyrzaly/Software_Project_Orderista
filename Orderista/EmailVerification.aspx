@@ -36,11 +36,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button class="actionBtn" ID="btnVerifyCode" runat="server" Text="Verify Security Answer and Email" OnClick="btnVerifyCode_Click"  /></td>
+                <td><asp:Button class="actionBtn" ID="btnVerifyCode" runat="server" Text="Verify" OnClick="btnVerifyCode_Click"  /></td>
             </tr>
 
             <tr>
-                <td><asp:Label ID="Label3" runat="server" ForeColor="#33CC33"></asp:Label></td>
+                <td><asp:Label ID="Label3" runat="server" ForeColor="green"></asp:Label></td>
                 <td><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/customerLogin.aspx">Go Back to Login</asp:HyperLink> <br /></td>
             </tr>
         </table>

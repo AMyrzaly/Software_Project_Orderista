@@ -43,7 +43,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
             }
             else
             {
-                Label3.Text = "You have entered an invalid Code, Please check your Mail Inbox";
+                Label3.Text = "Invalid Activation Code, Please check your Mail Inbox";
                 Label3.ForeColor = System.Drawing.Color.Red;
             }
 
@@ -66,7 +66,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
 
     protected void btnVerifySecurityAnswer_Click(object sender, EventArgs e)
     {
-         String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
+        String myquery = "Select * from CreateAccountCustomer where CentennialEmail='" + Request.QueryString["emailadd"] + "'";
         SqlCommand cmd = new SqlCommand();
         cmd.CommandText = myquery;
         cmd.Connection = con;
@@ -90,7 +90,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
             }
             else
             {
-                Label3.Text = "You have entered Wrong Answer or have selected Wrong Question, Kindly check and try again";
+                Label3.Text = "Incorrect Security Question, please try again";
                 Label3.ForeColor = System.Drawing.Color.Red;
             }
 
