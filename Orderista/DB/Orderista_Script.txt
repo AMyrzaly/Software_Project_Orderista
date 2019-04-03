@@ -88,9 +88,9 @@ CREATE TABLE [dbo].[Orders](
 	[CreationTime] [datetime] NOT NULL,
 	[DelayTime] [int] NOT NULL,
 	[Status] [nvarchar](50) NOT NULL,
-	[Semitotal] [smallmoney] NOT NULL,
-	[Taxes] [smallmoney] NOT NULL,
-	[ServiceCharge] [smallmoney] NOT NULL,
+	[Semitotal] [decimal](16,2) NOT NULL,
+	[Taxes] [decimal] (16,2) NOT NULL,
+	[ServiceCharge] [decimal] (16,2) NOT NULL,
 	[Total] AS [Semitotal] + [Taxes] + [ServiceCharge],
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
 (

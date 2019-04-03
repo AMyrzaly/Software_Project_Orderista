@@ -91,7 +91,7 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
 
         // Semitotal column
         col = new DataColumn();
-        col.DataType = Type.GetType("System.String");
+        col.DataType = Type.GetType("System.Decimal");
         col.ColumnName = "Semitotal";
         col.Caption = "Subtotal";
         col.ReadOnly = true;
@@ -100,7 +100,7 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
 
         // Taxes column
         col = new DataColumn();
-        col.DataType = Type.GetType("System.String");
+        col.DataType = Type.GetType("System.Decimal");
         col.ColumnName = "Taxes";
         col.Caption = "Tax";
         col.ReadOnly = true;
@@ -109,7 +109,7 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
 
         // ServiceCharge column
         col = new DataColumn();
-        col.DataType = Type.GetType("System.String");
+        col.DataType = Type.GetType("System.Decimal");
         col.ColumnName = "ServiceCharge";
         col.Caption = "Service Fee";
         col.ReadOnly = true;
@@ -118,7 +118,7 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
 
         // Total column
         col = new DataColumn();
-        col.DataType = Type.GetType("System.String");
+        col.DataType = Type.GetType("System.Decimal");
         col.ColumnName = "Total";
         col.Caption = "Total Cost";
         col.ReadOnly = true;
@@ -212,10 +212,10 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
         row = orderTable.NewRow();
         row["RestaurantName"] = restaurant;
         row["DelayTime"] = delay;
-        row["Semitotal"] = semiTotal.ToString("c2");
-        row["Taxes"] = tax.ToString("c2");
-        row["ServiceCharge"] = fee.ToString("c2");
-        row["Total"] = total.ToString("c2");
+        row["Semitotal"] = semiTotal;
+        row["Taxes"] = tax;
+        row["ServiceCharge"] = fee;
+        row["Total"] = total;
         orderTable.Rows.Add(row);
 
         // bind order information to the GridView
@@ -268,10 +268,10 @@ public partial class Orders_OrderConfirm : System.Web.UI.Page
         // gather data needed for insert queries from the OrderSummaryGridView
         string restaurant = OrderSummaryGridView.Rows[0].Cells[0].Text;
         string delay = OrderSummaryGridView.Rows[0].Cells[1].Text;
-        string semitotal = OrderSummaryGridView.Rows[0].Cells[2].Text;
-        string taxes = OrderSummaryGridView.Rows[0].Cells[3].Text;
-        string serviceCharge = OrderSummaryGridView.Rows[0].Cells[4].Text;
-        string total = OrderSummaryGridView.Rows[0].Cells[5].Text;
+        decimal semitotal = Convert.ToDecimal(OrderSummaryGridView.Rows[0].Cells[2].Text);
+        decimal taxes = Convert.ToDecimal(OrderSummaryGridView.Rows[0].Cells[3].Text);
+        decimal serviceCharge = Convert.ToDecimal( OrderSummaryGridView.Rows[0].Cells[4].Text);
+        decimal total = Convert.ToDecimal(OrderSummaryGridView.Rows[0].Cells[5].Text);
         // we're not bothering with total because it's a derived column anyway
 
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
