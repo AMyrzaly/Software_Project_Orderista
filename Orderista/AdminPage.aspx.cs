@@ -20,7 +20,7 @@ public partial class AdminPage : System.Web.UI.Page
         
         string useradmin = Session["UserAdmin"].ToString();
 
-        UserAdmin.Text = "Welcome, " + useradmin;
+        UserAdmin.Text = "Hello, " + useradmin;
 
         string gridViewTable;
         conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);

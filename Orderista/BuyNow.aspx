@@ -2,25 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     </asp:Content>
-<%--    <style type="text/css">
-        .auto-style1 {
-            width: 41%;
-            height: 344px;
-            background-color: #FFBBDD;
-        }
-        .auto-style3 {
-            background-color: #99FFCC;
-        }
-        .auto-style4 {
-            width: 215px;
-            font-size: xx-large;
-            background-color: #99FFCC;
-        }
-        .auto-style5 {
-            width: 215px;
-            font-size: x-large;
-            background-color: #99FFCC;
-        }<style>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
             <table class="auto-style1">

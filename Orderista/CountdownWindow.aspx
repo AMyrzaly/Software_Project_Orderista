@@ -10,7 +10,7 @@
           <ContentTemplate>
               <asp:Literal ID="litMsg" runat="server" ></asp:Literal> <br />
               <div style="margin-top: 15px">
-                    <asp:Button ID="btnProceed" CssClass="actionBtn" runat="server" Text="Proceed to Payment" OnClick="btnProceed_Click" />
+                    <asp:Button ID="btnProceed" CssClass="actionBtn" runat="server" Text="Proceed to Payment" OnClick="btnProceed_Click" />&nbsp&nbsp
                     <asp:Button ID="btnCancel" CssClass="actionBtn" runat="server" Text="Cancel Order" OnClick="btnCancel_Click" />
               </div>
           </ContentTemplate>

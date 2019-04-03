@@ -18,9 +18,9 @@
        <%-- Data Table--%>
         <asp:GridView ID="RestaurantGrid" runat="server">
         </asp:GridView>
-
-        <asp:Button ID="AddRestaurant" runat="server" Text="Add Restaurant" OnClick="AddRestaurant_Click" />
-        <asp:Button ID="DeleteRestaurant" runat="server" Text="Remove Restaurant" OnClick="DeleteRestaurant_Click" />
+        <br />
+        <asp:Button ID="AddRestaurant" runat="server" Text="Add Restaurant" OnClick="AddRestaurant_Click" />&nbsp&nbsp
+        <asp:Button ID="DeleteRestaurant" runat="server" Text="Delete Restaurant" OnClick="DeleteRestaurant_Click" />
 
     </div>
 </asp:Content>

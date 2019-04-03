@@ -49,7 +49,6 @@
                     <asp:Label ID="lblResUN" runat="server" Text="Username: "></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtRestaurantUsername" runat="server"></asp:TextBox>
-                    <%--  Change regex and add format in error message--%>
 
                     </td>
                 <td>
@@ -103,7 +102,7 @@
                     <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
                         ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
                         ControlToValidate="txtRestaurantEmail"
-                        ErrorMessage="Please enter a valid Centennial email address" Display="Dynamic"
+                        ErrorMessage="Enter a valid email address" Display="Dynamic"
                         Forecolor="red" />
                     </td>
 
@@ -112,20 +111,22 @@
                 <td class="auto-style2">
                     <asp:Label ID="lblResCon" runat="server" Text="Contact: "></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtRestaurantContact" runat="server"></asp:TextBox>
-
-                    <%--add a validator for contact HERE!--%>
-
+                    <asp:TextBox ID="txtRestaurantContact" runat="server"></asp:TextBox>               
 
                     </td>
                 <td>
-
-
-                    <asp:RequiredFieldValidator ID="reqCon" runat="server"
+                    <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
                         ErrorMessage="Required Field"
                         Forecolor="red" 
                         ControlToValidate="txtRestaurantContact">
-                    </asp:RequiredFieldValidator></td>
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
+                                ControlToValidate="txtRestaurantContact"
+                                ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                                Text=" Enter a valid Phone Number"
+                                Forecolor="red" 
+                                ErrorMessage="RegularExpressionValidator" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2">

@@ -16,7 +16,7 @@ public partial class AddRestaurant : System.Web.UI.Page
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
         string useradmin = Session["UserAdmin"].ToString();
-        UserAdmin.Text = "Welcome, " + useradmin;
+        UserAdmin.Text = "Hello, " + useradmin;
     }
 
     protected void btnCreateRestaurant_Click(object sender, EventArgs e)
