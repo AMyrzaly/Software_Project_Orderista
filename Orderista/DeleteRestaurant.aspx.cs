@@ -30,7 +30,7 @@ public partial class DeleteRestaurant : System.Web.UI.Page
         //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
         //conn = new SqlConnection(connString);
         // comm.Parameters.AddWithValue("@res", row.Cells[2].Text);
-        string sql = "Delete From RESTAURANTS Where Username = '" + row.Cells[1].Text + "'";
+        string sql = "Delete From RESTAURANTS Where Username = '" + row.Cells[2].Text + "'";
 
         comm = new SqlCommand(sql, conn);
 

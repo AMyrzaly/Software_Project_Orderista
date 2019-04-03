@@ -13,7 +13,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         TimeSpan start = TimeSpan.Parse("08:00"); // 8 AM
-        TimeSpan end = TimeSpan.Parse("21:00");   // 9 PM
+        TimeSpan end = TimeSpan.Parse("04:00");   // 9 PM
         TimeSpan now = DateTime.Now.TimeOfDay;
 
         if (start <= end)

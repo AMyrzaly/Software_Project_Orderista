@@ -13,7 +13,7 @@
             </Columns>
         </asp:GridView>
         <asp:Button ID="btn_Back" runat="server" Text="Back to Admin Page" OnClick="btn_Back_Click" />
-
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
