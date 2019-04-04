@@ -15,8 +15,12 @@ public partial class EmailVerificationFP : System.Web.UI.Page
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         Label2.Text = "Your Email is " + Request.QueryString["emailadd"].ToString() + ", Please check your Mail Inbox for an Activation Code ";
+        Label4.Visible = false;
+        DropDownList1.Visible = false;
+        Label5.Visible = false;
+        txtSecurityA.Visible = false;
+        btnVerifySecurityAnswer.Visible = false;
         btnPwdReset.Visible = false;
-
     }
 
     protected void btnVerifyCode_Click(object sender, EventArgs e)
@@ -40,6 +44,11 @@ public partial class EmailVerificationFP : System.Web.UI.Page
                 changeStaus();
                 Label3.Text = "Your Email has been verified successfully";
                 Label3.ForeColor = System.Drawing.Color.Green;
+                Label4.Visible = true;
+                DropDownList1.Visible = true;
+                Label5.Visible = true;
+                txtSecurityA.Visible = true;
+                btnVerifySecurityAnswer.Visible = true;
             }
             else
             {
@@ -72,6 +81,11 @@ public partial class EmailVerificationFP : System.Web.UI.Page
         cmd.Connection = con;
         SqlDataAdapter da = new SqlDataAdapter();
         da.SelectCommand = cmd;
+        Label4.Visible = true;
+        DropDownList1.Visible = true;
+        Label5.Visible = true;
+        txtSecurityA.Visible = true;
+        btnVerifySecurityAnswer.Visible = true;
 
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -86,6 +100,7 @@ public partial class EmailVerificationFP : System.Web.UI.Page
                 Label3.Text = "Your Security Answer has been verified successfully";
                 Label3.ForeColor = System.Drawing.Color.Green;
                 btnPwdReset.Visible = true;
+
 
             }
             else
