@@ -46,7 +46,7 @@
                 <td class="auto-style2">
                     <asp:Button ID="btnCreateItem" runat="server" Text="Add" OnClick="btnCreateItem_Click"  /></td>
                 <td>
-                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CausesValidation="false" /></td>
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CausesValidation="false" OnClick="btnCancel_Click1" /></td>
                 <td>
                     &nbsp;</td>
             </tr>

@@ -71,12 +71,13 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+
+    protected void btnHome_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
     }
 
-    protected void btnHome_Click(object sender, EventArgs e)
+    protected void btnCancel_Click1(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
     }
