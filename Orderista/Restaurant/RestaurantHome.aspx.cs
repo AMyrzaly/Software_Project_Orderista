@@ -39,4 +39,9 @@ public partial class Restaurant_RestaurantHome : System.Web.UI.Page
     {
         Response.Redirect("/Restaurant/CompletedDashboard.aspx");
     }
+
+    protected void btnAddMenu_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("/Restaurant/AddMenuItem.aspx");
+    }
 }
