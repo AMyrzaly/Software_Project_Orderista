@@ -44,4 +44,9 @@ public partial class Restaurant_RestaurantHome : System.Web.UI.Page
     {
         Response.Redirect("/Restaurant/AddMenuItem.aspx");
     }
+
+    protected void btnDeleteMenu_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("/Restaurant/DeleteMenuItem.aspx");
+    }
 }

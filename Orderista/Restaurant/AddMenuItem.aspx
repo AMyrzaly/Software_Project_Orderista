@@ -16,12 +16,7 @@
 
                 </td>
                 <td>
-                    <asp:RegularExpressionValidator ID="regName" runat="server"
-                        ControlToValidate="txtItemName"
-                        ValidationExpression="^[a-zA-Z'.\s]{1,50}"
-                        Text="Enter a valid name" 
-                        Forecolor="red" 
-                        Display="Dynamic" />
+            
                     <asp:RequiredFieldValidator ID="reqItemName" runat="server"
                         ErrorMessage="Required Field"
                         Forecolor="red" 

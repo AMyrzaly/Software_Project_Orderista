@@ -40,7 +40,7 @@
                            
                 </td>
                   <td colspan="3">
-                      <asp:ImageButton ID="btnDeleteMenu" runat="server" ImageUrl="~/Restaurant_Images/DeleteMenu.png" />
+                      <asp:ImageButton ID="btnDeleteMenu" runat="server" ImageUrl="~/Restaurant_Images/DeleteMenu.png" OnClick="btnDeleteMenu_Click" />
                   </td>
             </tr>
              <tr>

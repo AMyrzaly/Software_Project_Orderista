@@ -7,11 +7,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Restaurant_AddMenuItem : System.Web.UI.Page
+public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
 {
     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
     SqlCommand comm;
+    SqlDataReader reader;
+    SqlDataAdapter adapter;
     string RestaurantName;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -31,39 +34,24 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
         {
             conn.Close();
         }
-        btnHome.Visible = false;
+        BindGrid();
     }
-    protected void btnCreateItem_Click(object sender, EventArgs e)
+
+    private void BindGrid()
     {
-        ///Change the connectionString to apply different servers
-        //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
-        //conn = new SqlConnection(connString);
-        comm = new SqlCommand("INSERT INTO Menu_Items VALUES (@ItemName,@ResName,@Price,@InStock,@Visible)", conn);
-        //    comm.Parameters.AddWithValue("@ResName",(string)txtRestaurantName.Text);
-        comm.Parameters.AddWithValue("@ItemName", txtItemName.Text);
+        comm = new SqlCommand("Select * from Menu_Items where RestaurantName = @ResName", conn);
         comm.Parameters.AddWithValue("@ResName", RestaurantName);
-        comm.Parameters.AddWithValue("@Price", txtprice.Text);
-        comm.Parameters.AddWithValue("@InStock", 1);
-        comm.Parameters.AddWithValue("@Visible",1);
+
         try
         {
             conn.Open();
-            comm.ExecuteNonQuery();
-            Response.Write("Added Item!");
-            lblSuccess.Text = "Successfully added Menu Item";
-            lblSuccess.ForeColor = System.Drawing.Color.Green;
-            btnHome.Visible = true;
-            btnCancel.Visible = false;
-            btnCreateItem.Visible = false;
+            reader = comm.ExecuteReader();
+            GridDeleteMenuItem.DataSource = reader;
+            GridDeleteMenuItem.DataBind();
         }
-        catch (Exception ex)
+        catch
         {
-            btnCancel.Visible = false;
-            btnCreateItem.Visible = false;
-            btnHome.Visible = true;
-            lblSuccess.Text = "Menu Item already exists and so unable to added Menu Item";
-            lblSuccess.ForeColor = System.Drawing.Color.Red;
-
+            Response.Write("ERROR");
         }
         finally
         {
@@ -71,12 +59,43 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
+    protected void GridDeleteMenuItem_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        Response.Redirect("/Restaurant/RestaurantHome.aspx");
-    }
+        //string userName = GridDeleteRestaurnt.Columns[2].
+        GridViewRow row = (GridViewRow)GridDeleteMenuItem.Rows[e.RowIndex];
+        adapter = new SqlDataAdapter(comm);
+        //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
+        //conn = new SqlConnection(connString);
+        // comm.Parameters.AddWithValue("@res", row.Cells[2].Text);
+        string sql = "Delete From Menu_Items Where Name = '" + row.Cells[1].Text + "'";
 
-    protected void btnHome_Click(object sender, EventArgs e)
+        comm = new SqlCommand(sql, conn);
+
+        try
+        {
+            conn.Open();
+            adapter.DeleteCommand = new SqlCommand(sql, conn);
+            adapter.DeleteCommand.ExecuteNonQuery();
+            BindGrid();
+
+          lblSuccess.Text = ("Menu Item deleted");
+            lblSuccess.ForeColor = System.Drawing.Color.Green;
+            Page_Load(sender, e);
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+            lblSuccess.Text = ("Connection Failed and Menu Item deletion Failed");
+            lblSuccess.ForeColor = System.Drawing.Color.Red;
+
+           
+        }
+        finally
+        {
+            conn.Close();
+        }
+    }
+    protected void btn_Back_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
     }
