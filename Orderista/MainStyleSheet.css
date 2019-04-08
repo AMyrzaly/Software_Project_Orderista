@@ -1,14 +1,12 @@
-﻿html {
+﻿/*html {
     min-height: 100% !important;
-}
+}*/
 
-body {
+/*body {
     background-color: #eeeeee;
-    /*background-image: url("Images/backg.jpeg");*/
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    /* Default Font*/
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 21px;
     letter-spacing: -0.6px;
@@ -26,24 +24,24 @@ body {
     flex-direction: column;
     height: inherit;
     justify-content: space-between;
-}
+}*/
 
-#container {
+/*#container {
     width: 1080px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     background-color: rgba(255, 255, 255, 0.7);
-}
+}*/
 
-#jumbotron {
+/*#jumbotron {
     padding: 30px;
     margin-bottom: 30px;
     font-size: 21px;
     font-weight: 200;
     color: inherit;
     background-color: #eeeeee;
-}
+}*/
 
 input.inputText_password {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -78,14 +76,17 @@ select.inputText {
 .restaurant_selection {
     display: flex;
 }
-.restaurant_selection tbody {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-.restaurant_selection tbody td label {
-    margin-left: 5px !important;
-}
+
+    .restaurant_selection tbody {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+        .restaurant_selection tbody td label {
+            margin-left: 5px !important;
+        }
+
 .order_button {
     margin: 20px auto;
     display: block;
@@ -286,7 +287,3 @@ footer {
         position: relative;
         top: 1px;
     }
-
-
-
-
