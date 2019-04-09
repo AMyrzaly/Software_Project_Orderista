@@ -38,7 +38,7 @@
                 <nav class="site-menu">
                     <div class="site-menu-inner">
                         <ul class="list-unstyled">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="../Home.aspx">Home</a></li>
                             <li><a href="../About.aspx">About Us</a></li>
                             <li><a href="../ContactUs.aspx">Contact Us</a></li>
                         </ul>
@@ -55,7 +55,7 @@
                             </ul>
                         </div>
                         <div class="col-2 col-md-6 text-center">
-                            <a href="index.html" class="site-logo">D</a>
+                            <a href="./Home.aspx" class="site-logo"><img src="./static/img/LOGO.png" /></a>
                         </div>
                         <div class="col-5 col-md-3 text-right menu-burger-wrap">
                             <a href="#" class="site-nav-toggle js-site-nav-toggle"><i></i></a>
