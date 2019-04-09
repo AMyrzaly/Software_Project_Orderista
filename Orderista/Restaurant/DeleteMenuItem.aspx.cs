@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
 {
+    //Establish connection to database
     SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
     SqlCommand comm;
     SqlDataReader reader;
@@ -18,7 +19,9 @@ public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        string userName = Session["username"].ToString();
+        string userName = Session["username"].ToString(); //Greet the user
+
+        //Get the restaurant name from restaurants table using username from session
         comm = new SqlCommand("Select Restaurant_Name from Restaurants where Username = @Username", conn);
         comm.Parameters.AddWithValue("@Username", userName);
         try
@@ -34,24 +37,27 @@ public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
         {
             conn.Close();
         }
-        BindGrid();
+        BindGrid(); //Call to load the Grid View
     }
 
+    //Now start loading the grid view
     private void BindGrid()
     {
+        //Get the menu items from the table with the specified restaurant name
         comm = new SqlCommand("Select * from Menu_Items where RestaurantName = @ResName", conn);
         comm.Parameters.AddWithValue("@ResName", RestaurantName);
 
         try
         {
             conn.Open();
+            //Read the table
             reader = comm.ExecuteReader();
-            GridDeleteMenuItem.DataSource = reader;
+            GridDeleteMenuItem.DataSource = reader; //Load the grid view
             GridDeleteMenuItem.DataBind();
         }
         catch
         {
-            Response.Write("ERROR");
+            Response.Write("ERROR"); //Throw error on failure conncetion
         }
         finally
         {
@@ -59,14 +65,14 @@ public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
         }
     }
 
+    //When user clicks delete funbction to perform delete operation
     protected void GridDeleteMenuItem_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        //string userName = GridDeleteRestaurnt.Columns[2].
+        //Get the selected menu item
         GridViewRow row = (GridViewRow)GridDeleteMenuItem.Rows[e.RowIndex];
         adapter = new SqlDataAdapter(comm);
-        //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
-        //conn = new SqlConnection(connString);
-        // comm.Parameters.AddWithValue("@res", row.Cells[2].Text);
+     
+        //Delete the menu items for the specified food name
         string sql = "Delete From Menu_Items Where Name = '" + row.Cells[1].Text + "'";
 
         comm = new SqlCommand(sql, conn);
@@ -75,17 +81,17 @@ public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
         {
             conn.Open();
             adapter.DeleteCommand = new SqlCommand(sql, conn);
-            adapter.DeleteCommand.ExecuteNonQuery();
+            adapter.DeleteCommand.ExecuteNonQuery(); //Execute the delete command
             BindGrid();
 
-          lblSuccess.Text = ("Menu Item deleted");
+          lblSuccess.Text = ("Menu Item deleted"); //Show the success message
             lblSuccess.ForeColor = System.Drawing.Color.Green;
             Page_Load(sender, e);
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
-            lblSuccess.Text = ("Connection Failed and Menu Item deletion Failed");
+            lblSuccess.Text = ("Connection Failed and Menu Item deletion Failed"); //Show the failure message
             lblSuccess.ForeColor = System.Drawing.Color.Red;
 
            
@@ -95,6 +101,8 @@ public partial class Restaurant_DeleteMenuItem : System.Web.UI.Page
             conn.Close();
         }
     }
+
+    //When user clicks the back button redirect to home page
     protected void btn_Back_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");

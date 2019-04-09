@@ -16,9 +16,10 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
         TimeSpan end = TimeSpan.Parse("22:00");   // 9 PM
         TimeSpan now = DateTime.Now.TimeOfDay;
 
+        //Checking for condition if start time is less than end time
         if (start <= end)
         {
-            // start and stop times are in the same day
+            // start and stop times are in the same day, if so show the menu
             if (now >= start && now <= end)
             {
 
@@ -53,6 +54,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
                     BindMenuGridView(default_restaurant); // placing orders
                 }
             }
+            //If start and end or not the specified time show message
             else
             {
                 // current time is between start and stop
@@ -159,6 +161,7 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
             cmd.Connection = connection;
             SqlDataAdapter sqlData = new SqlDataAdapter(cmd);
 
+            //Populate the grid view 
             sqlData.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -223,6 +226,8 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
     // placing orders
     // this updates restaurant selection
     // used by the new database-populated radio button list
+
+        //When user selects the Restaurants check and bind the grid view with that particular menu
     protected void RestaurantButton_SelectedIndexChanged(object sender, EventArgs e)
     {
         string restaurant = RBL_Restaurant.SelectedValue;
@@ -290,11 +295,14 @@ public partial class Orders_OrdersPage : System.Web.UI.Page
 
     } // OnOrderButtonClicked
 
+
+    //Start the two minute window
     protected void TimerTime_Tick(object sender, EventArgs e)
     {
         lblTime.Text = DateTime.Now.ToString("hh:mm:ss");
     }
 
+    //Checking when the user selected the pickup of the food
     protected void DelayDropDownList_SelectedIndexChanged(object sender, EventArgs e)
     {
                 int selectedTime = 0;

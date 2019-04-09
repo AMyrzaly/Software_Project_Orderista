@@ -18,7 +18,7 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
     {
 
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        lblUserDetails.Text = "Hello " + Session["username"];
+        lblUserDetails.Text = "Hello " + Session["username"]; //Greet the user
        
         
     }
@@ -36,17 +36,18 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         
     }
 
+    //Send the message to the user that the order is completed
     private void sendCodeCompleted(string email)
     {
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "smtp.gmail.com";
         smtp.Port = 587;
-        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");
+        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019"); //Email information of Orderista
         smtp.EnableSsl = true;
         MailMessage msg = new MailMessage();
         msg.Subject = "Orderista Order Status";
-        msg.Body = "Dear User , \n\n\n Your Order has been Completed and Ready for Pickup  \n\n\nThanks and Regards,\nOrderista Team";
-        string toAddress = email;
+        msg.Body = "Dear User , \n\n\n Your Order has been Completed and Ready for Pickup  \n\n\nThanks and Regards,\nOrderista Team"; //The status message to the user
+        string toAddress = email; //Get the user entered email address 
         msg.To.Add(toAddress);
         string fromAddress = "Orderista <orderista.services@gmail.com>";
         msg.From = new MailAddress(fromAddress);
@@ -60,12 +61,13 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         }
     }
 
-
+    //When user sets the status as completed and clicks the button redirect to Completed dashboard
     protected void btnCompleted_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/CompletedDashboard.aspx");
     }
 
+    //When the user changes the status on that particular row updating function perform the following
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         int index = GridView1.EditIndex;
@@ -80,6 +82,7 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         sendCodeCompleted(email.Text);
     }
 
+    //Once user has completed updating and then load the grid view again with the updated data
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
@@ -88,10 +91,10 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
             {
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
-                    TextBox email = (TextBox)e.Row.FindControl("txtEmail");
+                    TextBox email = (TextBox)e.Row.FindControl("txtEmail"); //Disabling email field for updating
                     email.Enabled = false;
 
-                    TextBox delayTime = (TextBox)e.Row.FindControl("txtDelayTime");
+                    TextBox delayTime = (TextBox)e.Row.FindControl("txtDelayTime"); //Disabling delay field for updating
                     delayTime.Enabled = false;
 
                 }
@@ -99,6 +102,7 @@ public partial class Restaurant_InProgressDashboard : System.Web.UI.Page
         }
     }
 
+    //When user clicks back to home button redirect to main page
     protected void btnHome_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
