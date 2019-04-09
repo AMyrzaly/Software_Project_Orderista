@@ -910,7 +910,7 @@ textarea.form-control {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline-block;
   width: 30px;
   height: 2px;
   font: bold 14px/.4 Helvetica;
@@ -1525,4 +1525,43 @@ select {
 
 .pickup_time_select { 
     width: 115px !important;
+}
+
+.label {
+    color: #000 !important;
+    font-weight: 400 !important;
+}
+
+.register_info_add .field_boxes {
+    display: flex;
+    align-items: center;
+    width: 733px;
+    margin-bottom: 10px;
+}
+
+.register_info_add .field_boxes span {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+.register_info_add input, .register_info_add select {
+    width: 300px;
+    margin-right: 10px;
+}
+
+.labels span {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.order_confirm .restaurant_table {
+    width: 900px !important;
+}
+
+.order_confirm .food_table {
+    width: 700px !important;
+}
+
+.order_confirm .restaurant_table, .order_confirm .food_table {
+    margin: 0 auto;
 }

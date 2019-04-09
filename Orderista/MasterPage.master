@@ -32,7 +32,7 @@
 <body>
     <div id="background">
         <form id="form1" runat="server">
-            <div id="site-wrap">
+            <div id="site-wrap" style="background: #eee">
                 <!--    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" Height="200px" Width="200px" Style="float: left; margin-right: 10px" /> -->
                 <!-- site-header -->
                 <nav class="site-menu">

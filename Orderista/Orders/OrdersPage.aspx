@@ -118,9 +118,12 @@
     <asp:Button
         Style="display: inherit; margin: 30px auto"
         CssClass="order_button mx-auto btn btn-dark" ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
-    <asp:Label ID="lblMsg" runat="server"></asp:Label>
 
-    <div>
+    <div style="font-weight: bold; text-align: center; margin-top: 10px; margin-bottom: 20px;">
+        <asp:Label ID="lblMsg" runat="server"></asp:Label>
+    </div>
+    
+    <div style="text-align: center">
         <h3 style="font-weight: bold">Order History</h3>
         <br />
         <asp:GridView ID="OrderGridView" runat="server"
