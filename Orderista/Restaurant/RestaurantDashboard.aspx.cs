@@ -17,7 +17,7 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        lblUserDetails.Text = "Hello " + Session["username"];
+        lblUserDetails.Text = "Hello " + Session["username"]; //Greet the user
      
 
         
@@ -190,18 +190,20 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     //}
 
 
+        //When the user declines the order send message to the customer
     private void ChangeStatusDeclineEmail(int orderId)
     {
         
         //Send Update Status
 
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OrderistaConnectionString"].ConnectionString);
+        //Get the email of the customer with the help of Order Id from the Orders table
         SqlCommand cmd = new SqlCommand("select CentennialEmail from Orders Where OrderID = @orderId", connection);
         cmd.Parameters.AddWithValue("@orderId", orderId);
         try
         {
             connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader(); //Execute the read operation
             while (reader.Read())
             {
                 email = reader[0].ToString();
@@ -224,24 +226,24 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     }
 
    
-
+    //Send the status of Declione to customer
     private void sendCodeDecline(string email)
     {
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "smtp.gmail.com";
         smtp.Port = 587;
-        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");
+        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019"); //Orderista email address
         smtp.EnableSsl = true;
         MailMessage msg = new MailMessage();
         msg.Subject = "Orderista Order Status";
-        msg.Body = "Dear User , \n\n\n We regret to inform that we are declining your order  \n\n\nThanks and Regards,\nOrderista Team";
-        string toAddress = email;
+        msg.Body = "Dear User , \n\n\n We regret to inform that we are declining your order  \n\n\nThanks and Regards,\nOrderista Team"; //Status message
+        string toAddress = email; //Get the email of the user from the orders table using order id
         msg.To.Add(toAddress);
         string fromAddress = "Orderista <orderista.services@gmail.com>";
         msg.From = new MailAddress(fromAddress);
         try
         {
-            smtp.Send(msg);
+            smtp.Send(msg); //Send the message to the user
         }
         catch
         {
@@ -249,23 +251,25 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         }
     }
 
+    //If the user accepts the order send the status
     private void sendCodeProgress(string email)
     {
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "smtp.gmail.com";
         smtp.Port = 587;
-        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");
+        smtp.Credentials = new System.Net.NetworkCredential("orderista.services@gmail.com", "Orderista@2019");//Orderista email address
         smtp.EnableSsl = true;
         MailMessage msg = new MailMessage();
         msg.Subject = "Orderista Order Status";
-        msg.Body = "Dear User , \n\n\n Your Order has been Accepted and is In Progress  \n\n\nThanks and Regards,\nOrderista Team";
-        string toAddress = email;
+        msg.Body = "Dear User , \n\n\n Your Order has been Accepted and is In Progress  \n\n\nThanks and Regards,\nOrderista Team";//Status message
+        smtp.EnableSsl = true;
+        string toAddress = email; //Get the email of the user from the orders table using order id
         msg.To.Add(toAddress);
         string fromAddress = "Orderista <orderista.services@gmail.com>";
         msg.From = new MailAddress(fromAddress);
         try
         {
-            smtp.Send(msg);
+            smtp.Send(msg);//Send the message to the user
         }
         catch
         {
@@ -273,11 +277,13 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         }
     }
 
-
+    //When user clicks to check the orders in progress
     protected void btnInProgress_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/InProgressDashboard.aspx");
     }
+
+    //When the user changes the status on that particular row updating function perform the following
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
@@ -288,14 +294,18 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
         string status = ((DropDownList)GridView1.Rows[index].FindControl("DDLStatus")).SelectedValue;
 
         TextBox email = (TextBox)row.FindControl("txtEmail");
+        // Get the controls that contain the updated values. In this
+        // example, the updated values are contained in the TextBox 
+        // controls declared in the edit item templates of each TemplateField 
+        // column fields in the GridView control.
 
         if (status == "InProgress")
             {
-            sendCodeProgress(email.Text);
+            sendCodeProgress(email.Text); //Call to send the progress status
         }
        else if (status == "Decline")
         {
-            sendCodeDecline(email.Text);
+            sendCodeDecline(email.Text); //Call to send the decline status
         }
 
 
@@ -310,6 +320,7 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
 
     }
 
+    //Once user has completed updating and then load the grid view again with the updated data
 
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
@@ -320,10 +331,10 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
 
-                    TextBox email = (TextBox)e.Row.FindControl("txtEmail");
+                    TextBox email = (TextBox)e.Row.FindControl("txtEmail");  //Disabling email field for updating
                     email.Enabled = false;
 
-                    TextBox delayTime = (TextBox)e.Row.FindControl("txtDelayTime");
+                    TextBox delayTime = (TextBox)e.Row.FindControl("txtDelayTime");  //Disabling delay time field for updating
                     delayTime.Enabled = false;
                     //e.Row.Cells[1].Enabled = false;
                     //e.Row.Cells[2].Enabled = false;
@@ -334,7 +345,7 @@ public partial class Restaurant_RestaurantDashboard : System.Web.UI.Page
     }
 
 
-   
+    //When user clicks back to home button redirect to main page
 
     protected void btnHome_Click(object sender, EventArgs e)
     {

@@ -16,6 +16,8 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         string userName = Session["username"].ToString();
+
+        //Select only the Restaurant Name from session variable username
         comm = new SqlCommand("Select Restaurant_Name from Restaurants where Username = @Username", conn);
         comm.Parameters.AddWithValue("@Username", userName);
         try
@@ -35,11 +37,10 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
     }
     protected void btnCreateItem_Click(object sender, EventArgs e)
     {
-        ///Change the connectionString to apply different servers
-        //string connString = "Server=LAPTOP-I8AD7C8G\\MSSQLSERVER2017;Initial Catalog=SwiftServe;Integrated Security=True";
-        //conn = new SqlConnection(connString);
+      //Load the menu table with the user entered values
         comm = new SqlCommand("INSERT INTO Menu_Items VALUES (@ItemName,@ResName,@Price,@InStock,@Visible)", conn);
-        //    comm.Parameters.AddWithValue("@ResName",(string)txtRestaurantName.Text);
+
+        //Now recieve from the user enetered values
         comm.Parameters.AddWithValue("@ItemName", txtItemName.Text);
         comm.Parameters.AddWithValue("@ResName", RestaurantName);
         comm.Parameters.AddWithValue("@Price", txtprice.Text);
@@ -49,8 +50,8 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
         {
             conn.Open();
             comm.ExecuteNonQuery();
-            Response.Write("Added Item!");
-            lblSuccess.Text = "Successfully added Menu Item";
+            Response.Write("Added Item!"); 
+            lblSuccess.Text = "Successfully added Menu Item"; //Confirmation message to the user
             lblSuccess.ForeColor = System.Drawing.Color.Green;
             btnHome.Visible = true;
             btnCancel.Visible = false;
@@ -61,7 +62,7 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
             btnCancel.Visible = false;
             btnCreateItem.Visible = false;
             btnHome.Visible = true;
-            lblSuccess.Text = "Menu Item already exists and so unable to added Menu Item";
+            lblSuccess.Text = "Menu Item already exists and so unable to added Menu Item"; //Failure message for the user
             lblSuccess.ForeColor = System.Drawing.Color.Red;
 
         }
@@ -71,11 +72,13 @@ public partial class Restaurant_AddMenuItem : System.Web.UI.Page
         }
     }
 
-
+    //When user clicks the back to home button redirect to main page
     protected void btnHome_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
     }
+
+    //When user clicks the cancel button redirect to main page
 
     protected void btnCancel_Click1(object sender, EventArgs e)
     {

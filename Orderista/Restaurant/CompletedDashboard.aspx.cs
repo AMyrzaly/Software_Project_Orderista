@@ -15,7 +15,7 @@ public partial class Restaurant_CompletedDashboard : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        lblUserDetails.Text = "Hello " + Session["username"];
+        lblUserDetails.Text = "Hello " + Session["username"]; //Greet the user by taking session username 
        
     }
     
@@ -31,6 +31,7 @@ public partial class Restaurant_CompletedDashboard : System.Web.UI.Page
 
     }
 
+    //Redirect user to main page on clicking back to home button
     protected void btnHome_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Restaurant/RestaurantHome.aspx");
