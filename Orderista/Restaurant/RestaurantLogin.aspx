@@ -35,7 +35,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <a href="../customerLogin.aspx">Login as a Customer</a>
-    <a href="../AdminLogin.aspx">Login as Admin</a>
+    <div style="display: flex; justify-content: space-around; margin-bottom: 30px;">
+        <a class="btn btn-sm btn-primary btn-lg active" href="../customerLogin.aspx">Login as a Customer</a>
+        <a class="btn btn-sm btn-primary btn-lg active" href="../AdminLogin.aspx">Login as Admin</a>
+    </div>
 </asp:Content>
 

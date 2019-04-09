@@ -1,68 +1,44 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddMenuItem.aspx.cs" Inherits="Restaurant_AddMenuItem" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div>
-    <h2>Add a Menu Item</h2>
-        <br />
-        <table style="margin: auto; border: 5px solid white">
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblItemName" runat="server" Text=" Menu Item Name:"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtItemName" runat="server"></asp:TextBox>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div style="padding: 50px 0 100px; position: relative">
+        <div style="text-align: center">
+            <h3 style="text-align: center">Add a Menu Item</h3>
+            <asp:Label ID="lblSuccess" runat="server"></asp:Label>
+        </div>
 
-                </td>
-                <td>
-            
-                    <asp:RequiredFieldValidator ID="reqItemName" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtItemName">
-                    </asp:RequiredFieldValidator>
+        <div style="display: flex; flex-direction: column; width: 400px; margin: 30px auto 0;">
+            <div class="form-group">
+                <label style="font-weight: bold; color: #000" ID="lblItemName">Menu Item Name</label>
+                <asp:TextBox CssClass="form-control" ID="txtItemName" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqItemName" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtItemName">
+                </asp:RequiredFieldValidator>
+            </div>
+            <div class="form-group">
+                <label style="font-weight: bold; color: #000">Price</label>
+                <asp:TextBox CssClass="form-control" ID="txtprice" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqUN" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtprice">
+                </asp:RequiredFieldValidator>
+            </div>
+        </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblPrice" runat="server" Text="Price: "></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="txtprice" runat="server"></asp:TextBox>
+        <div style="text-align: center;">
+            <asp:Button ID="btnCreateItem" CssClass="btn btn-primary" runat="server" Text="Add" OnClick="btnCreateItem_Click" />
+            <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger" runat="server" Text="Cancel" CausesValidation="false" OnClick="btnCancel_Click1" />
+        </div>
 
-                    </td>
-                <td>
+        <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
 
-                    <asp:RequiredFieldValidator ID="reqUN" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtprice">
-                    </asp:RequiredFieldValidator>
-                  
-                    </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Button ID="btnCreateItem" runat="server" Text="Add" OnClick="btnCreateItem_Click"  /></td>
-                <td>
-                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CausesValidation="false" OnClick="btnCancel_Click1" /></td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lblSuccess" runat="server" ></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
-                </td>
-            </tr>
-            </table>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
 

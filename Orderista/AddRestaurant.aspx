@@ -1,144 +1,118 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddRestaurant.aspx.cs" Inherits="AddRestaurant" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .auto-style1 {
             height: 64px;
         }
+
         .auto-style2 {
             width: 191px;
         }
+
         .auto-style3 {
             height: 64px;
             width: 191px;
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div>
-        <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
-        <br />
-        <h2>Add a New Restaurant</h2>
-        <br />
-        <table style="margin: auto; border: 5px solid white">
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblResName" runat="server" Text="Restaurant Name:"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtRestaurantName" runat="server"></asp:TextBox>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div style="padding: 50px 0 100px; position: relative;">
+        <div class="inputText" style="margin-bottom: 20px;">
+            <h2 style="padding-left: 50px;">Add a New Restaurant</h2>
+        </div>
 
-                </td>
-                <td>
-                    <asp:RegularExpressionValidator ID="regName" runat="server"
-                        ControlToValidate="txtRestaurantName"
-                        ValidationExpression="^[a-zA-Z'.\s]{1,50}"
-                        Text="Enter a valid name" 
-                        Forecolor="red" 
-                        Display="Dynamic" />
-                    <asp:RequiredFieldValidator ID="reqResName" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtRestaurantName">
-                    </asp:RequiredFieldValidator>
+        <div style="position: absolute; right: 20px; top: 50px;">
+            <span style="font-weight: bold; color: black; padding-right: 10px;">
+                <asp:Label ID="UserAdmin" runat="server" Text=""></asp:Label>
+            </span>
+        </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblResUN" runat="server" Text="Username: "></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="txtRestaurantUsername" runat="server"></asp:TextBox>
+        <div class="add_restaurant_form" style="display: flex; flex-direction: column; margin-left: 50px;">
+            <div style="display: flex; align-items: center;" class="form-group">
+                <label>Restaurant Name</label>
+                <asp:TextBox CssClass="form-control" ID="txtRestaurantName" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regName" runat="server"
+                    ControlToValidate="txtRestaurantName"
+                    ValidationExpression="^[a-zA-Z'.\s]{1,50}"
+                    Text="Enter a valid name"
+                    ForeColor="red"
+                    Display="Dynamic" />
+                <asp:RequiredFieldValidator ID="reqResName" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtRestaurantName">
+                </asp:RequiredFieldValidator>
+            </div>
 
-                    </td>
-                <td>
+            <div style="display: flex; align-items: center;" class="form-group">
+                <label>Username</label>
+                <asp:TextBox CssClass="form-control" ID="txtRestaurantUsername" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqUN" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtRestaurantUsername">
+                </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="regUsername" runat="server"
+                    ControlToValidate="txtRestaurantUsername"
+                    ValidationExpression="^[a-zA-Z'.\s]{1,50}"
+                    Text="Enter a valid UserName"
+                    ForeColor="red" Display="Dynamic" />
+            </div>
 
-                    <asp:RequiredFieldValidator ID="reqUN" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtRestaurantUsername">
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regUsername" runat="server"
-                        ControlToValidate="txtRestaurantUsername"
-                        ValidationExpression="^[a-zA-Z'.\s]{1,50}"
-                        Text="Enter a valid UserName" 
-                        Forecolor="red" Display="Dynamic" />
-                    </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblResPAss" runat="server" Text="Password: "></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="txtRestaurantPassword" runat="server" TextMode="Password"></asp:TextBox>
-                    </td>
-                <td>
+            <div style="display: flex; align-items: center;" class="form-group">
+                <label>Password</label>
+                <asp:TextBox CssClass="form-control" ID="txtRestaurantPassword" runat="server" TextMode="Password"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="reqPW" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtRestaurantPassword">
+                </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="regPassword" runat="server"
+                    ControlToValidate="txtRestaurantPassword"
+                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+                    Text="Minimum 8 characters, Upper/Lower Case Alphabet, Number/Special Character" Display="Dynamic"
+                    ForeColor="red" />
+            </div>
 
-                    <asp:RequiredFieldValidator ID="reqPW" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtRestaurantPassword">
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regPassword" runat="server"
-                        ControlToValidate="txtRestaurantPassword"
-                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
-                        Text="Password requirements:  Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character" Display="Dynamic" 
-                        Forecolor="red" />
-                    </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">
-                    <asp:Label ID="lblResEmail" runat="server" Text="Email: "></asp:Label></td>
-                <td class="auto-style1">
-                    <asp:TextBox ID="txtRestaurantEmail" runat="server"></asp:TextBox>
-                    </td>
+            <div style="display: flex; align-items: center;" class="form-group">
+                <label>Email</label>
+                <asp:TextBox CssClass="form-control" ID="txtRestaurantEmail" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="ReqEM" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtRestaurantEmail">
+                </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
+                    ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                    ControlToValidate="txtRestaurantEmail"
+                    ErrorMessage="Enter a valid email address" Display="Dynamic"
+                    ForeColor="red" />
+            </div>
 
-                <td class="auto-style1">
+            <div style="display: flex; align-items: center;" class="form-group">
+                <label>Contact</label>
+                <asp:TextBox CssClass="form-control" ID="txtRestaurantContact" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
+                    ErrorMessage="Required Field"
+                    ForeColor="red"
+                    ControlToValidate="txtRestaurantContact">
+                </asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
+                    ControlToValidate="txtRestaurantContact"
+                    ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                    Text=" Enter a valid Phone Number"
+                    ForeColor="red"
+                    ErrorMessage="RegularExpressionValidator" />
+            </div>
+        </div>
 
-                    <asp:RequiredFieldValidator ID="ReqEM" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtRestaurantEmail">
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
-                        ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                        ControlToValidate="txtRestaurantEmail"
-                        ErrorMessage="Enter a valid email address" Display="Dynamic"
-                        Forecolor="red" />
-                    </td>
-
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="lblResCon" runat="server" Text="Contact: "></asp:Label></td>
-                <td>
-                    <asp:TextBox ID="txtRestaurantContact" runat="server"></asp:TextBox>               
-
-                    </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
-                        ErrorMessage="Required Field"
-                        Forecolor="red" 
-                        ControlToValidate="txtRestaurantContact">
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegExPNumber" runat="server"
-                                ControlToValidate="txtRestaurantContact"
-                                ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
-                                Text=" Enter a valid Phone Number"
-                                Forecolor="red" 
-                                ErrorMessage="RegularExpressionValidator" />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Button ID="btnCreateRestaurant" runat="server" Text="Add" OnClick="btnCreateRestaurant_Click" /></td>
-                <td>
-                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" /></td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            </table>
+        <div style="margin-left: 50px;">
+            <asp:Button ID="btnCreateRestaurant" CssClass="btn btn-primary" runat="server" Text="Add" OnClick="btnCreateRestaurant_Click" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-outline-danger" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false" />
+        </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
 </asp:Content>
 

@@ -26,8 +26,8 @@
 
     <div style="padding: 50px 0 100px;">
         <h2 style="text-align: center; margin-bottom: 10px;">Hungry? Log in and place your order right now! </h2>
-        <p style="text-align:center; margin-bottom: 20px;">
-             <span style="padding-right: 10px; font-weight: 400; color: black;">Not an Existing User?</span>
+        <p style="text-align: center; margin-bottom: 20px;">
+            <span style="padding-right: 10px; font-weight: 400; color: black;">Not an Existing User?</span>
             <asp:Button class="actionBtn btn btn-secondary btn-sm" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
         </p>
 
@@ -114,6 +114,8 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <a href="AdminLogin.aspx">Login as Admin</a>
-    <a href="/Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
+    <div style="display: flex; justify-content: space-around; margin-bottom: 30px;">
+        <a class="btn btn-sm btn-primary btn-lg active" href="AdminLogin.aspx">Login as Admin</a>
+        <a class="btn btn-sm btn-primary btn-lg active" href="/Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
+    </div>
 </asp:Content>
