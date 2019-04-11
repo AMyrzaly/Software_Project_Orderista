@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div style="text-align: right; padding: 5px;">
-        <asp:Button ID="btnLogout" CssClass="mx-auto btn btn-secondary" runat="server" Text="Logout" OnClick="btnLogout_Click1" />
+    <div style="text-align: right; padding: 5px; position: relative; top: 10px;">
+        <asp:Button ID="btnLogout" CssClass="mx-auto btn btn-primary" runat="server" Text="Logout" OnClick="btnLogout_Click1" />
     </div>
 
     <!-- experimental new database-populated radio buttons -->
@@ -93,7 +93,7 @@
             </asp:UpdatePanel>
         </div>
 
-        <div id="ReadyTime" style="display: flex; width:100%; justify-content: space-around">
+        <div id="ReadyTime" style="display: flex; width: 100%; justify-content: space-around">
             <div style="display: flex;">
                 <span style="margin-right: 5px;">Ready to pick up in the next</span>
                 <asp:DropDownList ID="DelayDropDownList" runat="server" OnSelectedIndexChanged="DelayDropDownList_SelectedIndexChanged" AutoPostBack="True" CssClass="form-control pickup_time_select">
@@ -110,45 +110,49 @@
                 </asp:DropDownList>
                 <span style="margin-left: 5px;">minutes.</span>
             </div>
-            <div>Your order will be ready at
+            <div>
+                Your order will be ready at
                 <asp:Label ID="lblPickUptime" runat="server" Text=""></asp:Label>
             </div>
         </div>
     </div>
     <asp:Button
         Style="display: inherit; margin: 30px auto"
-        CssClass="order_button mx-auto btn btn-dark" ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
+        CssClass="order_button mx-auto btn btn-primary" ID="PlaceOrder" runat="server" OnClientClick="OnOrderButtonClicked" Text="Place Order" OnClick="OnOrderButtonClicked" />
 
     <div style="font-weight: bold; text-align: center; margin-top: 10px; margin-bottom: 20px;">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
     </div>
-    
+
     <div style="text-align: center">
         <h3 style="font-weight: bold">Order History</h3>
         <br />
-        <asp:GridView ID="OrderGridView" runat="server"
-            AutoGenerateColumns="False"
-            AutoGenerateRows="false">
-            <Columns>
-                <asp:BoundField DataField="OrderID"
-                    HeaderText="Order ID" ReadOnly="true" />
-                <asp:BoundField DataField="RestaurantName"
-                    HeaderText="Restaurant" ReadOnly="true" />
-                <asp:BoundField DataField="CreationTime"
-                    HeaderText="Date & Time" />
-                <asp:BoundField DataField="Subtotal"
-                    HeaderText="Subtotal" />
-                <asp:BoundField DataField="Tax"
-                    HeaderText="Tax" />
-                <asp:BoundField DataField="ServiceFee"
-                    HeaderText="Service Fee" />
-                <asp:BoundField DataField="Total"
-                    HeaderText="Total Cost" />
-                <asp:BoundField DataField="Status"
-                    HeaderText="Status" />
-            </Columns>
+        <div style="width: 1000px; margin: 0 auto;">
+            <asp:GridView ID="OrderGridView" runat="server"
+                CssClass="table table-bordered table-dark"
+                AutoGenerateColumns="False"
+                AutoGenerateRows="false">
+                <Columns>
+                    <asp:BoundField DataField="OrderID"
+                        HeaderText="Order ID" ReadOnly="true" />
+                    <asp:BoundField DataField="RestaurantName"
+                        HeaderText="Restaurant" ReadOnly="true" />
+                    <asp:BoundField DataField="CreationTime"
+                        HeaderText="Date & Time" />
+                    <asp:BoundField DataField="Subtotal"
+                        HeaderText="Subtotal" />
+                    <asp:BoundField DataField="Tax"
+                        HeaderText="Tax" />
+                    <asp:BoundField DataField="ServiceFee"
+                        HeaderText="Service Fee" />
+                    <asp:BoundField DataField="Total"
+                        HeaderText="Total Cost" />
+                    <asp:BoundField DataField="Status"
+                        HeaderText="Status" />
+                </Columns>
 
-        </asp:GridView>
+            </asp:GridView>
+        </div>
         <br />
         <!--<u>Selected Order:</u> -->
         <br />
