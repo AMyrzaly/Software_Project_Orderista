@@ -1589,3 +1589,7 @@ select {
 .delete_restaurant table {
     margin: 20px auto;
 }
+
+.new_password_form span {
+    color: #f00 !important
+}

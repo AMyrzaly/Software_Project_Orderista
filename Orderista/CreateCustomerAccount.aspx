@@ -8,7 +8,7 @@
     <div style="padding: 50px 0 100px;">
         <h3 style="text-align: center; margin-bottom: 30px;">Enter your information to proceed</h3>
 
-        <div style="display: flex; justify-content: space-between; width: 1000px; margin: 0 auto 0 688px;" class="register_info_add">
+        <div style="display: flex; justify-content: space-between; width: 1000px; margin: 0 auto" class="register_info_add">
             <div class="labels" style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 10px; color: #000">
                 <span><b>First Name</b></span>
                 <span><b>Last Name</b></span>

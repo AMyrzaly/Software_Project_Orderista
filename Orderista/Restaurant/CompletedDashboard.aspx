@@ -10,29 +10,27 @@
             </span>
             <asp:Button class="backclrBtn btn btn-outline-warning" ID="LogOut" runat="server" Text="LogOut" OnClick="logOutBtn_Click" />
         </div>
-        <br />
-        <br />
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1">
-            <Columns>
-                <asp:BoundField DataField="OrderID" HeaderText="OrderID" InsertVisible="False" ReadOnly="True" SortExpression="OrderID" />
-                <asp:BoundField DataField="CentennialEmail" HeaderText="CentennialEmail" SortExpression="CentennialEmail" />
-                <asp:BoundField DataField="DelayTime" HeaderText="DelayTime" SortExpression="DelayTime" />
-                <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-            </Columns>
-        </asp:GridView>
-        <br />
+        <div style="width: 1000px; margin: 0 auto; position: relative; top: 40px;">
+            <asp:GridView ID="GridView1" CssClass="table table-bordered table-dark" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="OrderID" HeaderText="OrderID" InsertVisible="False" ReadOnly="True" SortExpression="OrderID" />
+                    <asp:BoundField DataField="CentennialEmail" HeaderText="CentennialEmail" SortExpression="CentennialEmail" />
+                    <asp:BoundField DataField="DelayTime" HeaderText="DelayTime" SortExpression="DelayTime" />
+                    <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                </Columns>
+            </asp:GridView>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderistaConnection %>" SelectCommand="SELECT [OrderID], [CentennialEmail], [DelayTime], [Status] FROM [Orders] WHERE ([Status] = @Status)">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="Completed" Name="Status" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OrderistaConnection %>" SelectCommand="SELECT [OrderID], [CentennialEmail], [DelayTime], [Status] FROM [Orders] WHERE ([Status] = @Status)">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="Completed" Name="Status" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
 
-        <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
-        <br />
-
-        <br />
+            <div style="text-align: center; margin-top: 20px;">
+                <asp:Button ID="btnHome" CssClass="btn btn-primary" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+            </div>
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
