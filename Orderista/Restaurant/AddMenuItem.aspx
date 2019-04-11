@@ -11,7 +11,7 @@
 
         <div style="display: flex; flex-direction: column; width: 400px; margin: 30px auto 0;">
             <div class="form-group">
-                <label style="font-weight: bold; color: #000" ID="lblItemName">Menu Item Name</label>
+                <label style="font-weight: bold; color: #000" id="lblItemName">Menu Item Name</label>
                 <asp:TextBox CssClass="form-control" ID="txtItemName" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="reqItemName" runat="server"
                     ErrorMessage="Required Field"
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label style="font-weight: bold; color: #000">Price</label>
-                <asp:TextBox CssClass="form-control" ID="txtprice" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-control" type="number" ID="txtprice" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="reqUN" runat="server"
                     ErrorMessage="Required Field"
                     ForeColor="red"
@@ -35,7 +35,9 @@
             <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger" runat="server" Text="Cancel" CausesValidation="false" OnClick="btnCancel_Click1" />
         </div>
 
-        <asp:Button ID="btnHome" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+        <div style="text-align: center;">
+            <asp:Button ID="btnHome" CssClass="btn btn-primary" runat="server" Text="Back to Home" OnClick="btnHome_Click" />
+        </div>
 
     </div>
 </asp:Content>

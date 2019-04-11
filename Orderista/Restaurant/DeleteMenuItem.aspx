@@ -6,7 +6,9 @@
     <div style="padding: 50px 0 100px;">
         <div style="text-align: center; margin-bottom: 30px;">
             <h3>Delete Menu Item Page</h3>
-            <asp:Label ID="lblSuccess" runat="server"></asp:Label>
+            <div style="width: 100%; margin: 10px auto; text-align: center">
+                <asp:Label ID="lblSuccess" runat="server"></asp:Label>
+            </div>
             <asp:Button ID="btn_Back" CssClass="btn btn-primary" runat="server" Text="Back to Home" OnClick="btn_Back_Click" />
         </div>
         <div style="margin-top: 20px; width: 800px; margin: 0 auto;">

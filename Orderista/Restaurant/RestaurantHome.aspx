@@ -13,7 +13,7 @@
         </div>
         <div>
         
-        <div class="icons" style="display: flex; justify-content: space-around; width: 900px; margin: 0 auto;">
+        <div class="icons" style="display: flex; justify-content: space-around; width: 850px; margin: 0 auto;">
             <div style="display: flex; flex-direction: column; justify-content: space-around">
                 <asp:ImageButton ID="imgBtnNew" runat="server" ImageUrl="~/Restaurant_Images/New.png" OnClick="btnNew_Click" Height="142px" />
                 <span style="text-align: center; color: black; font-weight: bold; padding-top: 20px;">New Orders</span>

@@ -46,62 +46,6 @@
             </div>
         </div>
     </div>
-
-    <table>
-        <%--        <tr>
-            <td colspan="2">
-                <asp:label id="Label2" runat="server" text="Label"></asp:label>
-            </td>
-        </tr>--%>
-        <%--  <tr>
-            <td>
-                <asp:label id="Label1" runat="server" text="Your Activation Code"></asp:label>
-            </td>
-            <td>
-                <asp:textbox id="txtVerificationCode" runat="server"></asp:textbox>
-            </td>
-        </tr>--%>
-        <%--  <tr>
-            <td>
-                <asp:label id="Label4" runat="server" text="Security Question"></asp:label>
-            </td>
-            <td>
-
-                <asp:dropdownlist id="DropDownList1" runat="server">
-                        <asp:ListItem>My Mother&#39;s Maiden Name?</asp:ListItem>
-                        <asp:ListItem>My first pet name?</asp:ListItem>
-                        <asp:ListItem>My School Name?</asp:ListItem>
-                        <asp:ListItem>My Best Friend&#39;s Name?</asp:ListItem>
-                        <asp:ListItem>My Favourite Restaurant?</asp:ListItem>
-                    </asp:dropdownlist>
-
-            </td>
-        </tr>--%>
-        <%-- <tr>
-            <td>
-                <asp:label id="Label5" runat="server" text="Your Security Answer: "></asp:label>
-            </td>
-            <td>
-                <asp:textbox id="txtSecurityA" runat="server"></asp:textbox>
-            </td>
-        </tr>--%>
-        <%--<tr>
-            <td></td>
-            <td>
-                <asp:button class="actionBtn" id="btnVerifyCode" runat="server" text="Verify" onclick="btnVerifyCode_Click" />
-            </td>
-        </tr>--%>
-
-        <%--<tr>
-            <td>
-                <asp:label id="Label3" runat="server" forecolor="green"></asp:label>
-            </td>
-            <td>
-                <asp:hyperlink id="HyperLink1" runat="server" navigateurl="~/customerLogin.aspx">Go Back to Login</asp:hyperlink>
-                <br />
-            </td>
-        </tr>--%>
-    </table>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">

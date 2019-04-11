@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-12" data-aos="fade-up">
-                        <h2 class="heading">Orderista - the best option to skip the long lines for food on campus and don’t want to drive far for the food.</h2>
+                        <h2 class="heading">Orderista - best option to skip the long lines for food on campus and don’t want to drive far for the food.</h2>
                         <div>
                             <div style="display: flex; justify-content: space-around; margin-top: 30px;">
                                 <a class="btn btn-sm btn-primary btn-lg" href="./customerLogin.aspx">Login as a Customer</a>

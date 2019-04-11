@@ -19,7 +19,7 @@
                 </Columns>
             </asp:GridView>
         </div>
-        <asp:Button ID="btn_Back" runat="server" class="btn btn-primary" Text="Back to Admin Page" OnClick="btn_Back_Click" />
+        <asp:Button ID="btn_Back" runat="server" class="btn btn-primary" Text="Back to Admin Dashboard" OnClick="btn_Back_Click" />
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">

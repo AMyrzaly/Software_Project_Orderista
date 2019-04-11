@@ -8,10 +8,6 @@
     <div style="padding: 50px 0 100px;">
         <h2 style="text-align: center; margin-bottom: 30px;">Enter your credentials to login as Admin!</h2>
 
-        <div style="font-weight: bold; text-align: center;">
-            <asp:Label ID="lblErrorMessage" runat="server" Text="Incorrect Username/Password" ForeColor="Red"></asp:Label>
-        </div>
-
         <div class="login-form" style="width: 300px; margin: auto">
             <div class="form-group">
                 <label class="label" for="txtUserName">Username</label>
@@ -31,7 +27,11 @@
             </div>
 
         </div>
+
         <div style="font-weight: bold; text-align: center;">
+            <asp:Label ID="lblErrorMessage" runat="server" Text="Incorrect Username/Password" ForeColor="Red"></asp:Label>
+        </div>
+        <div style="font-weight: bold; text-align: center; display: none;">
             <asp:Label ID="TestLabel" runat="server" Text="" ForeColor=""></asp:Label>
         </div>
     </div>

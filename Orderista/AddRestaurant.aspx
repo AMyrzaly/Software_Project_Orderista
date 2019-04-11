@@ -92,7 +92,7 @@
 
             <div style="display: flex; align-items: center;" class="form-group">
                 <label>Contact</label>
-                <asp:TextBox CssClass="form-control" ID="txtRestaurantContact" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-control" type="number" ID="txtRestaurantContact" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="ReqFldValPNumber" runat="server"
                     ErrorMessage="Required Field"
                     ForeColor="red"
