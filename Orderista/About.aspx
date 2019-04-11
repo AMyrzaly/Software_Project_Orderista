@@ -14,8 +14,8 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7" data-aos="fade-up">
-                            <h2 class="heading">About The Restaurant</h2>
-                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo saepe dolorum dolorem, iste officia voluptates! Sint repudiandae, soluta voluptatem delectus iure, eaque, harum expedita, nisi aliquam magni odio perferendis ipsum!</p>
+                            <h2 class="heading">About Orderista</h2>
+                            <p class="lead">If you want to skip the long lines for food on campus and don’t want to drive far for the food, use Orderista. We’ll have the food that you want ready for pickup in under 45 minutes.</p>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
             <div class="row justify-content-center mb-5" data-aos="fade-up">
               <div class="col-md-8  text-center">
                 <h2 class="mb-3">Why Choose Us</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum fuga, alias distinctio voluptatum magni voluptatibus.</p>
+                <p class="lead">We provide amazing service, which you will enjoy during your studies at Centennial College!</p>
               </div>
             </div>
             <div class="row large-gutters">
@@ -58,7 +58,12 @@
                     </h3>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quae cumque perspiciatis aperiam accusantium facilis provident aspernatur nisi optio debitis dolorum, est eum eligendi vero aut ad necessitatibus nulla sit labore doloremque magnam! Ex molestiae, dolor tempora, ad fuga minima enim mollitia consequuntur, necessitatibus praesentium eligendi officia recusandae culpa tempore eaque quasi ullam magnam modi quidem in amet. Quod debitis error placeat, tempore quasi aliquid eaque vel facilis culpa voluptate.</p>
+                          <p>
+                              Restaurants which work with us have the professient chefs.
+                              All dishes are professionally made, and will engage you to 
+                              order and order again, because they made with a love. You can choose
+                              any kind of the dishes from the different cuisines.
+                          </p>
                       </div>
                     </div>
                   </div> 
@@ -69,7 +74,12 @@
                     </h3>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                          <p>
+                              Food has a high quality, always fresh, and prepared upon your request,
+                              All products have the great conditions, and bought in the grocery stores, and
+                              immediately delivered to us the food. We do not use the products from the
+                              unknown places, only from the known stores.
+                          </p>
                       </div>
                     </div>
                   </div> 
@@ -80,7 +90,11 @@
                     </h3>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                        <p>
+                            We have a highly professional customer service, who will help you with your issues,
+                            and also will answer your any inquires. Please, use our 'Contact Form' or mobile phone,
+                            if something happened, and you want claim the issue.
+                        </p>
                       </div>
                     </div>
                   </div> 
@@ -95,8 +109,8 @@
           <div class="container">
             <div class="row justify-content-center mb-5" data-aos="fade-up">
               <div class="col-md-8  text-center">
-                <h2 class="mb-3">Restaurants Chef</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum fuga, alias distinctio voluptatum magni voluptatibus.</p>
+                <h2 class="mb-3">Ches in our Partners' Restaurant</h2>
+                <p class="lead">Top 4 chefs from the restaurants, which currently are working with us.</p>
               </div>
             </div>
             <div class="row">
@@ -104,25 +118,37 @@
                 <img src="static/img/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4 rounded">
                 <h3 class="mb-3">James Smith</h3>
                 <p class="post-meta text-muted">Chef Cook</p>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum cumque velit labore placeat corporis ad quisquam odio inventore beatae repudiandae ea quidem saepe doloribus libero, alias, eveniet quam at aperiam.</p>
+                <p class="mb-5">
+                    This Chef is working at Epic Burger. He have more than 10 years of experience, and he knows how to make
+                    a great burger. So, if you want to try some, you have to definitely order a burger from Epic Burger restaurant
+                </p>
               </div>
               <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
                 <img src="static/img/person_2.jpg" alt="Image placeholder" class="img-fluid mb-4 rounded">
                 <h3 class="mb-3">Rob Woodstone</h3>
                 <p class="post-meta text-muted">Chef Cook</p>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum cumque velit labore placeat corporis ad quisquam odio inventore beatae repudiandae ea quidem saepe doloribus libero, alias, eveniet quam at aperiam.</p>
+                <p class="mb-5">
+                    This is a Lead Chef of Tim Hortons. This person is amazing, he always take care of the clients and tries
+                    to do the most tasties dishes for every order. Try Tim Hortons dishes to taste it.
+                </p>
               </div>
               <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
                 <img src="static/img/person_3.jpg" alt="Image placeholder" class="img-fluid mb-4 rounded">
                 <h3 class="mb-3">Steph Gold</h3>
                 <p class="post-meta text-muted">Chef Cook</p>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum cumque velit labore placeat corporis ad quisquam odio inventore beatae repudiandae ea quidem saepe doloribus libero, alias, eveniet quam at aperiam.</p>
+                <p class="mb-5">
+                    Steph is a chef with 8 years expereince, who prepares the amazing pizza. You will enjoy by every slice, and definitely
+                    would like to order more pizza again. Visit Pizza Pizza to order any kind of Pizza!
+                </p>
               </div>
               <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
                 <img src="static/img/person_4.jpg" alt="Image placeholder" class="img-fluid mb-4 rounded">
                 <h3 class="mb-3">Jon White</h3>
                 <p class="post-meta text-muted">Chef Cook</p>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum cumque velit labore placeat corporis ad quisquam odio inventore beatae repudiandae ea quidem saepe doloribus libero, alias, eveniet quam at aperiam.</p>
+                <p class="mb-5">
+                    Smokes Poutinerie is a place, where you can order and anjoy the great Poutine, and Jon will
+                    make the order the most tastiest. If you want try it right now, please, login and make an order!
+                </p>
               </div>
             </div>
           </div>
