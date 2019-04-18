@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label style="font-weight: bold; color: #000">Price</label>
-                <asp:TextBox CssClass="form-control" type="number" ID="txtprice" runat="server"></asp:TextBox>
+                <asp:TextBox step="0.0000000000001" CssClass="form-control" type="number" ID="txtprice" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="reqUN" runat="server"
                     ErrorMessage="Required Field"
                     ForeColor="red"

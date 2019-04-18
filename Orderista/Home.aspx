@@ -13,7 +13,7 @@
                             <div style="display: flex; justify-content: space-around; margin-top: 30px;">
                                 <a class="btn btn-sm btn-primary btn-lg" href="./customerLogin.aspx">Login as a Customer</a>
                                 <a class="btn btn-sm btn-primary btn-lg" href="./AdminLogin.aspx">Login as Admin</a>
-                                <a class="btn btn-sm btn-primary btn-lg" href="./Restaurant/RestaurantLogin">Login as Restaurant</a>
+                                <a class="btn btn-sm btn-primary btn-lg" href="./Restaurant/RestaurantLogin.aspx">Login as Restaurant</a>
                             </div>
                         </div>
                     </div>
