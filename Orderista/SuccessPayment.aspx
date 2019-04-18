@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
         <div class="auto-style1">
-            Thank you for placing an order with SwiftServe. <br />
+            Thank you for placing an order with Orderista. <br />
             Enjoy your Meal !!!!<br />
             Note your Transaction ID:
             <asp:Label ID="Label1" runat="server"></asp:Label>

@@ -14,6 +14,10 @@
                 </span>
                 <asp:Button class="logout_btn btn btn-outline-warning" ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
             </div>
+            <div style="text-align:center">
+                      <asp:HyperLink ID="hypTutorial" runat="server" ForeColor="Blue" NavigateUrl="~/File/AdminManual.pdf" Target="_blank">Need Help?? Website Tutorial</asp:HyperLink>
+    
+            </div>
             <asp:RadioButtonList ID="AdminOrdersRestaurants" CssClass="admin_restaurant_selection" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" Width="325px">
                 <asp:ListItem Selected="True" Value="Restaurants">Restaurants</asp:ListItem>
                 <asp:ListItem Value="Orders">Orders</asp:ListItem>

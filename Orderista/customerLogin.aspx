@@ -30,10 +30,13 @@
             <span style="padding-right: 10px; font-weight: 400; color: black;">Not an Existing User?</span>
             <asp:Button class="actionBtn btn btn-secondary btn-sm" ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
         </p>
+        <p style="text-align: center;">
+                    <asp:HyperLink ID="hypTutorial" runat="server" ForeColor="Blue" NavigateUrl="~/File/UserManuals.pdf" Target="_blank">Need Help?? Website Tutorial</asp:HyperLink>
+    
+        </p>
 
         <div class="login-form" style="width: 300px; margin: auto">
             <div class="form-group">
-                <label class="label" for="txtUserName">Username</label>
                 <asp:Label ID="lblUsernameMessage" runat="server" Text="Username field cannot be empty" ForeColor="Red"></asp:Label>
                 <asp:TextBox class="form-control" ID="txtUserName" runat="server"></asp:TextBox>
             </div>

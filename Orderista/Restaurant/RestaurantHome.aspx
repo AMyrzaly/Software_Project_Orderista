@@ -11,6 +11,11 @@
             </span>
             <asp:Button class="backclrBtn btn btn-outline-warning" ID="logOutBtn" runat="server" Text="LogOut" OnClick="logOutBtn_Click" />
         </div>
+        <div style="text-align:center">
+                <asp:HyperLink ID="hypTutorial" runat="server" ForeColor="Blue" NavigateUrl="~/File/RestaurantManual.pdf" Target="_blank">Need Help?? Website Tutorial</asp:HyperLink>
+    
+        </div>
+        <br />
         <div>
         
         <div class="icons" style="display: flex; justify-content: space-around; width: 850px; margin: 0 auto;">

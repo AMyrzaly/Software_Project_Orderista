@@ -58,7 +58,7 @@ public partial class BuyNow : System.Web.UI.Page
         data.Add("udf5", "1");
 
         data.Add("surl", "http://localhost:50388/SuccessPayment.aspx");
-        data.Add("furl", "http://localhost:50388/FailurePayment.aspx");
+        data.Add("furl", "http://localhost:50514/Payment.aspx");
 
         data.Add("serviceprovider", "");
 
